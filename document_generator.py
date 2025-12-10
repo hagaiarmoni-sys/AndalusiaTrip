@@ -26,7 +26,15 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 PHOTOS_DIR = os.path.join(DATA_DIR, 'photos')
 EVENT_PHOTOS_DIR = os.path.join(BASE_DIR, 'event_photos')
-print("="*80)
+
+# Check if photos directory exists (for debugging deployment issues)
+PHOTOS_AVAILABLE = os.path.exists(PHOTOS_DIR) and os.path.isdir(PHOTOS_DIR)
+if PHOTOS_AVAILABLE:
+    photo_count = len([f for f in os.listdir(PHOTOS_DIR) if f.endswith(('.jpg', '.jpeg', '.png'))])
+    # print(f"✅ Photos directory found: {PHOTOS_DIR} ({photo_count} images)")
+else:
+    photo_count = 0
+    # print(f"⚠️ Photos directory NOT found: {PHOTOS_DIR} - PDFs will not have POI images")
 
 
 # ============================================================================
@@ -1273,16 +1281,17 @@ def build_word_doc(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, p
                     if attr.get('local_photo_path'):
                         relative_path = attr['local_photo_path']
                         
+                        # ✅ FIX: Normalize path separators (Windows \ to Unix /)
+                        relative_path = relative_path.replace('\\', '/')
                         
                         # Convert relative path to absolute
                         if not os.path.isabs(relative_path):
-                            # It's relative (like "photos\ChIJ...jpg")
+                            # It's relative (like "photos/ChIJ...jpg")
                             # Convert using DATA_DIR (portable!)
                             photo_path = os.path.join(DATA_DIR, relative_path)
                         else:
                             # Already absolute
                             photo_path = relative_path
-                        
                         
                     
                     # Option 2: Construct path from photo_references (SMART!)
@@ -1295,11 +1304,14 @@ def build_word_doc(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, p
                             
                             # PORTABLE PATH - Works on any system!
                             photo_path = os.path.join(PHOTOS_DIR, photo_filename)
-                            
-                        # else:
-                          #  print(f"DEBUG: POI '{attr_name}' has photo_references but NO place_id")
-                    # else:
-                      #  print(f"DEBUG: POI '{attr_name}' has NO photo_references")
+                    
+                    # ✅ FIX: Also try just the filename in PHOTOS_DIR as fallback
+                    if photo_path and not os.path.exists(photo_path):
+                        # Try extracting just the filename and looking in PHOTOS_DIR
+                        filename_only = os.path.basename(photo_path)
+                        fallback_path = os.path.join(PHOTOS_DIR, filename_only)
+                        if os.path.exists(fallback_path):
+                            photo_path = fallback_path
                     
                     # Add photo if we found it
                     if photo_path and os.path.exists(photo_path):
