@@ -1330,126 +1330,34 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
             except Exception as e:
                 st.error(f"❌ Error generating Excel: {str(e)}")
         
-        # PDF export (converts Word doc to PDF using LibreOffice, then fixes links)
+        # PDF export (Pure Python - fpdf2, no LibreOffice needed)
         with col2:
             try:
-                parsed_req = result.get("parsed_requests", {})
-                # Generate the Word doc (has all beautiful styling and photos)
-                word_doc = build_word_doc(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed_req, is_car_mode, result)
+                from pdf_generator import build_pdf
                 
-                # Convert to PDF using LibreOffice
-                pdf_buffer = None
-                try:
-                    import subprocess
-                    import tempfile
-                    import os
-                    import platform
+                pdf_buffer = build_pdf(
+                    itinerary=itinerary,
+                    hop_kms=hop_kms,
+                    maps_link=maps_link,
+                    ordered_cities=ordered_cities,
+                    days=total_trip_days,
+                    prefs=prefs,
+                    parsed_requests=result.get("parsed_requests", {}),
+                    is_car_mode=True,
+                    result=result
+                )
                 
-                    # Find LibreOffice executable
-                    libreoffice_cmd = None
-                    if platform.system() == 'Windows':
-                        possible_paths = [
-                            r'C:\Program Files\LibreOffice\program\soffice.exe',
-                            r'C:\Program Files (x86)\LibreOffice\program\soffice.exe',
-                            r'C:\Program Files\LibreOffice\program\soffice.com',
-                        ]
-                        for path in possible_paths:
-                            if os.path.exists(path):
-                                libreoffice_cmd = path
-                                break
-                    else:
-                        libreoffice_cmd = 'libreoffice'
-                    
-                    if libreoffice_cmd:
-                        # Save Word doc to temp file
-                        with tempfile.NamedTemporaryFile(suffix='.docx', delete=False) as tmp_docx:
-                            tmp_docx.write(word_doc.getvalue())
-                            tmp_docx_path = tmp_docx.name
-                        
-                        tmp_dir = os.path.dirname(tmp_docx_path)
-                        docx_basename = os.path.basename(tmp_docx_path)
-                        pdf_basename = docx_basename.replace('.docx', '.pdf')
-                        pdf_path = os.path.join(tmp_dir, pdf_basename)
-                        
-                        # Convert using LibreOffice
-                        subprocess.run([
-                            libreoffice_cmd, '--headless',
-                            '--convert-to', 'pdf',
-                            '--outdir', tmp_dir, tmp_docx_path
-                        ], capture_output=True, timeout=120)
-                        
-                        if os.path.exists(pdf_path):
-                            # ✅ FIX HYPERLINKS: Use PyMuPDF to add clickable links
-                            try:
-                                import fitz  # PyMuPDF
-                                
-                                doc = fitz.open(pdf_path)
-                                
-                                # Search for link text patterns and make them clickable
-                                link_patterns = [
-                                    ("Open in Google Maps", maps_link),
-                                    ("OPEN ROUTE IN GOOGLE MAPS", maps_link),
-                                    ("Book on Booking.com", "https://www.booking.com"),
-                                    ("View on Google Maps", "https://www.google.com/maps"),
-                                ]
-                                
-                                # Also find all "https://" URLs in the text
-                                for page in doc:
-                                    # Search for blue underlined text that looks like links
-                                    for pattern, default_url in link_patterns:
-                                        text_instances = page.search_for(pattern)
-                                        for inst in text_instances:
-                                            # Add link annotation
-                                            link = {
-                                                "kind": fitz.LINK_URI,
-                                                "from": inst,
-                                                "uri": default_url
-                                            }
-                                            page.insert_link(link)
-                                
-                                # Save the PDF with links
-                                fixed_pdf_path = pdf_path.replace('.pdf', '_fixed.pdf')
-                                doc.save(fixed_pdf_path)
-                                doc.close()
-                                
-                                # Read the fixed PDF
-                                with open(fixed_pdf_path, 'rb') as f:
-                                    pdf_buffer = io.BytesIO(f.read())
-                                os.remove(fixed_pdf_path)
-                                
-                            except ImportError:
-                                # PyMuPDF not available, use original PDF
-                                with open(pdf_path, 'rb') as f:
-                                    pdf_buffer = io.BytesIO(f.read())
-                            except Exception as link_error:
-                                # Link fixing failed, use original PDF
-                                with open(pdf_path, 'rb') as f:
-                                    pdf_buffer = io.BytesIO(f.read())
-                            
-                            # Clean up original PDF
-                            if os.path.exists(pdf_path):
-                                os.remove(pdf_path)
-                        
-                        # Clean up temp docx
-                        if os.path.exists(tmp_docx_path):
-                            os.remove(tmp_docx_path)
-                
-                except Exception as conv_error:
-                    pdf_buffer = None
-                
-                # Show PDF download button
-                if pdf_buffer:
-                    st.download_button(
-                        label="📄 Download PDF",
-                        data=pdf_buffer,
-                        file_name=f"andalusia_trip_{datetime.now().strftime('%Y%m%d')}.pdf",
-                        mime="application/pdf",
-                        use_container_width=True
-                    )
-                else:
-                    st.error("❌ PDF generation failed. Please try again.")
+                st.download_button(
+                    label="📄 Download PDF",
+                    data=pdf_buffer,
+                    file_name=f"andalusia_trip_{datetime.now().strftime('%Y%m%d')}.pdf",
+                    mime="application/pdf",
+                    use_container_width=True
+                )
             except Exception as e:
                 st.error(f"❌ Error generating PDF: {str(e)}")
+                import traceback
+                print(traceback.format_exc())
     
     # Clear the loading message after files are ready
     loading_placeholder.empty()
