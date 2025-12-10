@@ -1330,14 +1330,14 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
             except Exception as e:
                 st.error(f"❌ Error generating Excel: {str(e)}")
         
-        # PDF export (converts Word doc to PDF using LibreOffice)
+        # PDF export (converts Word doc to PDF using LibreOffice, then fixes links)
         with col2:
             try:
                 parsed_req = result.get("parsed_requests", {})
-                # First generate the Word doc (this has all the beautiful styling and photos)
+                # Generate the Word doc (has all beautiful styling and photos)
                 word_doc = build_word_doc(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed_req, is_car_mode, result)
                 
-                # Try to convert to PDF using LibreOffice
+                # Convert to PDF using LibreOffice
                 pdf_buffer = None
                 try:
                     import subprocess
@@ -1358,7 +1358,6 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                                 libreoffice_cmd = path
                                 break
                     else:
-                        # Linux/Mac
                         libreoffice_cmd = 'libreoffice'
                     
                     if libreoffice_cmd:
@@ -1380,49 +1379,77 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                         ], capture_output=True, timeout=120)
                         
                         if os.path.exists(pdf_path):
-                            with open(pdf_path, 'rb') as f:
-                                pdf_buffer = io.BytesIO(f.read())
-                            os.remove(pdf_path)
+                            # ✅ FIX HYPERLINKS: Use PyMuPDF to add clickable links
+                            try:
+                                import fitz  # PyMuPDF
+                                
+                                doc = fitz.open(pdf_path)
+                                
+                                # Search for link text patterns and make them clickable
+                                link_patterns = [
+                                    ("Open in Google Maps", maps_link),
+                                    ("OPEN ROUTE IN GOOGLE MAPS", maps_link),
+                                    ("Book on Booking.com", "https://www.booking.com"),
+                                    ("View on Google Maps", "https://www.google.com/maps"),
+                                ]
+                                
+                                # Also find all "https://" URLs in the text
+                                for page in doc:
+                                    # Search for blue underlined text that looks like links
+                                    for pattern, default_url in link_patterns:
+                                        text_instances = page.search_for(pattern)
+                                        for inst in text_instances:
+                                            # Add link annotation
+                                            link = {
+                                                "kind": fitz.LINK_URI,
+                                                "from": inst,
+                                                "uri": default_url
+                                            }
+                                            page.insert_link(link)
+                                
+                                # Save the PDF with links
+                                fixed_pdf_path = pdf_path.replace('.pdf', '_fixed.pdf')
+                                doc.save(fixed_pdf_path)
+                                doc.close()
+                                
+                                # Read the fixed PDF
+                                with open(fixed_pdf_path, 'rb') as f:
+                                    pdf_buffer = io.BytesIO(f.read())
+                                os.remove(fixed_pdf_path)
+                                
+                            except ImportError:
+                                # PyMuPDF not available, use original PDF
+                                with open(pdf_path, 'rb') as f:
+                                    pdf_buffer = io.BytesIO(f.read())
+                            except Exception as link_error:
+                                # Link fixing failed, use original PDF
+                                with open(pdf_path, 'rb') as f:
+                                    pdf_buffer = io.BytesIO(f.read())
+                            
+                            # Clean up original PDF
+                            if os.path.exists(pdf_path):
+                                os.remove(pdf_path)
                         
+                        # Clean up temp docx
                         if os.path.exists(tmp_docx_path):
                             os.remove(tmp_docx_path)
                 
                 except Exception as conv_error:
                     pdf_buffer = None
                 
-                # Show download buttons
+                # Show PDF download button
                 if pdf_buffer:
-                    # Both PDF and Word available
-                    col_pdf, col_word = st.columns(2)
-                    with col_pdf:
-                        st.download_button(
-                            label="📄 Download PDF",
-                            data=pdf_buffer,
-                            file_name=f"andalusia_trip_{datetime.now().strftime('%Y%m%d')}.pdf",
-                            mime="application/pdf",
-                            use_container_width=True
-                        )
-                    with col_word:
-                        st.download_button(
-                            label="📝 Download Word",
-                            data=word_doc,
-                            file_name=f"andalusia_trip_{datetime.now().strftime('%Y%m%d')}.docx",
-                            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                            use_container_width=True
-                        )
-                    st.caption("💡 **Tip:** Word doc has clickable links & photos. PDF is for printing.")
-                else:
-                    # Only Word doc available
                     st.download_button(
-                        label="📝 Download Word Doc",
-                        data=word_doc,
-                        file_name=f"andalusia_trip_{datetime.now().strftime('%Y%m%d')}.docx",
-                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        label="📄 Download PDF",
+                        data=pdf_buffer,
+                        file_name=f"andalusia_trip_{datetime.now().strftime('%Y%m%d')}.pdf",
+                        mime="application/pdf",
                         use_container_width=True
                     )
-                    st.caption("💡 **Tip:** Open in Word or Google Docs for clickable links & photos!")
+                else:
+                    st.error("❌ PDF generation failed. Please try again.")
             except Exception as e:
-                st.error(f"❌ Error generating document: {str(e)}")
+                st.error(f"❌ Error generating PDF: {str(e)}")
     
     # Clear the loading message after files are ready
     loading_placeholder.empty()
