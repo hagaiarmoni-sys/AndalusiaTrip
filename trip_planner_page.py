@@ -1330,93 +1330,33 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
             except Exception as e:
                 st.error(f"❌ Error generating Excel: {str(e)}")
         
-        # PDF export (converts Word doc to PDF using LibreOffice)
+        # PDF export (using fpdf2 for reliable hyperlinks on all platforms)
         with col2:
             try:
-                parsed_req = result.get("parsed_requests", {})
-                # First generate the Word doc
-                word_doc = build_word_doc(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed_req, is_car_mode, result)
+                # ✅ NEW: Use pure Python PDF generator (works identically on Windows/Mac/Linux)
+                from pdf_generator import build_pdf
                 
-                # Try to convert to PDF using LibreOffice
-                pdf_buffer = None
-                try:
-                    import subprocess
-                    import tempfile
-                    import os
-                    import platform
+                pdf_buffer = build_pdf(
+                    itinerary=itinerary,
+                    hop_kms=hop_kms,
+                    maps_link=maps_link,
+                    ordered_cities=ordered_cities,
+                    days=total_trip_days,
+                    prefs=prefs,
+                    parsed_requests=result.get("parsed_requests", {}),
+                    is_car_mode=True,
+                    result=result
+                )
                 
-                    # Find LibreOffice executable
-                    libreoffice_cmd = None
-                    if platform.system() == 'Windows':
-                        # Common Windows paths for LibreOffice
-                        possible_paths = [
-                            r'C:\Program Files\LibreOffice\program\soffice.exe',
-                            r'C:\Program Files (x86)\LibreOffice\program\soffice.exe',
-                            r'C:\Program Files\LibreOffice\program\soffice.com',
-                        ]
-                        for path in possible_paths:
-                            if os.path.exists(path):
-                                libreoffice_cmd = path
-                                break
-                    else:
-                        # Linux/Mac
-                        libreoffice_cmd = 'libreoffice'
-                    
-                    if not libreoffice_cmd:
-                        raise FileNotFoundError("LibreOffice not found")
-                    
-                    # Save Word doc to temp file
-                    with tempfile.NamedTemporaryFile(suffix='.docx', delete=False) as tmp_docx:
-                        tmp_docx.write(word_doc.getvalue())
-                        tmp_docx_path = tmp_docx.name
-                    
-                    # Get the output directory and expected PDF filename
-                    tmp_dir = os.path.dirname(tmp_docx_path)
-                    docx_basename = os.path.basename(tmp_docx_path)
-                    pdf_basename = docx_basename.replace('.docx', '.pdf')
-                    pdf_path = os.path.join(tmp_dir, pdf_basename)
-                    
-                    # Convert using LibreOffice (headless mode)
-                    # Using writer_pdf_Export filter which preserves hyperlinks
-                    conv_result = subprocess.run([
-                        libreoffice_cmd, '--headless', 
-                        '--convert-to', 'pdf:writer_pdf_Export',
-                        '--outdir', tmp_dir, tmp_docx_path
-                    ], capture_output=True, timeout=60)
-                    
-                    # Check if PDF was created
-                    if os.path.exists(pdf_path):
-                        with open(pdf_path, 'rb') as f:
-                            pdf_buffer = io.BytesIO(f.read())
-                        os.remove(pdf_path)
-                    
-                    # Clean up temp docx
-                    if os.path.exists(tmp_docx_path):
-                        os.remove(tmp_docx_path)
-                
-                except Exception as conv_error:
-                    # LibreOffice not available or conversion failed
-                    pdf_buffer = None
-                
-                if pdf_buffer:
-                    st.download_button(
-                        label="📄 Download PDF",
-                        data=pdf_buffer,
-                        file_name=f"andalusia_trip_{datetime.now().strftime('%Y%m%d')}.pdf",
-                        mime="application/pdf",
-                        use_container_width=True
-                    )
-                else:
-                    # Fallback to Word doc if PDF conversion fails
-                    st.download_button(
-                        label="📝 Download Word Doc",
-                        data=word_doc,
-                        file_name=f"andalusia_trip_{datetime.now().strftime('%Y%m%d')}.docx",
-                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                        use_container_width=True
-                    )
+                st.download_button(
+                    label="📄 Download PDF",
+                    data=pdf_buffer,
+                    file_name=f"andalusia_trip_{datetime.now().strftime('%Y%m%d')}.pdf",
+                    mime="application/pdf",
+                    use_container_width=True
+                )
             except Exception as e:
-                st.error(f"❌ Error generating document: {str(e)}")
+                st.error(f"❌ Error generating PDF: {str(e)}")
     
     # Clear the loading message after files are ready
     loading_placeholder.empty()
