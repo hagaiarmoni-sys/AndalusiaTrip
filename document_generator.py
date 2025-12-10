@@ -215,6 +215,10 @@ def add_hyperlink(paragraph, url, text):
     from docx.oxml.ns import qn
     from docx.shared import RGBColor, Pt
     
+    # Ensure URL is properly formatted
+    if url and not url.startswith(('http://', 'https://')):
+        url = 'https://' + url
+    
     # Get the paragraph's parent part
     part = paragraph.part
     
@@ -228,6 +232,8 @@ def add_hyperlink(paragraph, url, text):
     # Create the w:hyperlink element
     hyperlink = OxmlElement('w:hyperlink')
     hyperlink.set(qn('r:id'), r_id)
+    # ✅ FIX: Add history attribute for better PDF conversion compatibility
+    hyperlink.set(qn('w:history'), '1')
     
     # Create a new run element
     new_run = OxmlElement('w:r')
@@ -235,9 +241,14 @@ def add_hyperlink(paragraph, url, text):
     # Create run properties
     rPr = OxmlElement('w:rPr')
     
+    # ✅ FIX: Add hyperlink style
+    rStyle = OxmlElement('w:rStyle')
+    rStyle.set(qn('w:val'), 'Hyperlink')
+    rPr.append(rStyle)
+    
     # Add color
     color = OxmlElement('w:color')
-    color.set(qn('w:val'), '2980B9')  # Blue color
+    color.set(qn('w:val'), '0563C1')  # Standard hyperlink blue
     rPr.append(color)
     
     # Add underline

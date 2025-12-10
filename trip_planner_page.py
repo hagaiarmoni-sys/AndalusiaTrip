@@ -592,6 +592,11 @@ def show_trip_planner_full(attractions, hotels, restaurants=None):
                 # Run validation
                 errors, warnings, is_valid = validate_all_parameters(validation_params)
                 
+                # ✅ FIX: Filter out irrelevant warnings
+                # Don't show "use Circular/Hub" warning if already using Circular or Hub
+                if trip_type in ["Circular", "Star/Hub"]:
+                    warnings = [w for w in warnings if "Circular" not in w and "Hub" not in w]
+                
                 # Display validation results
                 if errors:
                     st.error("### 🚫 Cannot Generate Trip - Please Fix These Issues:")
@@ -1372,8 +1377,10 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                     pdf_path = os.path.join(tmp_dir, pdf_basename)
                     
                     # Convert using LibreOffice (headless mode)
+                    # Using writer_pdf_Export filter which preserves hyperlinks
                     conv_result = subprocess.run([
-                        libreoffice_cmd, '--headless', '--convert-to', 'pdf',
+                        libreoffice_cmd, '--headless', 
+                        '--convert-to', 'pdf:writer_pdf_Export',
                         '--outdir', tmp_dir, tmp_docx_path
                     ], capture_output=True, timeout=60)
                     
