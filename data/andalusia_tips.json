@@ -1,0 +1,670 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-12-09",
+  "sources": [
+    "Reddit r/travel",
+    "Travel blogs 2023-2025",
+    "Local guides",
+    "Lametayel forum"
+  ],
+  "practical_tips": {
+    "planning_booking": [
+      {
+        "id": 1,
+        "tip": "Book Alhambra tickets months ahead",
+        "priority": "critical"
+      },
+      {
+        "id": 2,
+        "tip": "Reserve Mezquita entry online",
+        "priority": "high"
+      },
+      {
+        "id": 3,
+        "tip": "Buy Alcázar skip-the-line passes",
+        "priority": "high"
+      },
+      {
+        "id": 4,
+        "tip": "Check Semana Santa dates before booking hotels",
+        "priority": "high"
+      },
+      {
+        "id": 5,
+        "tip": "Confirm Feria de Abril hotel availability early",
+        "priority": "high"
+      },
+      {
+        "id": 6,
+        "tip": "Use RENFE for Seville-Córdoba-Granada trains",
+        "priority": "medium"
+      },
+      {
+        "id": 7,
+        "tip": "Download RENFE app for e-tickets",
+        "priority": "medium"
+      },
+      {
+        "id": 8,
+        "tip": "Book Caminito del Rey slots online at caminitodelrey.info",
+        "priority": "critical"
+      },
+      {
+        "id": 9,
+        "tip": "Reserve flamenco shows in advance",
+        "priority": "medium"
+      },
+      {
+        "id": 10,
+        "tip": "Check museum closures on Mondays",
+        "priority": "medium"
+      }
+    ],
+    "transport": [
+      {
+        "id": 11,
+        "tip": "Rent a car for white villages exploration",
+        "priority": "high"
+      },
+      {
+        "id": 12,
+        "tip": "Park outside historic centers",
+        "priority": "high"
+      },
+      {
+        "id": 13,
+        "tip": "Use buses for short hops between cities",
+        "priority": "medium"
+      },
+      {
+        "id": 14,
+        "tip": "Download Moovit app for local buses",
+        "priority": "medium"
+      },
+      {
+        "id": 15,
+        "tip": "Use BlaBlaCar for budget rides",
+        "priority": "low"
+      },
+      {
+        "id": 16,
+        "tip": "Take AVE high-speed train for speed",
+        "priority": "medium"
+      },
+      {
+        "id": 17,
+        "tip": "Avoid driving in Seville's old town - restricted zones",
+        "priority": "high"
+      },
+      {
+        "id": 18,
+        "tip": "Use taxis for late nights",
+        "priority": "medium"
+      },
+      {
+        "id": 19,
+        "tip": "Carry international driving permit",
+        "priority": "medium"
+      },
+      {
+        "id": 20,
+        "tip": "Refuel before rural drives - gas stations sparse in mountains",
+        "priority": "medium"
+      }
+    ],
+    "timing_seasons": [
+      {
+        "id": 21,
+        "tip": "Lunch is 2-4 PM, dinner is 9-11 PM",
+        "priority": "high"
+      },
+      {
+        "id": 22,
+        "tip": "Expect siesta closures mid-afternoon (2-5 PM)",
+        "priority": "high"
+      },
+      {
+        "id": 23,
+        "tip": "Visit Alcázar at opening time (9:30 AM)",
+        "priority": "high"
+      },
+      {
+        "id": 24,
+        "tip": "See Plaza de España at dawn for empty photos",
+        "priority": "medium"
+      },
+      {
+        "id": 25,
+        "tip": "Avoid Granada midday heat in summer - stay indoors",
+        "priority": "high"
+      },
+      {
+        "id": 26,
+        "tip": "Travel spring/autumn for festivals and mild weather",
+        "priority": "high"
+      },
+      {
+        "id": 27,
+        "tip": "Winter is mild but damp - pack layers",
+        "priority": "medium"
+      },
+      {
+        "id": 28,
+        "tip": "Summer evenings are best for walking - cooler after 8 PM",
+        "priority": "medium"
+      },
+      {
+        "id": 29,
+        "tip": "Check Córdoba Patio Festival dates in May",
+        "priority": "medium"
+      },
+      {
+        "id": 30,
+        "tip": "Visit Feria markets at night for atmosphere",
+        "priority": "medium"
+      },
+      {
+        "id": 101,
+        "tip": "Best seasons: May/June or September/October for comfort; August possible with slower pace",
+        "priority": "medium"
+      },
+      {
+        "id": 102,
+        "tip": "Shops/restaurants often close Mon/Tue in small towns — plan larger city stays those days",
+        "priority": "medium"
+      },
+      {
+        "id": 103,
+        "tip": "In summer, sightsee before 11am and embrace siestas",
+        "priority": "medium"
+      },
+      {
+        "id": 104,
+        "tip": "Always carry water; heat can reach mid-40s inland",
+        "priority": "medium"
+      },
+      {
+        "id": 105,
+        "tip": "Avoid driving into old town streets of pueblos blancos — explore on foot",
+        "priority": "medium"
+      },
+      {
+        "id": 106,
+        "tip": "Use Zest for car hire; avoid Centauro due to reported scams",
+        "priority": "medium"
+      },
+      {
+        "id": 107,
+        "tip": "Toll roads mainly on Costa del Sol (Malaga–Marbella–Estepona–Sotogrande)",
+        "priority": "medium"
+      },
+      {
+        "id": 108,
+        "tip": "Parking is scarce in Seville, Granada, Cádiz; easier in smaller towns",
+        "priority": "medium"
+      },
+      {
+        "id": 109,
+        "tip": "Bring swimwear — pools, lakes, and rivers offer relief in summer",
+        "priority": "medium"
+      },
+      {
+        "id": 110,
+        "tip": "Wild camping is illegal — if camping, arrive late, leave early, and never light fires",
+        "priority": "medium"
+      }
+    ],
+    "accommodation": [
+      {
+        "id": 31,
+        "tip": "Stay in boutique hotels for charm",
+        "priority": "low"
+      },
+      {
+        "id": 32,
+        "tip": "Use rooftop pools in summer for siesta breaks",
+        "priority": "low"
+      },
+      {
+        "id": 33,
+        "tip": "Book apartments for families - more space and kitchens",
+        "priority": "medium"
+      },
+      {
+        "id": 34,
+        "tip": "Stay in Carmona for cheaper lodging near Seville",
+        "priority": "low"
+      },
+      {
+        "id": 35,
+        "tip": "Choose Triana neighborhood for authentic Seville vibe",
+        "priority": "medium"
+      },
+      {
+        "id": 36,
+        "tip": "Pick Albaicín area for Alhambra views in Granada",
+        "priority": "medium"
+      },
+      {
+        "id": 37,
+        "tip": "Stay near Plaza Nueva (Granada) for nightlife",
+        "priority": "low"
+      },
+      {
+        "id": 38,
+        "tip": "Use Booking.com filters for hotels with patios",
+        "priority": "low"
+      },
+      {
+        "id": 39,
+        "tip": "Check Airbnb for village stays in white villages",
+        "priority": "medium"
+      },
+      {
+        "id": 40,
+        "tip": "Reserve early for Easter week - prices triple",
+        "priority": "critical"
+      }
+    ],
+    "safety_comfort": [
+      {
+        "id": 81,
+        "tip": "Watch for pickpockets in crowded tourist areas",
+        "priority": "high"
+      },
+      {
+        "id": 82,
+        "tip": "Avoid driving narrow village streets - park and walk",
+        "priority": "medium"
+      },
+      {
+        "id": 83,
+        "tip": "Respect dress codes in churches - cover shoulders/knees",
+        "priority": "medium"
+      },
+      {
+        "id": 84,
+        "tip": "Carry ID/passport for ticket purchases",
+        "priority": "high"
+      },
+      {
+        "id": 85,
+        "tip": "Use ATMs in banks, not street kiosks",
+        "priority": "medium"
+      },
+      {
+        "id": 86,
+        "tip": "Stay hydrated in summer - carry water bottle",
+        "priority": "high"
+      },
+      {
+        "id": 87,
+        "tip": "Wear comfortable walking shoes - cobblestones everywhere",
+        "priority": "high"
+      },
+      {
+        "id": 88,
+        "tip": "Avoid sandals on cobblestones - ankle hazard",
+        "priority": "medium"
+      },
+      {
+        "id": 89,
+        "tip": "Carry umbrella in winter months",
+        "priority": "medium"
+      },
+      {
+        "id": 90,
+        "tip": "Use insect repellent in rural areas evening",
+        "priority": "low"
+      }
+    ],
+    "money_shopping": [
+      {
+        "id": 91,
+        "tip": "Tapas are cheaper off tourist streets",
+        "priority": "medium"
+      },
+      {
+        "id": 92,
+        "tip": "Buy ceramics in Triana (Seville) - authentic and quality",
+        "priority": "low"
+      },
+      {
+        "id": 93,
+        "tip": "Shop leather goods in Córdoba",
+        "priority": "low"
+      },
+      {
+        "id": 94,
+        "tip": "Buy olive oil in Priego de Córdoba - best quality",
+        "priority": "low"
+      },
+      {
+        "id": 95,
+        "tip": "Visit Cádiz fish market for fresh seafood",
+        "priority": "low"
+      },
+      {
+        "id": 96,
+        "tip": "Bargain in local street markets",
+        "priority": "low"
+      },
+      {
+        "id": 97,
+        "tip": "Use credit cards in cities, cash in villages",
+        "priority": "medium"
+      },
+      {
+        "id": 98,
+        "tip": "Carry coins for buses and small purchases",
+        "priority": "medium"
+      },
+      {
+        "id": 99,
+        "tip": "Avoid tourist traps near major landmarks",
+        "priority": "high"
+      },
+      {
+        "id": 100,
+        "tip": "Support local artisans - unique souvenirs",
+        "priority": "low"
+      }
+    ]
+  },
+  "insider_hacks": {
+    "Seville": [
+      {
+        "hack": "Visit Alcázar at opening time (9:30 AM) to avoid crowds",
+        "category": "timing"
+      },
+      {
+        "hack": "See Plaza de España at dawn for empty photos",
+        "category": "timing"
+      },
+      {
+        "hack": "Explore Plaza del Cabildo hidden behind Cathedral",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Visit Antiquarium ruins under Las Setas (Metropol Parasol)",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Eat pringá montaditos at Bodeguita Antonio Romero",
+        "category": "food"
+      },
+      {
+        "hack": "Join locals at Plaza de la Alfalfa for evening drinks",
+        "category": "local_vibe"
+      },
+      {
+        "hack": "Drink at Plaza del Salvador evenings - local hangout",
+        "category": "local_vibe"
+      },
+      {
+        "hack": "Try orange wine - unique to Seville",
+        "category": "food"
+      },
+      {
+        "hack": "Visit Hospital de los Venerables for art",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Explore Casa de Pilatos - less crowded than Alcázar",
+        "category": "hidden_gem"
+      }
+    ],
+    "Córdoba": [
+      {
+        "hack": "Enter Mezquita via side streets for faster access",
+        "category": "timing"
+      },
+      {
+        "hack": "Visit patios in May during Patio Festival - many are free",
+        "category": "seasonal"
+      },
+      {
+        "hack": "Eat flamenquín at Taberna El Choto",
+        "category": "food"
+      },
+      {
+        "hack": "Try rabo de toro at Taberna Salinas",
+        "category": "food"
+      },
+      {
+        "hack": "Taste Montilla-Moriles wine - local specialty",
+        "category": "food"
+      },
+      {
+        "hack": "Visit Palacio de Viana patios - 12 courtyards",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Explore Medina Azahara ruins - 10km outside city",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Eat berenjenas con miel (eggplant with honey) riverside",
+        "category": "food"
+      },
+      {
+        "hack": "Drink vermouth in San Basilio neighborhood",
+        "category": "local_vibe"
+      },
+      {
+        "hack": "Stay overnight for quieter Mezquita visits early morning",
+        "category": "timing"
+      }
+    ],
+    "Granada": [
+      {
+        "hack": "Use free tapas tradition - order drinks slowly, tapas come free",
+        "category": "food"
+      },
+      {
+        "hack": "Visit Mirador de San Nicolás at sunset for best Alhambra views",
+        "category": "timing"
+      },
+      {
+        "hack": "Eat piononos sweet pastries in Santa Fe nearby",
+        "category": "food"
+      },
+      {
+        "hack": "Try remojón granadino (orange and cod salad) in Albaicín",
+        "category": "food"
+      },
+      {
+        "hack": "Drink local Alpujarra wines",
+        "category": "food"
+      },
+      {
+        "hack": "Visit Carmen de los Mártires gardens - free entry, quiet",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Attend flamenco in Sacromonte caves - authentic venue",
+        "category": "experience"
+      },
+      {
+        "hack": "Explore Albaicín alleys at night - magical atmosphere",
+        "category": "timing"
+      },
+      {
+        "hack": "Night visit to Alhambra in summer - cooler and magical",
+        "category": "seasonal"
+      },
+      {
+        "hack": "Visit Cuevas del Sacromonte museum for cave history",
+        "category": "hidden_gem"
+      }
+    ],
+    "Ronda": [
+      {
+        "hack": "Visit Setenil de las Bodegas houses built into cliffs",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Explore Olvera castle for panoramic views",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Swim in Zahara de la Sierra reservoir",
+        "category": "experience"
+      },
+      {
+        "hack": "Hike Grazalema Natural Park - greenest in Spain",
+        "category": "experience"
+      },
+      {
+        "hack": "Taste local mountain wines from Ronda vineyards",
+        "category": "food"
+      },
+      {
+        "hack": "Eat chivo al ajillo (goat in garlic sauce)",
+        "category": "food"
+      },
+      {
+        "hack": "Visit Museo Lara for quirky collection",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Walk Alameda del Tajo park for gorge views",
+        "category": "experience"
+      },
+      {
+        "hack": "Stay overnight for Puente Nuevo lit up at night",
+        "category": "timing"
+      },
+      {
+        "hack": "Visit Baños Árabes - best preserved Arab baths in Spain",
+        "category": "hidden_gem"
+      }
+    ],
+    "Málaga": [
+      {
+        "hack": "Eat espetos de sardinas on beach - grilled on skewers",
+        "category": "food"
+      },
+      {
+        "hack": "Visit Mercado de Atarazanas for fresh food and tapas",
+        "category": "food"
+      },
+      {
+        "hack": "Explore Soho street art district",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Try ajoblanco cold almond soup",
+        "category": "food"
+      },
+      {
+        "hack": "Relax at Hammam Al Ándalus spa",
+        "category": "experience"
+      },
+      {
+        "hack": "Visit Gibralfaro Castle at sunset for views",
+        "category": "timing"
+      },
+      {
+        "hack": "Drink Málaga sweet wine - local dessert wine",
+        "category": "food"
+      },
+      {
+        "hack": "Walk Caminito del Rey early morning - cooler and less crowded",
+        "category": "timing"
+      },
+      {
+        "hack": "Explore El Torcal rock formations",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Visit El Palo beach for authentic sardine experience",
+        "category": "local_vibe"
+      }
+    ],
+    "Cádiz_Jerez": [
+      {
+        "hack": "Eat tortillitas de camarones (shrimp fritters)",
+        "category": "food"
+      },
+      {
+        "hack": "Try atún rojo de almadraba (bluefin tuna)",
+        "category": "food"
+      },
+      {
+        "hack": "Visit Cádiz fish market for seafood",
+        "category": "food"
+      },
+      {
+        "hack": "Drink manzanilla sherry in Sanlúcar de Barrameda",
+        "category": "food"
+      },
+      {
+        "hack": "Attend horse show at Royal Andalusian School in Jerez",
+        "category": "experience"
+      },
+      {
+        "hack": "Tour sherry bodegas - Tío Pepe, González Byass",
+        "category": "experience"
+      },
+      {
+        "hack": "Try churros gaditanos - local style",
+        "category": "food"
+      },
+      {
+        "hack": "Explore Arcos de la Frontera white village",
+        "category": "hidden_gem"
+      },
+      {
+        "hack": "Visit coastal seafood taverns in Cádiz",
+        "category": "food"
+      },
+      {
+        "hack": "Stay for Carnival in February - biggest in Spain",
+        "category": "seasonal"
+      }
+    ]
+  },
+  "lifestyle_hacks": [
+    {
+      "hack": "Order 'media ración' (half portion) to sample more dishes",
+      "category": "food"
+    },
+    {
+      "hack": "Ask for 'menu del día' at lunch for budget meals (€10-15)",
+      "category": "food"
+    },
+    {
+      "hack": "Stand at the bar for cheaper tapas prices",
+      "category": "food"
+    },
+    {
+      "hack": "Visit local peñas (flamenco clubs) instead of tourist shows",
+      "category": "experience"
+    },
+    {
+      "hack": "Shop at municipal markets for authentic food",
+      "category": "food"
+    },
+    {
+      "hack": "Buy pastries from convents - nuns sell homemade sweets",
+      "category": "food"
+    },
+    {
+      "hack": "Use refillable water fountains in plazas",
+      "category": "practical"
+    },
+    {
+      "hack": "Join locals for evening paseo (stroll) after dinner",
+      "category": "local_vibe"
+    },
+    {
+      "hack": "Visit rooftop bars for city views without crowds",
+      "category": "experience"
+    },
+    {
+      "hack": "Explore side-street taverns instead of main squares",
+      "category": "food"
+    }
+  ]
+}

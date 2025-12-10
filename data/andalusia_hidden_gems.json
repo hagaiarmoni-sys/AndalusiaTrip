@@ -1,0 +1,578 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-12-09",
+  "sources": [
+    "Reddit r/travel",
+    "Local guides",
+    "Costa del Sol expat forums"
+  ],
+  "hidden_gems_by_region": {
+    "near_seville": [
+      {
+        "name": "Carmona",
+        "type": "town",
+        "distance_from_seville_km": 35,
+        "drive_time_min": 35,
+        "highlights": [
+          "Roman necropolis",
+          "Alcázar del Rey Don Pedro",
+          "Panoramic views"
+        ],
+        "best_for": [
+          "History buffs",
+          "Cheaper accommodation alternative"
+        ],
+        "insider_tip": "Sunset from Alcázar walls is magical"
+      },
+      {
+        "name": "Écija",
+        "type": "town",
+        "distance_from_seville_km": 85,
+        "drive_time_min": 60,
+        "highlights": [
+          "Baroque churches",
+          "Historic palaces",
+          "City of towers"
+        ],
+        "best_for": [
+          "Architecture lovers",
+          "Off-beaten-path"
+        ],
+        "insider_tip": "Called 'frying pan of Andalusia' - very hot in summer"
+      },
+      {
+        "name": "Plaza del Cabildo",
+        "type": "hidden_spot",
+        "location": "Seville center",
+        "highlights": [
+          "Hidden plaza behind Cathedral",
+          "Sunday stamp market"
+        ],
+        "insider_tip": "Easy to miss - look for small passage near Cathedral"
+      }
+    ],
+    "near_cordoba": [
+      {
+        "name": "Medina Azahara",
+        "type": "archaeological_site",
+        "distance_from_cordoba_km": 10,
+        "drive_time_min": 15,
+        "highlights": [
+          "10th century palace-city ruins",
+          "UNESCO World Heritage"
+        ],
+        "best_for": [
+          "History buffs",
+          "Photographers"
+        ],
+        "insider_tip": "Visit early morning to avoid heat and crowds"
+      },
+      {
+        "name": "Priego de Córdoba",
+        "type": "town",
+        "distance_from_cordoba_km": 100,
+        "drive_time_min": 90,
+        "highlights": [
+          "Best olive oil in Spain",
+          "Baroque churches",
+          "Balcón del Adarve viewpoint"
+        ],
+        "best_for": [
+          "Foodies",
+          "Olive oil enthusiasts"
+        ],
+        "insider_tip": "Buy olive oil directly from mills - much cheaper"
+      },
+      {
+        "name": "Zuheros",
+        "type": "village",
+        "distance_from_cordoba_km": 75,
+        "drive_time_min": 60,
+        "highlights": [
+          "Cliffside village",
+          "Cueva de los Murciélagos caves",
+          "Olive groves"
+        ],
+        "best_for": [
+          "Nature lovers",
+          "Cave explorers"
+        ],
+        "insider_tip": "Olive harvest tours available in autumn"
+      }
+    ],
+    "near_granada": [
+      {
+        "name": "Carmen de los Mártires",
+        "type": "garden",
+        "location": "Granada (below Alhambra)",
+        "highlights": [
+          "Free entry",
+          "Peaceful gardens",
+          "Peacocks roaming"
+        ],
+        "best_for": [
+          "Quiet escape",
+          "Photographers"
+        ],
+        "insider_tip": "Perfect for avoiding Alhambra crowds"
+      },
+      {
+        "name": "Alpujarra Villages",
+        "type": "village_group",
+        "distance_from_granada_km": 60,
+        "drive_time_min": 90,
+        "villages": [
+          "Pampaneira",
+          "Bubión",
+          "Capileira"
+        ],
+        "highlights": [
+          "Moorish mountain hamlets",
+          "Artisan shops",
+          "Jamón serrano"
+        ],
+        "best_for": [
+          "Mountain lovers",
+          "Authentic rural experience"
+        ],
+        "insider_tip": "Chestnut harvest festivals in autumn"
+      },
+      {
+        "name": "Sierra Nevada",
+        "type": "mountain_range",
+        "distance_from_granada_km": 35,
+        "drive_time_min": 45,
+        "highlights": [
+          "Skiing in winter",
+          "Hiking in summer",
+          "Highest peaks in Spain"
+        ],
+        "best_for": [
+          "Adventure seekers",
+          "Skiers"
+        ],
+        "insider_tip": "Pack layers - temperature drops dramatically"
+      }
+    ],
+    "white_villages_route": [
+      {
+        "name": "Setenil de las Bodegas",
+        "type": "village",
+        "highlights": [
+          "Houses built into cliff overhangs",
+          "Unique architecture",
+          "Tapas bars under rocks"
+        ],
+        "best_for": [
+          "Photography",
+          "Unique experience"
+        ],
+        "insider_tip": "Visit early morning before tour buses arrive"
+      },
+      {
+        "name": "Zahara de la Sierra",
+        "type": "village",
+        "highlights": [
+          "Turquoise reservoir",
+          "Hilltop castle",
+          "Swimming spot"
+        ],
+        "best_for": [
+          "Swimmers",
+          "Photographers"
+        ],
+        "insider_tip": "Reservoir swimming perfect in summer"
+      },
+      {
+        "name": "Grazalema",
+        "type": "village",
+        "highlights": [
+          "Natural park",
+          "Hiking trails",
+          "Local cheeses"
+        ],
+        "best_for": [
+          "Hikers",
+          "Nature lovers"
+        ],
+        "insider_tip": "Wettest place in Spain - pack rain gear"
+      },
+      {
+        "name": "Olvera",
+        "type": "village",
+        "highlights": [
+          "Castle",
+          "Church on hilltop",
+          "Sweeping views"
+        ],
+        "best_for": [
+          "Castle lovers",
+          "Photographers"
+        ],
+        "insider_tip": "Via Verde cycling route passes through"
+      },
+      {
+        "name": "Arcos de la Frontera",
+        "type": "village",
+        "highlights": [
+          "Perched above gorge",
+          "Parador hotel",
+          "Dramatic views"
+        ],
+        "best_for": [
+          "Photographers",
+          "Luxury seekers"
+        ],
+        "insider_tip": "Stay at Parador for best views"
+      },
+      {
+        "name": "Frigiliana",
+        "type": "village",
+        "distance_from_malaga_km": 60,
+        "drive_time_min": 50,
+        "highlights": [
+          "Moorish streets",
+          "Flower-lined alleys",
+          "Coastal views"
+        ],
+        "best_for": [
+          "Romantic trips",
+          "Photography"
+        ],
+        "insider_tip": "One of 'most beautiful villages in Spain'"
+      },
+      {
+        "name": "Casares",
+        "type": "village",
+        "distance_from_marbella_km": 25,
+        "drive_time_min": 30,
+        "highlights": [
+          "Dramatic hillside location",
+          "Birthplace of Blas Infante"
+        ],
+        "best_for": [
+          "Off-beaten-path",
+          "Views"
+        ],
+        "insider_tip": "Less touristy than Mijas"
+      },
+      {
+        "name": "Mijas Pueblo",
+        "type": "village",
+        "distance_from_malaga_km": 30,
+        "drive_time_min": 25,
+        "highlights": [
+          "White village",
+          "Donkey taxis",
+          "Contemporary art museum"
+        ],
+        "best_for": [
+          "Families",
+          "Easy access from coast"
+        ],
+        "insider_tip": "Free flamenco shows Wed/Sat in summer"
+      }
+    ],
+    "costa_del_sol_hidden": [
+      {
+        "name": "Mirador de Juanar",
+        "type": "viewpoint",
+        "distance_from_marbella_km": 20,
+        "drive_time_min": 30,
+        "highlights": [
+          "Panoramic views Gibraltar to Sierra Nevada",
+          "1km walk from parking"
+        ],
+        "best_for": [
+          "Photographers",
+          "Nature lovers"
+        ],
+        "insider_tip": "Best viewpoint on Costa del Sol"
+      },
+      {
+        "name": "El Chorro Lakes",
+        "type": "nature",
+        "distance_from_malaga_km": 60,
+        "drive_time_min": 50,
+        "highlights": [
+          "3 turquoise lakes",
+          "Kayaking",
+          "Swimming",
+          "Near Caminito del Rey"
+        ],
+        "best_for": [
+          "Adventure seekers",
+          "Swimmers"
+        ],
+        "insider_tip": "Often mentioned in Lametayel Israeli forum as hidden gem"
+      },
+      {
+        "name": "Paraje Natural Los Reales de Sierra Bermeja",
+        "type": "nature",
+        "highlights": [
+          "Scenic mountain drive",
+          "Rare pinsapo fir trees"
+        ],
+        "best_for": [
+          "Drivers",
+          "Nature photographers"
+        ],
+        "insider_tip": "Spectacular sunset views"
+      }
+    ],
+    "cabo_de_gata": [
+      {
+        "name": "Cabo de Gata Natural Park",
+        "type": "natural_park",
+        "distance_from_almeria_km": 30,
+        "highlights": [
+          "Desert landscapes",
+          "Hidden beaches",
+          "Volcanic formations"
+        ],
+        "best_for": [
+          "Off-beaten-path seekers",
+          "Beach lovers"
+        ],
+        "beaches": [
+          "Playa de los Muertos",
+          "Playa de Mónsul",
+          "Playa de los Genoveses"
+        ],
+        "insider_tip": "Rent car essential - no public transport"
+      }
+    ],
+    "andalusia_general": [
+      {
+        "name": "Convent cookies in Arcos",
+        "type": "culinary_tradition",
+        "highlights": [
+          "Turnstile purchase",
+          "Cloistered nuns",
+          "Local sweets"
+        ],
+        "best_for": [
+          "Foodies",
+          "Cultural explorers"
+        ],
+        "insider_tip": "Ring the bell and order through the screen"
+      },
+      {
+        "name": "Cueva del Gato swim",
+        "type": "natural_pool",
+        "highlights": [
+          "Emerald water",
+          "Cave backdrop"
+        ],
+        "best_for": [
+          "Summer cooling",
+          "Nature lovers"
+        ],
+        "insider_tip": "Bring water shoes; go early to avoid crowds"
+      },
+      {
+        "name": "Pico Huma 'Balcony of Andalusia'",
+        "type": "hike",
+        "highlights": [
+          "Ridgeline views",
+          "El Chorro panoramas"
+        ],
+        "best_for": [
+          "Hikers",
+          "Photographers"
+        ],
+        "insider_tip": "Start at dawn in summer"
+      },
+      {
+        "name": "Ermita del Calvario viewpoint",
+        "type": "viewpoint",
+        "highlights": [
+          "Best views of Arcos de la Frontera",
+          "Quiet spot"
+        ],
+        "best_for": [
+          "Photographers",
+          "Sunset seekers"
+        ],
+        "insider_tip": "Visit at golden hour"
+      },
+      {
+        "name": "Ronda sunset terrace bars",
+        "type": "bar",
+        "highlights": [
+          "Gorge views",
+          "Sunset drinks"
+        ],
+        "best_for": [
+          "Couples",
+          "Photographers"
+        ],
+        "insider_tip": "Jardín de la Muralla has the best terrace"
+      }
+    ],
+    "scenic_drives": [
+      {
+        "name": "A-372 scenic drive",
+        "type": "scenic_drive",
+        "route": "El Bosque — Grazalema",
+        "highlights": [
+          "Winding mountain road",
+          "Top-tier views"
+        ],
+        "best_for": [
+          "Drivers",
+          "Photographers"
+        ],
+        "insider_tip": "Stop at multiple miradores along the way"
+      },
+      {
+        "name": "CA-P-5131 scenic drive",
+        "type": "scenic_drive",
+        "route": "Castellar de la Frontera — Castillo de Castellar",
+        "highlights": [
+          "Rural route",
+          "Hilltop castle"
+        ],
+        "best_for": [
+          "Off-the-beaten-path explorers"
+        ],
+        "insider_tip": "Combine with cork forest walk"
+      },
+      {
+        "name": "MA-5043 + MA-4401 scenic drive",
+        "type": "scenic_drive",
+        "route": "El Chorro — Valle de Abdalajís",
+        "highlights": [
+          "Cliffside views",
+          "Near Caminito del Rey"
+        ],
+        "best_for": [
+          "Adventure seekers",
+          "Photographers"
+        ],
+        "insider_tip": "Drive slowly - narrow roads with stunning views"
+      }
+    ]
+  },
+  "nature_outdoors": [
+    {
+      "name": "El Torcal de Antequera",
+      "type": "nature_reserve",
+      "activity": "hiking",
+      "highlights": [
+        "Surreal limestone formations",
+        "Easy trails"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "name": "Caminito del Rey",
+      "type": "walkway",
+      "activity": "hiking",
+      "highlights": [
+        "Cliffside path",
+        "Gorge views"
+      ],
+      "difficulty": "moderate",
+      "booking_required": true
+    },
+    {
+      "name": "Grazalema Natural Park",
+      "type": "natural_park",
+      "activity": "hiking",
+      "highlights": [
+        "Greenest area in Spain",
+        "Pinsapo forests"
+      ],
+      "difficulty": "moderate"
+    },
+    {
+      "name": "Sierra Nevada",
+      "type": "mountain_range",
+      "activity": "skiing/hiking",
+      "highlights": [
+        "Highest peaks in Spain",
+        "Year-round activities"
+      ],
+      "difficulty": "varies"
+    },
+    {
+      "name": "Ardales Lakes",
+      "type": "lakes",
+      "activity": "swimming/kayaking",
+      "highlights": [
+        "Near Caminito del Rey",
+        "Turquoise water"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "name": "Zahara Reservoir",
+      "type": "reservoir",
+      "activity": "swimming",
+      "highlights": [
+        "Turquoise water",
+        "Mountain backdrop"
+      ],
+      "difficulty": "easy"
+    }
+  ],
+  "recommended_days_per_city": {
+    "Seville": {
+      "5_day_trip": 2,
+      "7_day_trip": "2-3",
+      "10_day_trip": 3,
+      "14_day_trip": "3-4",
+      "notes": "Alcázar, Cathedral, Plaza de España, Triana flamenco"
+    },
+    "Granada": {
+      "5_day_trip": 2,
+      "7_day_trip": 2,
+      "10_day_trip": "2-3",
+      "14_day_trip": 3,
+      "notes": "Alhambra, Albaicín, Sacromonte caves"
+    },
+    "Córdoba": {
+      "5_day_trip": 1,
+      "7_day_trip": 1,
+      "10_day_trip": "1-2",
+      "14_day_trip": 2,
+      "notes": "Mezquita, Jewish Quarter, Palacio de Viana patios"
+    },
+    "Málaga": {
+      "5_day_trip": "0-1",
+      "7_day_trip": "1-2",
+      "10_day_trip": "2-3",
+      "14_day_trip": 3,
+      "notes": "Picasso Museum, Gibralfaro Castle, Caminito del Rey"
+    },
+    "Ronda": {
+      "5_day_trip": 0,
+      "7_day_trip": 1,
+      "10_day_trip": "1-2",
+      "14_day_trip": 2,
+      "notes": "Puente Nuevo, cliff houses, Baños Árabes"
+    },
+    "Cádiz": {
+      "5_day_trip": 0,
+      "7_day_trip": 0,
+      "10_day_trip": 1,
+      "14_day_trip": "1-2",
+      "notes": "Cathedral, seafood market, Carnival"
+    },
+    "Jerez": {
+      "5_day_trip": 0,
+      "7_day_trip": 0,
+      "10_day_trip": 1,
+      "14_day_trip": "1-2",
+      "notes": "Sherry bodegas, horse shows"
+    },
+    "White Villages": {
+      "5_day_trip": 0,
+      "7_day_trip": 1,
+      "10_day_trip": 2,
+      "14_day_trip": "2-3",
+      "notes": "Scenic drives, hiking, cliffside houses"
+    }
+  }
+}

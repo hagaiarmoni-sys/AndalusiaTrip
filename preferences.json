@@ -1,0 +1,21 @@
+{
+  "default_trip_type": "Point-to-point",
+  "default_budget": "mid-range",
+  "default_pace": "medium",
+  "max_km_per_day": 300,
+  "poi_categories": [
+    "history",
+    "architecture",
+    "museums",
+    "nature",
+    "beaches",
+    "viewpoints",
+    "art",
+    "castles",
+    "palaces"
+  ],
+  "hotel_platform": "Any",
+  "max_price_per_night": 150,
+  "min_poi_rating": 3.5,
+  "max_same_category_per_day": 2
+}

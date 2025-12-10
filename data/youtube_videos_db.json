@@ -1,0 +1,623 @@
+{
+  "metadata": {
+    "description": "Short YouTube videos (under 4 min, 4K preferred) for Andalusia SPAIN destinations",
+    "video_duration": "short (< 4 minutes)",
+    "video_quality": "HD/4K preferred",
+    "region": "Andalusia, Spain",
+    "generated_by": "youtube_fetcher.py",
+    "note": "Filtered to exclude Argentina, USA, and sports content"
+  },
+  "destinations": {
+    "Seville": [
+      {
+        "title": "📍SEVILLE 🇪🇦 Walk in Europe’s Most Beautiful City #travel #4k #walkingtour #spain",
+        "video_id": "Go5EsksV6RE",
+        "channel": "Spain Walking Tour",
+        "thumbnail_url": "https://i.ytimg.com/vi/Go5EsksV6RE/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=Go5EsksV6RE",
+        "embed_url": "https://www.youtube.com/embed/Go5EsksV6RE",
+        "short_embed": "https://youtu.be/Go5EsksV6RE"
+      },
+      {
+        "title": "📍SEVILLE 🇪🇦 Walk in Europe’s Most Beautiful City #travel #4k #walkingtour #spain",
+        "video_id": "VP6e7QK106w",
+        "channel": "Spain Walking Tour",
+        "thumbnail_url": "https://i.ytimg.com/vi/VP6e7QK106w/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=VP6e7QK106w",
+        "embed_url": "https://www.youtube.com/embed/VP6e7QK106w",
+        "short_embed": "https://youtu.be/VP6e7QK106w"
+      },
+      {
+        "title": "Catedral de Sevilla - Sevilla, Spain - Day - Drone - 4k",
+        "video_id": "G7fbJrJA2UU",
+        "channel": "Go Tech Yourself - 4k Drone Videos and Tech",
+        "thumbnail_url": "https://i.ytimg.com/vi/G7fbJrJA2UU/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=G7fbJrJA2UU",
+        "embed_url": "https://www.youtube.com/embed/G7fbJrJA2UU",
+        "short_embed": "https://youtu.be/G7fbJrJA2UU"
+      }
+    ],
+    "Granada": [
+      {
+        "title": "Drone 4K @ Granada, Spain 🇪🇸",
+        "video_id": "WDFkY68wxds",
+        "channel": "gskang",
+        "thumbnail_url": "https://i.ytimg.com/vi/WDFkY68wxds/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=WDFkY68wxds",
+        "embed_url": "https://www.youtube.com/embed/WDFkY68wxds",
+        "short_embed": "https://youtu.be/WDFkY68wxds"
+      },
+      {
+        "title": "GRANADA 4K | DRONE SPAIN |",
+        "video_id": "SEomeIY9bLU",
+        "channel": "JAVIER URRUTIA",
+        "thumbnail_url": "https://i.ytimg.com/vi/SEomeIY9bLU/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=SEomeIY9bLU",
+        "embed_url": "https://www.youtube.com/embed/SEomeIY9bLU",
+        "short_embed": "https://youtu.be/SEomeIY9bLU"
+      },
+      {
+        "title": "This is Granada | Drone 4K",
+        "video_id": "GmnScJMWFMc",
+        "channel": "Swimbash",
+        "thumbnail_url": "https://i.ytimg.com/vi/GmnScJMWFMc/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=GmnScJMWFMc",
+        "embed_url": "https://www.youtube.com/embed/GmnScJMWFMc",
+        "short_embed": "https://youtu.be/GmnScJMWFMc"
+      }
+    ],
+    "Córdoba": [
+      {
+        "title": "Spain Travel 4K Drone Cordoba",
+        "video_id": "kPx70IsLXLg",
+        "channel": "JW Journey in the World",
+        "thumbnail_url": "https://i.ytimg.com/vi/kPx70IsLXLg/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=kPx70IsLXLg",
+        "embed_url": "https://www.youtube.com/embed/kPx70IsLXLg",
+        "short_embed": "https://youtu.be/kPx70IsLXLg"
+      },
+      {
+        "title": "Puente Romano de Córdoba - 4K (Drone 2022) - Flying Virtual Tour Spain",
+        "video_id": "_0k3jHXPWmw",
+        "channel": "4KMINOS - virtual tour - ",
+        "thumbnail_url": "https://i.ytimg.com/vi/_0k3jHXPWmw/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=_0k3jHXPWmw",
+        "embed_url": "https://www.youtube.com/embed/_0k3jHXPWmw",
+        "short_embed": "https://youtu.be/_0k3jHXPWmw"
+      },
+      {
+        "title": "Volando Sobre España - Cordoba | Vistas Preciosas Drone Video",
+        "video_id": "XpnKjQY1MAs",
+        "channel": "Volando Sobre España Drone",
+        "thumbnail_url": "https://i.ytimg.com/vi/XpnKjQY1MAs/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=XpnKjQY1MAs",
+        "embed_url": "https://www.youtube.com/embed/XpnKjQY1MAs",
+        "short_embed": "https://youtu.be/XpnKjQY1MAs"
+      }
+    ],
+    "Málaga": [
+      {
+        "title": "Málaga, Spain aerial shots by drone [4K HD]",
+        "video_id": "QgIrQeEDEss",
+        "channel": "BeyondCruise",
+        "thumbnail_url": "https://i.ytimg.com/vi/QgIrQeEDEss/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=QgIrQeEDEss",
+        "embed_url": "https://www.youtube.com/embed/QgIrQeEDEss",
+        "short_embed": "https://youtu.be/QgIrQeEDEss"
+      },
+      {
+        "title": "Málaga Spain｜Málaga Cathedral &amp; City Skyline 4K Aerial Drone Footage",
+        "video_id": "iD70EvvXVOo",
+        "channel": "guys 4k drone shots",
+        "thumbnail_url": "https://i.ytimg.com/vi/iD70EvvXVOo/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=iD70EvvXVOo",
+        "embed_url": "https://www.youtube.com/embed/iD70EvvXVOo",
+        "short_embed": "https://youtu.be/iD70EvvXVOo"
+      },
+      {
+        "title": "MALAGA, SPAIN - by drone [4K]",
+        "video_id": "srfLYOHiJvk",
+        "channel": "Frontiero Sphere",
+        "thumbnail_url": "https://i.ytimg.com/vi/srfLYOHiJvk/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=srfLYOHiJvk",
+        "embed_url": "https://www.youtube.com/embed/srfLYOHiJvk",
+        "short_embed": "https://youtu.be/srfLYOHiJvk"
+      }
+    ],
+    "Ronda": [
+      {
+        "title": "Ronda ● Spain【4K】 Travel Video [2023] 🇪🇸",
+        "video_id": "8e34JIpX7ho",
+        "channel": "Travel Penguin",
+        "thumbnail_url": "https://i.ytimg.com/vi/8e34JIpX7ho/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=8e34JIpX7ho",
+        "embed_url": "https://www.youtube.com/embed/8e34JIpX7ho",
+        "short_embed": "https://youtu.be/8e34JIpX7ho"
+      },
+      {
+        "title": "Ronda in 4K: A Breathtaking 🚁 Drone Footage in Glorious 4K UHD 60fps 🇪🇸🏞️",
+        "video_id": "wWGHnWnILGg",
+        "channel": "Travel With Marti",
+        "thumbnail_url": "https://i.ytimg.com/vi/wWGHnWnILGg/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=wWGHnWnILGg",
+        "embed_url": "https://www.youtube.com/embed/wWGHnWnILGg",
+        "short_embed": "https://youtu.be/wWGHnWnILGg"
+      },
+      {
+        "title": "RONDA (SPAIN) | CINEMATIC 4K DRONE",
+        "video_id": "n2L8PvTreEQ",
+        "channel": "DS Videography",
+        "thumbnail_url": "https://i.ytimg.com/vi/n2L8PvTreEQ/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=n2L8PvTreEQ",
+        "embed_url": "https://www.youtube.com/embed/n2L8PvTreEQ",
+        "short_embed": "https://youtu.be/n2L8PvTreEQ"
+      }
+    ],
+    "Cádiz": [
+      {
+        "title": "Chipiona Cadiz filmed from the sky | DJI Air2S drone video",
+        "video_id": "8HyKib__pgE",
+        "channel": "Dani Martinez",
+        "thumbnail_url": "https://i.ytimg.com/vi/8HyKib__pgE/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=8HyKib__pgE",
+        "embed_url": "https://www.youtube.com/embed/8HyKib__pgE",
+        "short_embed": "https://youtu.be/8HyKib__pgE"
+      },
+      {
+        "title": "Cádiz, la maravillosa ciudad de Andalucía - Tour a pie - Drone video - España 4k",
+        "video_id": "MuAScWoDDnw",
+        "channel": "Travel Tips Ro",
+        "thumbnail_url": "https://i.ytimg.com/vi/MuAScWoDDnw/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=MuAScWoDDnw",
+        "embed_url": "https://www.youtube.com/embed/MuAScWoDDnw",
+        "short_embed": "https://youtu.be/MuAScWoDDnw"
+      },
+      {
+        "title": "FPV Drone Flight in 4K Over the Fields of Paterna de Rivera and Medina Sidonia, Cádiz, Spain",
+        "video_id": "jjtCOFMOkL8",
+        "channel": "PL2 FPV",
+        "thumbnail_url": "https://i.ytimg.com/vi/jjtCOFMOkL8/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=jjtCOFMOkL8",
+        "embed_url": "https://www.youtube.com/embed/jjtCOFMOkL8",
+        "short_embed": "https://youtu.be/jjtCOFMOkL8"
+      }
+    ],
+    "Jerez": [
+      {
+        "title": "1 Day in Jerez De La Frontera, Andalucia, Spain!",
+        "video_id": "6XrccVogFwE",
+        "channel": "smallcrazy",
+        "thumbnail_url": "https://i.ytimg.com/vi/6XrccVogFwE/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=6XrccVogFwE",
+        "embed_url": "https://www.youtube.com/embed/6XrccVogFwE",
+        "short_embed": "https://youtu.be/6XrccVogFwE"
+      },
+      {
+        "title": "Sherry &amp; Sunlight in Jerez, Spain — 4K Cinematic Travel Film",
+        "video_id": "3cm9lwGmpig",
+        "channel": "Sights and Sound",
+        "thumbnail_url": "https://i.ytimg.com/vi/3cm9lwGmpig/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=3cm9lwGmpig",
+        "embed_url": "https://www.youtube.com/embed/3cm9lwGmpig",
+        "short_embed": "https://youtu.be/3cm9lwGmpig"
+      },
+      {
+        "title": "Jerez de la Frontera, Spain 3D Flyover Tour 🇪🇸",
+        "video_id": "PuHMDwze0BE",
+        "channel": "Hello PHL",
+        "thumbnail_url": "https://i.ytimg.com/vi/PuHMDwze0BE/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=PuHMDwze0BE",
+        "embed_url": "https://www.youtube.com/embed/PuHMDwze0BE",
+        "short_embed": "https://youtu.be/PuHMDwze0BE"
+      }
+    ],
+    "Arcos de la Frontera": [
+      {
+        "title": "Arcos de la Frontera, one of the most beautiful villages in Andalusia - Spain - Video Drone - 4k",
+        "video_id": "I1hwiwoCHbE",
+        "channel": "Travel Tips Ro",
+        "thumbnail_url": "https://i.ytimg.com/vi/I1hwiwoCHbE/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=I1hwiwoCHbE",
+        "embed_url": "https://www.youtube.com/embed/I1hwiwoCHbE",
+        "short_embed": "https://youtu.be/I1hwiwoCHbE"
+      },
+      {
+        "title": "ARCOS DE LA FRONTERA [4k]",
+        "video_id": "2EmK6BtJfk0",
+        "channel": "Iván Alvarez",
+        "thumbnail_url": "https://i.ytimg.com/vi/2EmK6BtJfk0/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=2EmK6BtJfk0",
+        "embed_url": "https://www.youtube.com/embed/2EmK6BtJfk0",
+        "short_embed": "https://youtu.be/2EmK6BtJfk0"
+      },
+      {
+        "title": "Arcos de la Frontera 4K. Drone video footage",
+        "video_id": "JkQk8KdnZrU",
+        "channel": "Alejandro Romero",
+        "thumbnail_url": "https://i.ytimg.com/vi/JkQk8KdnZrU/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=JkQk8KdnZrU",
+        "embed_url": "https://www.youtube.com/embed/JkQk8KdnZrU",
+        "short_embed": "https://youtu.be/JkQk8KdnZrU"
+      }
+    ],
+    "Zahara de la Sierra": [
+      {
+        "title": "Zahara de la Sierra, Andalucia aerial footage from a drone",
+        "video_id": "fLef6va7e_0",
+        "channel": "HAK Drones",
+        "thumbnail_url": "https://i.ytimg.com/vi/fLef6va7e_0/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=fLef6va7e_0",
+        "embed_url": "https://www.youtube.com/embed/fLef6va7e_0",
+        "short_embed": "https://youtu.be/fLef6va7e_0"
+      },
+      {
+        "title": "ZAHARA DE LA SIERRA | Diciembre 2021 | Drone 4K",
+        "video_id": "Vaay1FCmAfc",
+        "channel": "Marta Mariscal",
+        "thumbnail_url": "https://i.ytimg.com/vi/Vaay1FCmAfc/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=Vaay1FCmAfc",
+        "embed_url": "https://www.youtube.com/embed/Vaay1FCmAfc",
+        "short_embed": "https://youtu.be/Vaay1FCmAfc"
+      },
+      {
+        "title": "TRAVEL  Zahara de la Sierra, Andalusia, Spain - Drone 4K",
+        "video_id": "fC91BYK0R6g",
+        "channel": "Xavier Keutch Photography",
+        "thumbnail_url": "https://i.ytimg.com/vi/fC91BYK0R6g/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=fC91BYK0R6g",
+        "embed_url": "https://www.youtube.com/embed/fC91BYK0R6g",
+        "short_embed": "https://youtu.be/fC91BYK0R6g"
+      }
+    ],
+    "Grazalema": [
+      {
+        "title": "Cueva del Gato | Sierra De Grazalema | Spain",
+        "video_id": "I4Onzqxhaiw",
+        "channel": "Zy Chie",
+        "thumbnail_url": "https://i.ytimg.com/vi/I4Onzqxhaiw/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=I4Onzqxhaiw",
+        "embed_url": "https://www.youtube.com/embed/I4Onzqxhaiw",
+        "short_embed": "https://youtu.be/I4Onzqxhaiw"
+      },
+      {
+        "title": "Grazalema Natural Park - @realspain by Nigel Baker",
+        "video_id": "yrf7KFJrJHA",
+        "channel": "Real Spain - Travel with Baker",
+        "thumbnail_url": "https://i.ytimg.com/vi/yrf7KFJrJHA/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=yrf7KFJrJHA",
+        "embed_url": "https://www.youtube.com/embed/yrf7KFJrJHA",
+        "short_embed": "https://youtu.be/yrf7KFJrJHA"
+      },
+      {
+        "title": "Sierra de Grazalema Andalusia 4K 60FPS Drone Footage",
+        "video_id": "yL4c5mfMI4M",
+        "channel": "Sky Sweeper",
+        "thumbnail_url": "https://i.ytimg.com/vi/yL4c5mfMI4M/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=yL4c5mfMI4M",
+        "embed_url": "https://www.youtube.com/embed/yL4c5mfMI4M",
+        "short_embed": "https://youtu.be/yL4c5mfMI4M"
+      }
+    ],
+    "Setenil de las Bodegas": [
+      {
+        "title": "SETENIL DE LAS BODEGAS, SPAIN Fast Tour",
+        "video_id": "PMqI7HV2v1w",
+        "channel": "Touristugas",
+        "thumbnail_url": "https://i.ytimg.com/vi/PMqI7HV2v1w/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=PMqI7HV2v1w",
+        "embed_url": "https://www.youtube.com/embed/PMqI7HV2v1w",
+        "short_embed": "https://youtu.be/PMqI7HV2v1w"
+      },
+      {
+        "title": "Setenil de las Bodegas Walkthrough 4K 60 FPS HDR",
+        "video_id": "jSoSbu1Knq0",
+        "channel": "Time2Videos",
+        "thumbnail_url": "https://i.ytimg.com/vi/jSoSbu1Knq0/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=jSoSbu1Knq0",
+        "embed_url": "https://www.youtube.com/embed/jSoSbu1Knq0",
+        "short_embed": "https://youtu.be/jSoSbu1Knq0"
+      },
+      {
+        "title": "SETENIL DE LAS BODEGAS 4k",
+        "video_id": "NBD-FBkB0z4",
+        "channel": "EL MUNDO DESDE MI ÓPTICA",
+        "thumbnail_url": "https://i.ytimg.com/vi/NBD-FBkB0z4/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=NBD-FBkB0z4",
+        "embed_url": "https://www.youtube.com/embed/NBD-FBkB0z4",
+        "short_embed": "https://youtu.be/NBD-FBkB0z4"
+      }
+    ],
+    "Frigiliana": [
+      {
+        "title": "Frigiliana From Above: Aerial Views of Andalusia&#39;s Most Beautiful Village",
+        "video_id": "65YU9Wy-Lo8",
+        "channel": "SpaceWhale Studio",
+        "thumbnail_url": "https://i.ytimg.com/vi/65YU9Wy-Lo8/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=65YU9Wy-Lo8",
+        "embed_url": "https://www.youtube.com/embed/65YU9Wy-Lo8",
+        "short_embed": "https://youtu.be/65YU9Wy-Lo8"
+      },
+      {
+        "title": "Frigiliana 4K",
+        "video_id": "HpbouBojjh4",
+        "channel": "Carlos Segura",
+        "thumbnail_url": "https://i.ytimg.com/vi/HpbouBojjh4/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=HpbouBojjh4",
+        "embed_url": "https://www.youtube.com/embed/HpbouBojjh4",
+        "short_embed": "https://youtu.be/HpbouBojjh4"
+      },
+      {
+        "title": "🔥 SO BEAUTIFUL 😍 STEP BY STEP VISIT FRIGILIANA, Malaga, Spain COSTA DEL SOL 4k",
+        "video_id": "r9kmiZ-Ui5E",
+        "channel": "Section no 2",
+        "thumbnail_url": "https://i.ytimg.com/vi/r9kmiZ-Ui5E/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=r9kmiZ-Ui5E",
+        "embed_url": "https://www.youtube.com/embed/r9kmiZ-Ui5E",
+        "short_embed": "https://youtu.be/r9kmiZ-Ui5E"
+      }
+    ],
+    "Mijas": [
+      {
+        "title": "Mijas Pueblo, Costa Del Sol, Spain October 2017 Filmed in 4K UHD",
+        "video_id": "sEGCox8BZzU",
+        "channel": "sw10studios",
+        "thumbnail_url": "https://i.ytimg.com/vi/sEGCox8BZzU/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=sEGCox8BZzU",
+        "embed_url": "https://www.youtube.com/embed/sEGCox8BZzU",
+        "short_embed": "https://youtu.be/sEGCox8BZzU"
+      },
+      {
+        "title": "Mijas Pueblo, Andalucia, Spain [Official] ©",
+        "video_id": "PYHM9t7pRK4",
+        "channel": "Mijas Pueblo España",
+        "thumbnail_url": "https://i.ytimg.com/vi/PYHM9t7pRK4/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=PYHM9t7pRK4",
+        "embed_url": "https://www.youtube.com/embed/PYHM9t7pRK4",
+        "short_embed": "https://youtu.be/PYHM9t7pRK4"
+      },
+      {
+        "title": "Mijas Pueblo &amp; Playa in 4K | Cinematic Drone Sunset from the Hills 🌄",
+        "video_id": "UbBdlo3fvWA",
+        "channel": "Leonhartsberger",
+        "thumbnail_url": "https://i.ytimg.com/vi/UbBdlo3fvWA/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=UbBdlo3fvWA",
+        "embed_url": "https://www.youtube.com/embed/UbBdlo3fvWA",
+        "short_embed": "https://youtu.be/UbBdlo3fvWA"
+      }
+    ],
+    "Olvera": [
+      {
+        "title": "Roadside views in Andalusia, Spain",
+        "video_id": "bBkTVTaXL0Y",
+        "channel": "Unelmatrippi",
+        "thumbnail_url": "https://i.ytimg.com/vi/bBkTVTaXL0Y/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=bBkTVTaXL0Y",
+        "embed_url": "https://www.youtube.com/embed/bBkTVTaXL0Y",
+        "short_embed": "https://youtu.be/bBkTVTaXL0Y"
+      },
+      {
+        "title": "Spain - Ronda Aerial 4K View",
+        "video_id": "kKlAfiK8q3I",
+        "channel": "DJJ Adventure",
+        "thumbnail_url": "https://i.ytimg.com/vi/kKlAfiK8q3I/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=kKlAfiK8q3I",
+        "embed_url": "https://www.youtube.com/embed/kKlAfiK8q3I",
+        "short_embed": "https://youtu.be/kKlAfiK8q3I"
+      },
+      {
+        "title": "Olvera - Ruta de los Pueblos Blancos - Andalusia - Spain",
+        "video_id": "7EzAgLkIwb8",
+        "channel": "planBwagen",
+        "thumbnail_url": "https://i.ytimg.com/vi/7EzAgLkIwb8/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=7EzAgLkIwb8",
+        "embed_url": "https://www.youtube.com/embed/7EzAgLkIwb8",
+        "short_embed": "https://youtu.be/7EzAgLkIwb8"
+      }
+    ],
+    "Alhambra": [
+      {
+        "title": "Alhambra, Granada, Spain 4K Bluemax Studio bluemaxbg.com",
+        "video_id": "cRzHWAToaIM",
+        "channel": "Bluemax Studio",
+        "thumbnail_url": "https://i.ytimg.com/vi/cRzHWAToaIM/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=cRzHWAToaIM",
+        "embed_url": "https://www.youtube.com/embed/cRzHWAToaIM",
+        "short_embed": "https://youtu.be/cRzHWAToaIM"
+      },
+      {
+        "title": "Granada, Spain: The Exquisite Alhambra - Rick Steves’ Europe Travel Guide - Travel Bite",
+        "video_id": "iEseJViidy8",
+        "channel": "Rick Steves' Europe",
+        "thumbnail_url": "https://i.ytimg.com/vi/iEseJViidy8/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=iEseJViidy8",
+        "embed_url": "https://www.youtube.com/embed/iEseJViidy8",
+        "short_embed": "https://youtu.be/iEseJViidy8"
+      },
+      {
+        "title": "Granada Spain｜Alhambra Palace &amp; Fortress Complex 4K Aerial Drone Footage",
+        "video_id": "w1JtXIoxfrA",
+        "channel": "guys 4k drone shots",
+        "thumbnail_url": "https://i.ytimg.com/vi/w1JtXIoxfrA/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=w1JtXIoxfrA",
+        "embed_url": "https://www.youtube.com/embed/w1JtXIoxfrA",
+        "short_embed": "https://youtu.be/w1JtXIoxfrA"
+      }
+    ],
+    "Caminito del Rey": [
+      {
+        "title": "AS Drones to rehabilitate the ‘Caminito del Rey’, one of the most dangerous paths in the world",
+        "video_id": "JtMTgjzgoZU",
+        "channel": "Andalusian Stories",
+        "thumbnail_url": "https://i.ytimg.com/vi/JtMTgjzgoZU/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=JtMTgjzgoZU",
+        "embed_url": "https://www.youtube.com/embed/JtMTgjzgoZU",
+        "short_embed": "https://youtu.be/JtMTgjzgoZU"
+      },
+      {
+        "title": "Caminito del Rey  - Malaga - España (360 - 4K)",
+        "video_id": "h3lphJfhHss",
+        "channel": "Los viajes del Yavo",
+        "thumbnail_url": "https://i.ytimg.com/vi/h3lphJfhHss/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=h3lphJfhHss",
+        "embed_url": "https://www.youtube.com/embed/h3lphJfhHss",
+        "short_embed": "https://youtu.be/h3lphJfhHss"
+      },
+      {
+        "title": "Desfiladero de los gaitanes 4K (Caminito del Rey)",
+        "video_id": "wVvKedbsv3s",
+        "channel": "DH Molina",
+        "thumbnail_url": "https://i.ytimg.com/vi/wVvKedbsv3s/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=wVvKedbsv3s",
+        "embed_url": "https://www.youtube.com/embed/wVvKedbsv3s",
+        "short_embed": "https://youtu.be/wVvKedbsv3s"
+      }
+    ],
+    "Alcázar Seville": [
+      {
+        "title": "Sevilla, Spain 🇪🇸  | November 2023 | 4K Cinematic Travel Video 📷",
+        "video_id": "j9AWUhOIiS8",
+        "channel": "Kiladera - Travel. Capture. Experience.",
+        "thumbnail_url": "https://i.ytimg.com/vi/j9AWUhOIiS8/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=j9AWUhOIiS8",
+        "embed_url": "https://www.youtube.com/embed/j9AWUhOIiS8",
+        "short_embed": "https://youtu.be/j9AWUhOIiS8"
+      },
+      {
+        "title": "Sevilla real Alcázar 4K",
+        "video_id": "V3avNWiln84",
+        "channel": "noodzaak",
+        "thumbnail_url": "https://i.ytimg.com/vi/V3avNWiln84/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=V3avNWiln84",
+        "embed_url": "https://www.youtube.com/embed/V3avNWiln84",
+        "short_embed": "https://youtu.be/V3avNWiln84"
+      },
+      {
+        "title": "Discover the Alcázar of Seville: Spain’s Moorish Masterpiece | 4K Travel Video",
+        "video_id": "L7_d4dI2nFk",
+        "channel": "Travel Adventure",
+        "thumbnail_url": "https://i.ytimg.com/vi/L7_d4dI2nFk/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=L7_d4dI2nFk",
+        "embed_url": "https://www.youtube.com/embed/L7_d4dI2nFk",
+        "short_embed": "https://youtu.be/L7_d4dI2nFk"
+      }
+    ],
+    "Mezquita": [
+      {
+        "title": "Mezquita-Catedral de Córdoba. 4K",
+        "video_id": "A052eP53uBg",
+        "channel": "Amaury",
+        "thumbnail_url": "https://i.ytimg.com/vi/A052eP53uBg/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=A052eP53uBg",
+        "embed_url": "https://www.youtube.com/embed/A052eP53uBg",
+        "short_embed": "https://youtu.be/A052eP53uBg"
+      },
+      {
+        "title": "Mezquita-Catedral de Córdoba, Spain in 4K",
+        "video_id": "EOEJcvPClb8",
+        "channel": "Drone Travels",
+        "thumbnail_url": "https://i.ytimg.com/vi/EOEJcvPClb8/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=EOEJcvPClb8",
+        "embed_url": "https://www.youtube.com/embed/EOEJcvPClb8",
+        "short_embed": "https://youtu.be/EOEJcvPClb8"
+      },
+      {
+        "title": "Mezquite Córdoba Spain 4K",
+        "video_id": "yOGhBcc3m2k",
+        "channel": "The Sunset Strip Studios",
+        "thumbnail_url": "https://i.ytimg.com/vi/yOGhBcc3m2k/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=yOGhBcc3m2k",
+        "embed_url": "https://www.youtube.com/embed/yOGhBcc3m2k",
+        "short_embed": "https://youtu.be/yOGhBcc3m2k"
+      }
+    ],
+    "Sierra Nevada": [
+      {
+        "title": "SIERRA NEVADA, SPAIN - by drone [4K]",
+        "video_id": "9gr5FHm4UCM",
+        "channel": "Frontiero Sphere",
+        "thumbnail_url": "https://i.ytimg.com/vi/9gr5FHm4UCM/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=9gr5FHm4UCM",
+        "embed_url": "https://www.youtube.com/embed/9gr5FHm4UCM",
+        "short_embed": "https://youtu.be/9gr5FHm4UCM"
+      },
+      {
+        "title": "Granada Spain｜City View with Sierra Nevada Mountains 4K Aerial Drone Footage",
+        "video_id": "FlD8SlSZ57I",
+        "channel": "guys 4k drone shots",
+        "thumbnail_url": "https://i.ytimg.com/vi/FlD8SlSZ57I/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=FlD8SlSZ57I",
+        "embed_url": "https://www.youtube.com/embed/FlD8SlSZ57I",
+        "short_embed": "https://youtu.be/FlD8SlSZ57I"
+      },
+      {
+        "title": "Granada Spain｜City View with Sierra Nevada Mountains 4K Aerial Drone Footage",
+        "video_id": "4ta3HcEeJkM",
+        "channel": "guys 4k drone shots",
+        "thumbnail_url": "https://i.ytimg.com/vi/4ta3HcEeJkM/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=4ta3HcEeJkM",
+        "embed_url": "https://www.youtube.com/embed/4ta3HcEeJkM",
+        "short_embed": "https://youtu.be/4ta3HcEeJkM"
+      }
+    ],
+    "Doñana": [
+      {
+        "title": "Spain - Parque Natural Doñana",
+        "video_id": "4UzozWSkg4A",
+        "channel": "4ever2wherever",
+        "thumbnail_url": "https://i.ytimg.com/vi/4UzozWSkg4A/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=4UzozWSkg4A",
+        "embed_url": "https://www.youtube.com/embed/4UzozWSkg4A",
+        "short_embed": "https://youtu.be/4UzozWSkg4A"
+      },
+      {
+        "title": "Yellow-crowned Bishop, Doñana National Park, October 2025 (4K)",
+        "video_id": "joqC-e6u_74",
+        "channel": "Ecofact",
+        "thumbnail_url": "https://i.ytimg.com/vi/joqC-e6u_74/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=joqC-e6u_74",
+        "embed_url": "https://www.youtube.com/embed/joqC-e6u_74",
+        "short_embed": "https://youtu.be/joqC-e6u_74"
+      },
+      {
+        "title": "Descubre Doñana: El Paraíso Natural de España #vidatv #naturaleza",
+        "video_id": "criOUMr6Q5E",
+        "channel": "Vida TV",
+        "thumbnail_url": "https://i.ytimg.com/vi/criOUMr6Q5E/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=criOUMr6Q5E",
+        "embed_url": "https://www.youtube.com/embed/criOUMr6Q5E",
+        "short_embed": "https://youtu.be/criOUMr6Q5E"
+      }
+    ],
+    "El Torcal": [
+      {
+        "title": "EL TORCAL DE ANTEQUERA [4K]",
+        "video_id": "XbAhngYQHIw",
+        "channel": "Iván Alvarez",
+        "thumbnail_url": "https://i.ytimg.com/vi/XbAhngYQHIw/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=XbAhngYQHIw",
+        "embed_url": "https://www.youtube.com/embed/XbAhngYQHIw",
+        "short_embed": "https://youtu.be/XbAhngYQHIw"
+      },
+      {
+        "title": "Drone McFLY Torcal de Antequera (Málaga)",
+        "video_id": "C8OxkXusRTI",
+        "channel": "Ignacio Ruiz Valenzuela",
+        "thumbnail_url": "https://i.ytimg.com/vi/C8OxkXusRTI/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=C8OxkXusRTI",
+        "embed_url": "https://www.youtube.com/embed/C8OxkXusRTI",
+        "short_embed": "https://youtu.be/C8OxkXusRTI"
+      },
+      {
+        "title": "SPAIN 4K | Andalucia | EL TORCAL DE ANTEQUERA | Drone",
+        "video_id": "ShhUHgulqrw",
+        "channel": "Relax and  Drone",
+        "thumbnail_url": "https://i.ytimg.com/vi/ShhUHgulqrw/hqdefault.jpg",
+        "watch_url": "https://www.youtube.com/watch?v=ShhUHgulqrw",
+        "embed_url": "https://www.youtube.com/embed/ShhUHgulqrw",
+        "short_embed": "https://youtu.be/ShhUHgulqrw"
+      }
+    ],
+    "Cabo de Gata": [],
+    "Nerja": []
+  }
+}

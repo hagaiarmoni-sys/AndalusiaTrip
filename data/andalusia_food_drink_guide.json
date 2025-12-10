@@ -1,0 +1,632 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-12-09",
+  "city_food_guide": {
+    "Seville": {
+      "must_eat": [
+        {
+          "dish": "Espinacas con garbanzos",
+          "description": "Spinach with chickpeas, Moorish-inspired classic",
+          "type": "tapa"
+        },
+        {
+          "dish": "Solomillo al whisky",
+          "description": "Pork in whisky sauce",
+          "type": "main"
+        },
+        {
+          "dish": "Torrijas",
+          "description": "Spanish-style French toast",
+          "type": "dessert"
+        },
+        {
+          "dish": "Pringá montaditos",
+          "description": "Slow-cooked meat on bread",
+          "type": "tapa"
+        },
+        {
+          "dish": "Jamón Ibérico",
+          "description": "Cured Iberian ham, best enjoyed with sherry",
+          "type": "tapa"
+        }
+      ],
+      "drinks": [
+        {
+          "drink": "Orange wine",
+          "description": "Unique to Seville, infused with bitter orange peel",
+          "type": "wine"
+        },
+        {
+          "drink": "Tinto de verano",
+          "description": "Red wine with soda, refreshing summer drink",
+          "type": "cocktail"
+        },
+        {
+          "drink": "Sangria",
+          "description": "Classic fruit wine punch",
+          "type": "cocktail"
+        },
+        {
+          "drink": "Fino sherry",
+          "description": "Dry, delicate sherry",
+          "type": "wine"
+        }
+      ],
+      "recommended_spots": [
+        "Bodeguita Antonio Romero",
+        "Plaza del Salvador bars",
+        "Triana tapas bars",
+        "El Rinconcillo (oldest tapas bar)",
+        "Carmela (Spanish omelette with whisky sauce)",
+        "La Teresas (classic tapas)"
+      ]
+    },
+    "Córdoba": {
+      "must_eat": [
+        {
+          "dish": "Salmorejo",
+          "description": "Thick creamy tomato soup topped with ham and egg",
+          "type": "starter"
+        },
+        {
+          "dish": "Flamenquín",
+          "description": "Rolled pork cutlet, breaded and fried",
+          "type": "main"
+        },
+        {
+          "dish": "Rabo de toro",
+          "description": "Slow-cooked oxtail stew",
+          "type": "main"
+        },
+        {
+          "dish": "Berenjenas con miel",
+          "description": "Fried eggplant with honey",
+          "type": "tapa"
+        }
+      ],
+      "drinks": [
+        {
+          "drink": "Montilla-Moriles wine",
+          "description": "Similar to sherry but unfortified, smooth and aromatic",
+          "type": "wine"
+        },
+        {
+          "drink": "Vermouth",
+          "description": "Popular aperitif in San Basilio neighborhood",
+          "type": "aperitif"
+        },
+        {
+          "drink": "Cruzcampo beer",
+          "description": "Popular Andalusian lager",
+          "type": "beer"
+        }
+      ],
+      "recommended_spots": [
+        "Taberna El Choto",
+        "Taberna Salinas",
+        "San Basilio neighborhood",
+        "Bar Santos (cheap authentic tortilla)",
+        "Local taverns near Mezquita"
+      ]
+    },
+    "Granada": {
+      "must_eat": [
+        {
+          "dish": "Free tapas",
+          "description": "Order drinks slowly - tapas come free!",
+          "type": "tradition"
+        },
+        {
+          "dish": "Piononos",
+          "description": "Sweet pastry rolls from Santa Fe, soaked in syrup and cream",
+          "type": "dessert"
+        },
+        {
+          "dish": "Remojón granadino",
+          "description": "Orange and cod salad",
+          "type": "starter"
+        },
+        {
+          "dish": "Free tapas with drinks",
+          "description": "Granada tradition of free tapas with beverages",
+          "type": "tapa"
+        }
+      ],
+      "drinks": [
+        {
+          "drink": "Alpujarra wines",
+          "description": "Local mountain wines from nearby region",
+          "type": "wine"
+        },
+        {
+          "drink": "Cerveza artesanal",
+          "description": "Growing craft beer scene",
+          "type": "beer"
+        },
+        {
+          "drink": "Tinto de verano",
+          "description": "Popular summer refresher",
+          "type": "cocktail"
+        },
+        {
+          "drink": "Craft beers",
+          "description": "Local brews at Sacromonte bar",
+          "type": "beer"
+        }
+      ],
+      "recommended_spots": [
+        "Calle Navas tapas crawl",
+        "Albaicín neighborhood bars",
+        "Plaza Nueva area",
+        "La Telefónica (quality tapas, burrata)",
+        "Bodegas Castañeda (traditional bodega)",
+        "Despacho de cervezas Sacromonte (craft beer bar)",
+        "La Lirio (aperitivo by the river)"
+      ]
+    },
+    "Ronda": {
+      "must_eat": [
+        {
+          "dish": "Chivo al ajillo",
+          "description": "Goat in garlic sauce",
+          "type": "main"
+        },
+        {
+          "dish": "Migas serranas",
+          "description": "Fried breadcrumbs with chorizo and peppers",
+          "type": "main"
+        },
+        {
+          "dish": "Grazalema cheese",
+          "description": "Local mountain cheese",
+          "type": "cheese"
+        }
+      ],
+      "drinks": [
+        {
+          "drink": "Ronda mountain wines",
+          "description": "Bold reds from local vineyards",
+          "type": "wine"
+        },
+        {
+          "drink": "Local wines",
+          "description": "Visit wineries for tastings",
+          "type": "wine"
+        }
+      ],
+      "recommended_spots": [
+        "Hotel Jardin de la Muralla terrace",
+        "Old town taverns",
+        "Jardín de la Muralla terrace (sunset drinks)"
+      ]
+    },
+    "Málaga": {
+      "must_eat": [
+        {
+          "dish": "Espetos de sardinas",
+          "description": "Sardines grilled on skewers over open fire on beach",
+          "type": "seafood"
+        },
+        {
+          "dish": "Ajoblanco",
+          "description": "Cold almond and garlic soup, refreshing in summer",
+          "type": "soup"
+        },
+        {
+          "dish": "Boquerones fritos",
+          "description": "Fried anchovies",
+          "type": "tapa"
+        }
+      ],
+      "drinks": [
+        {
+          "drink": "Málaga sweet wine",
+          "description": "Dark raisin-like dessert wine",
+          "type": "wine"
+        },
+        {
+          "drink": "Tinto de verano",
+          "description": "Beach-perfect wine spritzer",
+          "type": "cocktail"
+        },
+        {
+          "drink": "Cerveza artesanal",
+          "description": "Local craft beers",
+          "type": "beer"
+        }
+      ],
+      "recommended_spots": [
+        "Mercado de Atarazanas",
+        "El Palo beach chiringuitos",
+        "Bar El Pimpi"
+      ]
+    },
+    "Costa del Sol": {
+      "must_eat": [
+        {
+          "dish": "Pescaíto frito",
+          "description": "Mixed fried fish, best by the sea",
+          "type": "seafood"
+        },
+        {
+          "dish": "Gambas al pil-pil",
+          "description": "Shrimp in garlic-chili oil",
+          "type": "tapa"
+        },
+        {
+          "dish": "Churros con chocolate",
+          "description": "Perfect for breakfast",
+          "type": "dessert"
+        }
+      ],
+      "drinks": [
+        {
+          "drink": "Tinto de verano",
+          "description": "Refreshing wine spritzer",
+          "type": "cocktail"
+        },
+        {
+          "drink": "Sangria",
+          "description": "Classic tourist favorite",
+          "type": "cocktail"
+        }
+      ],
+      "recommended_spots": [
+        "Beach chiringuitos",
+        "Marbella old town",
+        "La Cala de Mijas"
+      ]
+    },
+    "Cádiz": {
+      "must_eat": [
+        {
+          "dish": "Tortillitas de camarones",
+          "description": "Crispy shrimp fritters - Cádiz specialty",
+          "type": "tapa"
+        },
+        {
+          "dish": "Atún rojo de almadraba",
+          "description": "Bluefin tuna caught by traditional method",
+          "type": "seafood"
+        },
+        {
+          "dish": "Churros gaditanos",
+          "description": "Local style churros",
+          "type": "dessert"
+        },
+        {
+          "dish": "Cazón en adobo",
+          "description": "Fried marinated dogfish",
+          "type": "tapa"
+        },
+        {
+          "dish": "Churros con chocolate",
+          "description": "Classic sweet breakfast or snack",
+          "type": "dessert"
+        }
+      ],
+      "drinks": [
+        {
+          "drink": "Manzanilla",
+          "description": "Very dry sherry from Sanlúcar, perfect with seafood",
+          "type": "sherry"
+        },
+        {
+          "drink": "Sherry",
+          "description": "Various styles: Fino, Amontillado, Oloroso",
+          "type": "sherry"
+        }
+      ],
+      "recommended_spots": [
+        "Cádiz fish market",
+        "Seaside taverns",
+        "Sanlúcar de Barrameda",
+        "Freiduria Marisquería Las Flores",
+        "Café Bar La Marina"
+      ]
+    },
+    "Jerez": {
+      "must_eat": [
+        {
+          "dish": "Tortillitas de camarones",
+          "description": "Shared with Cádiz",
+          "type": "tapa"
+        },
+        {
+          "dish": "Seafood tapas",
+          "description": "Fresh from nearby coast",
+          "type": "seafood"
+        }
+      ],
+      "drinks": [
+        {
+          "drink": "Sherry (Fino)",
+          "description": "Dry, pale, best aperitif",
+          "type": "sherry"
+        },
+        {
+          "drink": "Sherry (Amontillado)",
+          "description": "Nutty, amber colored",
+          "type": "sherry"
+        },
+        {
+          "drink": "Sherry (Oloroso)",
+          "description": "Rich, dark, full-bodied",
+          "type": "sherry"
+        },
+        {
+          "drink": "Sherry (Pedro Ximénez)",
+          "description": "Sweet, syrupy dessert sherry",
+          "type": "sherry"
+        }
+      ],
+      "recommended_spots": [
+        "Bodegas Tío Pepe",
+        "González Byass",
+        "Local tapas bars"
+      ]
+    },
+    "Jerez de la Frontera": {
+      "must_eat": [
+        {
+          "dish": "Tapas with sherry",
+          "description": "Traditional pairing at tabancos",
+          "type": "tapa"
+        }
+      ],
+      "drinks": [
+        {
+          "drink": "Fino sherry",
+          "description": "Dry sherry straight from the barrel",
+          "type": "wine"
+        },
+        {
+          "drink": "Amontillado",
+          "description": "Aged amber sherry with nutty flavor",
+          "type": "wine"
+        }
+      ],
+      "recommended_spots": [
+        "Las Banderillas (buzzy sherry tavern)",
+        "Tabanco San Pablo (historic sherry bar)",
+        "González Byass (Tío Pepe) bodega"
+      ]
+    },
+    "Arcos de la Frontera": {
+      "must_eat": [
+        {
+          "dish": "Salmorejo",
+          "description": "Best version at Taberna Jóvenes Flamencos",
+          "type": "starter"
+        },
+        {
+          "dish": "Garlic prawns",
+          "description": "Classic at La Cárcel",
+          "type": "tapa"
+        },
+        {
+          "dish": "Convent cookies",
+          "description": "Buy from cloistered nuns via turnstile",
+          "type": "dessert"
+        }
+      ],
+      "drinks": [],
+      "recommended_spots": [
+        "Taberna Jóvenes Flamencos (best salmorejo)",
+        "La Cárcel (garlic prawns)",
+        "Comunidad de Mercedarias Descalzas (convent cookies)"
+      ]
+    }
+  },
+  "top_10_dishes": [
+    {
+      "rank": 1,
+      "name": "Salmorejo",
+      "origin": "Córdoba",
+      "description": "Thick creamy tomato soup topped with ham and egg",
+      "tags": [
+        "cold",
+        "starter",
+        "classic"
+      ]
+    },
+    {
+      "rank": 2,
+      "name": "Espinacas con garbanzos",
+      "origin": "Seville",
+      "description": "Spinach and chickpeas with Moorish roots",
+      "tags": [
+        "vegetarian",
+        "tapa"
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Pescaíto frito",
+      "origin": "Costa del Sol",
+      "description": "Mixed fried fish, best eaten by the sea",
+      "tags": [
+        "seafood",
+        "shared"
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Espetos de sardinas",
+      "origin": "Málaga",
+      "description": "Sardines grilled on skewers over open fire",
+      "tags": [
+        "beach",
+        "grill",
+        "seafood"
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Piononos",
+      "origin": "Granada (Santa Fe)",
+      "description": "Sweet pastry rolls soaked in syrup and cream",
+      "tags": [
+        "dessert",
+        "sweet"
+      ]
+    },
+    {
+      "rank": 6,
+      "name": "Rabo de toro",
+      "origin": "Córdoba/Seville",
+      "description": "Slow-cooked oxtail stew, rich and hearty",
+      "tags": [
+        "stew",
+        "meat"
+      ]
+    },
+    {
+      "rank": 7,
+      "name": "Tortillitas de camarones",
+      "origin": "Cádiz",
+      "description": "Crispy shrimp fritters",
+      "tags": [
+        "seafood",
+        "tapa",
+        "fried"
+      ]
+    },
+    {
+      "rank": 8,
+      "name": "Migas serranas",
+      "origin": "Ronda area",
+      "description": "Fried breadcrumbs with chorizo, garlic, peppers",
+      "tags": [
+        "hearty",
+        "mountain_food"
+      ]
+    },
+    {
+      "rank": 9,
+      "name": "Ajoblanco",
+      "origin": "Málaga",
+      "description": "Cold almond and garlic soup",
+      "tags": [
+        "cold",
+        "soup",
+        "vegetarian"
+      ]
+    },
+    {
+      "rank": 10,
+      "name": "Flamenquín",
+      "origin": "Córdoba",
+      "description": "Rolled pork cutlet, breaded and fried",
+      "tags": [
+        "meat",
+        "fried"
+      ]
+    }
+  ],
+  "top_10_drinks": [
+    {
+      "rank": 1,
+      "name": "Sherry",
+      "origin": "Jerez de la Frontera",
+      "styles": [
+        "Fino",
+        "Amontillado",
+        "Oloroso",
+        "Pedro Ximénez"
+      ],
+      "tags": [
+        "fortified",
+        "aperitif",
+        "dessert"
+      ]
+    },
+    {
+      "rank": 2,
+      "name": "Montilla-Moriles wine",
+      "origin": "Córdoba",
+      "description": "Similar to sherry but unfortified",
+      "tags": [
+        "wine"
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Málaga sweet wine",
+      "origin": "Málaga",
+      "description": "Dark raisin-like dessert wine",
+      "tags": [
+        "sweet",
+        "dessert"
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Orange wine",
+      "origin": "Seville",
+      "description": "Aromatized wine with bitter orange peel",
+      "tags": [
+        "aperitif",
+        "citrus"
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Tinto de verano",
+      "origin": "All Andalusia",
+      "description": "Red wine with soda, lighter than sangria",
+      "tags": [
+        "refreshing",
+        "summer"
+      ]
+    },
+    {
+      "rank": 6,
+      "name": "Sangria",
+      "origin": "All Spain",
+      "description": "Classic fruit wine punch",
+      "tags": [
+        "classic",
+        "tourist_favorite"
+      ]
+    },
+    {
+      "rank": 7,
+      "name": "Local red wines",
+      "origin": "Ronda & Granada mountains",
+      "description": "Bold mountain reds",
+      "tags": [
+        "wine"
+      ]
+    },
+    {
+      "rank": 8,
+      "name": "Manzanilla",
+      "origin": "Sanlúcar de Barrameda",
+      "description": "Very dry sherry, perfect with seafood",
+      "tags": [
+        "sherry",
+        "aperitif"
+      ]
+    },
+    {
+      "rank": 9,
+      "name": "Cerveza artesanal",
+      "origin": "Málaga, Granada",
+      "description": "Growing craft beer scene",
+      "tags": [
+        "beer"
+      ]
+    },
+    {
+      "rank": 10,
+      "name": "Anís",
+      "origin": "Traditional Spain",
+      "description": "Strong anise-flavored digestif",
+      "tags": [
+        "digestif",
+        "strong"
+      ]
+    }
+  ]
+}

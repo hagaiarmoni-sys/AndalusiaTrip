@@ -1,0 +1,319 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-12-09",
+  "seasons": {
+    "spring": {
+      "months": [
+        "March",
+        "April",
+        "May"
+      ],
+      "weather": "Mild temperatures (15-25°C), occasional rain, flowers blooming",
+      "highlights": [
+        "Semana Santa (Holy Week) parades - especially in Seville",
+        "Feria de Abril in Seville - April/May",
+        "Córdoba Patio Festival - May (patios open for free)",
+        "Wildflowers in countryside and gorges"
+      ],
+      "tips": [
+        "Book hotels months ahead for Semana Santa",
+        "Patio Festival (May) - visit Córdoba patios for free",
+        "Perfect hiking weather in Grazalema and El Torcal",
+        "Generalife gardens at peak bloom"
+      ],
+      "hidden_gems": [
+        "Local olive oil tastings in Priego de Córdoba",
+        "Wildflowers around Ronda gorge",
+        "Carmona necropolis with spring flowers"
+      ],
+      "crowd_level": "high",
+      "price_level": "high",
+      "city_specific": {
+        "Seville": [
+          "Semana Santa parades pass near Cathedral",
+          "Feria de Abril fairgrounds open at night",
+          "Rooftop terraces open",
+          "Alcázar gardens bloom; patios decorated in Santa Cruz"
+        ]
+      }
+    },
+    "summer": {
+      "months": [
+        "June",
+        "July",
+        "August"
+      ],
+      "weather": "Hot (30-40°C), very dry, intense sun",
+      "highlights": [
+        "Málaga Fair - August",
+        "Beach festivals along Costa del Sol",
+        "Open-air concerts and flamenco shows",
+        "Night visits to Alhambra"
+      ],
+      "tips": [
+        "Avoid midday sightseeing (12-5 PM)",
+        "Order tinto de verano instead of sangria - lighter and cheaper",
+        "Visit monuments early morning (before 10 AM)",
+        "Evening activities - strolls, flamenco, dinners start late (9 PM+)",
+        "Night visits to Alhambra - cooler and magical"
+      ],
+      "hidden_gems": [
+        "Zahara de la Sierra reservoir swimming",
+        "El Chorro lakes for kayaking",
+        "Frigiliana white village in cooler evenings"
+      ],
+      "crowd_level": "very_high",
+      "price_level": "very_high",
+      "city_specific": {
+        "Seville": [
+          "Visit Alcázar early morning",
+          "Rooftop pools for siesta breaks",
+          "Late-night flamenco shows (11 PM)",
+          "Evening river cruises",
+          "Avoid midday Cathedral climb",
+          "Italica ruins best early morning"
+        ]
+      }
+    },
+    "autumn": {
+      "months": [
+        "September",
+        "October",
+        "November"
+      ],
+      "weather": "Mild (15-25°C), occasional rain, perfect for hiking",
+      "highlights": [
+        "Grape harvest festivals in Montilla - September",
+        "Noche en Blanco cultural night in Seville",
+        "Olive harvest tours in Jaén province",
+        "Sherry harvest in Jerez"
+      ],
+      "tips": [
+        "Perfect hiking weather for El Torcal, Grazalema",
+        "Combine wine tastings with tapas crawls in Córdoba",
+        "Fewer crowds at major monuments",
+        "Wine harvest in Alpujarra region"
+      ],
+      "hidden_gems": [
+        "Estepona flower streets and local art fairs",
+        "Olive oil mills in Zuheros",
+        "Chestnut harvest festivals in Alpujarra villages"
+      ],
+      "crowd_level": "medium",
+      "price_level": "medium",
+      "city_specific": {
+        "Seville": [
+          "Noche en Blanco cultural night",
+          "Outdoor concerts in Plaza de España",
+          "Local art fairs in Alameda",
+          "Mild weather for walking tours",
+          "Combine wine tastings with tapas",
+          "Fewer crowds at monuments"
+        ]
+      }
+    },
+    "winter": {
+      "months": [
+        "December",
+        "January",
+        "February"
+      ],
+      "weather": "Mild but damp (10-18°C), occasional rain, rarely cold",
+      "highlights": [
+        "Christmas markets in Seville - December",
+        "Roasted chestnuts in plazas",
+        "Cádiz Carnival - February (biggest in Spain)",
+        "Skiing in Sierra Nevada"
+      ],
+      "tips": [
+        "Cheaper hotel rates - boutique hotels affordable",
+        "Quieter visits to major monuments",
+        "Pack umbrella and layers",
+        "Convent bakeries selling handmade Christmas sweets"
+      ],
+      "hidden_gems": [
+        "Convent sweets - nuns sell homemade pastries",
+        "Cozy cave taverns in Sacromonte",
+        "Hot chocolate with churros in Plaza Bib-Rambla (Granada)"
+      ],
+      "crowd_level": "low",
+      "price_level": "low",
+      "city_specific": {
+        "Seville": [
+          "Christmas markets in Plaza Nueva",
+          "Roasted chestnuts in plazas",
+          "Warm taverns in Triana",
+          "Quieter nightlife vibe",
+          "Convent bakeries sell handmade sweets",
+          "Cozy flamenco shows indoors"
+        ]
+      }
+    }
+  },
+  "city_seasonal_activities": {
+    "Seville": {
+      "spring": [
+        "Semana Santa parades",
+        "Feria de Abril fairgrounds at night",
+        "Rooftop terraces opening"
+      ],
+      "summer": [
+        "Rooftop pools for siesta breaks",
+        "Late-night flamenco shows (11 PM)",
+        "Evening river cruises"
+      ],
+      "autumn": [
+        "Noche en Blanco cultural night",
+        "Outdoor concerts in Plaza de España"
+      ],
+      "winter": [
+        "Christmas markets in Plaza Nueva",
+        "Orange wine in Triana taverns",
+        "Roasted chestnuts"
+      ]
+    },
+    "Granada": {
+      "spring": [
+        "Generalife gardens peak bloom",
+        "Albaicín patios decorated with flowers"
+      ],
+      "summer": [
+        "Night visits to Alhambra (cooler)",
+        "Evening strolls in Sacromonte caves",
+        "Tapas crawls after 9 PM"
+      ],
+      "autumn": [
+        "Wine harvest festivals in Alpujarra",
+        "Flamenco festivals in Sacromonte"
+      ],
+      "winter": [
+        "Flamenco in cave taverns",
+        "Hot chocolate with churros in Bib-Rambla",
+        "Sierra Nevada skiing"
+      ]
+    },
+    "Córdoba": {
+      "spring": [
+        "Patio Festival (May) - patios open free",
+        "Alcázar gardens blooming"
+      ],
+      "summer": [
+        "Early morning Mezquita visits (avoid heat)",
+        "Evening riverside walks"
+      ],
+      "autumn": [
+        "Olive oil tastings in Priego de Córdoba",
+        "Montilla wine harvest"
+      ],
+      "winter": [
+        "Quieter Mezquita visits",
+        "Warm taverns serving flamenquín"
+      ]
+    },
+    "Málaga": {
+      "spring": [
+        "Feria de Málaga rehearsals",
+        "Caminito del Rey in mild weather"
+      ],
+      "summer": [
+        "Espetos de sardinas on beach",
+        "Beach fiestas",
+        "Sunset catamaran cruises"
+      ],
+      "autumn": [
+        "Hiking El Torcal",
+        "Grape harvest in surrounding vineyards"
+      ],
+      "winter": [
+        "Christmas markets",
+        "Mercado de Atarazanas seasonal sweets"
+      ]
+    },
+    "Ronda": {
+      "spring": [
+        "Wildflowers in gorge",
+        "Perfect hiking weather"
+      ],
+      "summer": [
+        "Evening strolls when cooler",
+        "Puente Nuevo lit up at night"
+      ],
+      "autumn": [
+        "Local wine festivals",
+        "Olive harvest tours nearby"
+      ],
+      "winter": [
+        "Warm taverns with fireplaces",
+        "Fewer tourists at Puente Nuevo"
+      ]
+    },
+    "Cádiz": {
+      "spring": [
+        "Seafood festivals",
+        "Perfect beach weather begins"
+      ],
+      "summer": [
+        "Beach fiestas",
+        "Fresh seafood season"
+      ],
+      "autumn": [
+        "Sherry harvest in nearby Jerez",
+        "Quieter beaches"
+      ],
+      "winter": [
+        "Carnival in February - biggest in Spain",
+        "Cozy seafood taverns"
+      ]
+    }
+  },
+  "major_festivals": [
+    {
+      "name": "Semana Santa",
+      "location": "Seville, Granada, Málaga",
+      "timing": "March/April (week before Easter)",
+      "type": "religious"
+    },
+    {
+      "name": "Feria de Abril",
+      "location": "Seville",
+      "timing": "April (2 weeks after Easter)",
+      "type": "cultural"
+    },
+    {
+      "name": "Patio Festival",
+      "location": "Córdoba",
+      "timing": "First 2 weeks of May",
+      "type": "cultural"
+    },
+    {
+      "name": "Feria de Málaga",
+      "location": "Málaga",
+      "timing": "Mid-August",
+      "type": "cultural"
+    },
+    {
+      "name": "Cádiz Carnival",
+      "location": "Cádiz",
+      "timing": "February",
+      "type": "cultural"
+    },
+    {
+      "name": "Noche en Blanco",
+      "location": "Seville",
+      "timing": "October",
+      "type": "cultural"
+    },
+    {
+      "name": "Grape Harvest Festival",
+      "location": "Montilla",
+      "timing": "September",
+      "type": "food_wine"
+    },
+    {
+      "name": "Olive Harvest",
+      "location": "Jaén, Priego de Córdoba",
+      "timing": "October-December",
+      "type": "food_wine"
+    }
+  ]
+}
