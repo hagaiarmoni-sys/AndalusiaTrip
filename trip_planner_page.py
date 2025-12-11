@@ -36,9 +36,9 @@ try:
     )
     COMMUNITY_ITINERARIES_AVAILABLE = True
     # print("✅ community_itineraries_service imported successfully")
-except ImportError as e:
+except Exception as e:
     COMMUNITY_ITINERARIES_AVAILABLE = False
-    print(f"⚠️ community_itineraries_service not found: {e}")
+    print(f"⚠️ community_itineraries_service not available: {e}")
 
 
 
