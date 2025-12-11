@@ -375,32 +375,19 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
                 else:
                     day_map_url = f"https://www.google.com/maps/search/?api=1&query={waypoints[0]}"
             else:
-                # Multiple waypoints - use directions
-                origin = waypoints[0]
-                dest = waypoints[-1]
+                # Multiple waypoints - use directions with place_id in URL path
+                # Google Maps format: /maps/dir/place_id:XXX/place_id:YYY/place_id:ZZZ
+                segments = []
+                for wp in waypoints:
+                    if wp.startswith('place_id:'):
+                        # Already has place_id: prefix
+                        segments.append(wp)
+                    else:
+                        # Name-based waypoint - encode it
+                        segments.append(quote_plus(wp))
                 
-                # Build origin/destination with place_id support
-                if origin.startswith('place_id:'):
-                    origin_param = f"origin_place_id={origin.replace('place_id:', '')}"
-                else:
-                    origin_param = f"origin={origin}"
-                    
-                if dest.startswith('place_id:'):
-                    dest_param = f"destination_place_id={dest.replace('place_id:', '')}"
-                else:
-                    dest_param = f"destination={dest}"
-                
-                day_map_url = f"https://www.google.com/maps/dir/?api=1&{origin_param}&{dest_param}&travelmode=walking"
-                
-                # Add middle waypoints
-                if len(waypoints) > 2:
-                    middle_waypoints = []
-                    for wp in waypoints[1:-1]:
-                        if wp.startswith('place_id:'):
-                            middle_waypoints.append(wp.replace('place_id:', ''))
-                        else:
-                            middle_waypoints.append(wp)
-                    day_map_url += f"&waypoints={quote_plus('|'.join(middle_waypoints))}"
+                # Build URL with segments in path
+                day_map_url = "https://www.google.com/maps/dir/" + "/".join(segments) + "?travelmode=walking"
         
         if day_map_url:
             pdf.add_link("Open Today's Route in Google Maps", day_map_url, COLOR_PRIMARY)
