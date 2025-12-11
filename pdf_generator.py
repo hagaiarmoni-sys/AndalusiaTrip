@@ -341,25 +341,20 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
             pdf.ln(2)
 
         # ---------------------------------------------------------
-        # Daily Google Maps Link - Use place_id for accurate locations
+        # Daily Google Maps Link - Use name+city search (same as restaurants)
         # ---------------------------------------------------------
         waypoints = []
-        seen_ids = set()  # Track unique place_ids to avoid duplicates
+        seen_names = set()  # Track unique names to avoid duplicates
         
         for city_stop in day.get('cities', []):
             for attr in city_stop.get('attractions', []):
-                place_id = attr.get('place_id')
                 attr_name = attr.get('name', '')
-                
-                if place_id and place_id not in seen_ids:
-                    seen_ids.add(place_id)
-                    # Use place_id format for waypoints
-                    waypoints.append(f"place_id:{place_id}")
-                elif attr_name and attr_name not in seen_ids:
-                    # Fallback: use name + city for search
-                    seen_ids.add(attr_name)
+                if attr_name and attr_name not in seen_names:
+                    seen_names.add(attr_name)
                     attr_city = city_stop.get('city', city)
-                    waypoints.append(quote_plus(f"{attr_name} {attr_city}"))
+                    # Build search query: "Attraction Name City"
+                    search_query = f"{attr_name} {attr_city}".strip()
+                    waypoints.append(search_query)
         
         # Limit to 10 waypoints (Google Maps limit)
         if len(waypoints) > 10:
@@ -368,26 +363,22 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         day_map_url = None
         if waypoints:
             if len(waypoints) == 1:
-                # Single destination
-                if waypoints[0].startswith('place_id:'):
-                    pid = waypoints[0].replace('place_id:', '')
-                    day_map_url = f"https://www.google.com/maps/search/?api=1&query_place_id={pid}"
-                else:
-                    day_map_url = f"https://www.google.com/maps/search/?api=1&query={waypoints[0]}"
+                # Single destination - use search API
+                day_map_url = f"https://www.google.com/maps/search/?api=1&query={quote_plus(waypoints[0])}"
             else:
-                # Multiple waypoints - use directions with place_id in URL path
-                # Google Maps format: /maps/dir/place_id:XXX/place_id:YYY/place_id:ZZZ
-                segments = []
-                for wp in waypoints:
-                    if wp.startswith('place_id:'):
-                        # Already has place_id: prefix
-                        segments.append(wp)
-                    else:
-                        # Name-based waypoint - encode it
-                        segments.append(quote_plus(wp))
+                # Multiple waypoints - use directions API with name-based waypoints
+                # Join all locations with " / " separator for directions
+                origin = waypoints[0]
+                destination = waypoints[-1]
                 
-                # Build URL with segments in path
-                day_map_url = "https://www.google.com/maps/dir/" + "/".join(segments) + "?travelmode=walking"
+                # Build URL with origin, destination, and middle waypoints
+                day_map_url = f"https://www.google.com/maps/dir/?api=1&origin={quote_plus(origin)}&destination={quote_plus(destination)}&travelmode=walking"
+                
+                # Add middle waypoints if any
+                if len(waypoints) > 2:
+                    middle = waypoints[1:-1]
+                    waypoints_param = "|".join(middle)
+                    day_map_url += f"&waypoints={quote_plus(waypoints_param)}"
         
         if day_map_url:
             pdf.add_link("Open Today's Route in Google Maps", day_map_url, COLOR_PRIMARY)
