@@ -1335,6 +1335,37 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
             try:
                 from pdf_generator import build_pdf
                 
+                # Get start_date from session state (same as UI uses)
+                pdf_start_date = st.session_state.get('current_trip_start_date')
+                
+                # Get events (same as UI displays)
+                pdf_events = []
+                try:
+                    if EVENTS_AVAILABLE and pdf_start_date:
+                        trip_end = pdf_start_date + timedelta(days=total_trip_days - 1)
+                        major_cities = ['Seville', 'Granada', 'Cordoba', 'Malaga', 'Cadiz', 'Ronda', 'Jerez']
+                        cities_to_check = list(set(ordered_cities + major_cities))
+                        
+                        all_events = []
+                        for city in cities_to_check:
+                            city_events = get_events_for_trip(city, pdf_start_date, trip_end)
+                            all_events.extend(city_events)
+                        
+                        # Remove duplicates
+                        seen = set()
+                        for event in all_events:
+                            event_key = event.get('name', '') + str(event.get('date', ''))
+                            if event_key not in seen:
+                                seen.add(event_key)
+                                pdf_events.append(event)
+                except:
+                    pass
+                
+                # Add start_date and events to result for PDF
+                result_with_extras = dict(result) if result else {}
+                result_with_extras['start_date'] = pdf_start_date
+                result_with_extras['events'] = pdf_events
+                
                 pdf_buffer = build_pdf(
                     itinerary=itinerary,
                     hop_kms=hop_kms,
@@ -1344,7 +1375,7 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                     prefs=prefs,
                     parsed_requests=result.get("parsed_requests", {}),
                     is_car_mode=True,
-                    result=result
+                    result=result_with_extras
                 )
                 
                 st.download_button(
