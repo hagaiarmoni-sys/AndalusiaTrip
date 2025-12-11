@@ -1136,6 +1136,9 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
             tier_order = {'tier_1': 0, 'tier_2': 1, 'tier_3': 2}
             unique_events.sort(key=lambda x: (tier_order.get(x.get('tier', 'tier_3'), 3), x.get('date', '')))
             
+            # ✅ Store events in session state for PDF to reuse (single source of truth)
+            st.session_state['trip_events'] = unique_events
+            
             if unique_events:
                 st.markdown("---")
                 st.markdown("### 🎉 Events During Your Trip")
@@ -1338,67 +1341,18 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                 # Get start_date from session state (same as UI uses)
                 pdf_start_date = st.session_state.get('current_trip_start_date')
                 
-                # Get events (same as UI displays)
-                pdf_events = []
-                events_debug_msg = ""
-                try:
-                    events_debug_msg = f"EVENTS_AVAILABLE: {EVENTS_AVAILABLE}, pdf_start_date: {pdf_start_date}"
-                    print(f"[PDF DEBUG] {events_debug_msg}")
-                    
-                    if EVENTS_AVAILABLE and pdf_start_date:
-                        trip_end = pdf_start_date + timedelta(days=total_trip_days - 1)
-                        # Use city names with proper accents to match events database
-                        major_cities = ['Seville', 'Sevilla', 'Granada', 'Córdoba', 'Cordoba', 'Málaga', 'Malaga', 'Cádiz', 'Cadiz', 'Ronda', 'Jerez', 'Jerez de la Frontera']
-                        cities_to_check = list(set(ordered_cities + major_cities))
-                        
-                        events_debug_msg += f" | Checking {len(cities_to_check)} cities"
-                        print(f"[PDF DEBUG] Checking cities for events: {cities_to_check}")
-                        
-                        # Convert dates to strings - get_events_for_trip expects "YYYY-MM-DD" format
-                        start_str = pdf_start_date.strftime("%Y-%m-%d") if hasattr(pdf_start_date, 'strftime') else str(pdf_start_date)
-                        end_str = trip_end.strftime("%Y-%m-%d") if hasattr(trip_end, 'strftime') else str(trip_end)
-                        
-                        events_debug_msg += f" | Dates: {start_str} to {end_str}"
-                        
-                        all_events = []
-                        for city in cities_to_check:
-                            try:
-                                city_events = get_events_for_trip(city, start_str, end_str)
-                                events_debug_msg += f" | {city}:{len(city_events)}"
-                                print(f"[PDF DEBUG] Events for {city}: {len(city_events)}")
-                                all_events.extend(city_events)
-                            except Exception as city_err:
-                                print(f"[PDF DEBUG] Error for {city}: {city_err}")
-                        
-                        # Remove duplicates
-                        seen = set()
-                        for event in all_events:
-                            event_key = event.get('name', '') + str(event.get('date', ''))
-                            if event_key not in seen:
-                                seen.add(event_key)
-                                pdf_events.append(event)
-                        
-                        events_debug_msg += f" | Total unique: {len(pdf_events)}"
-                        print(f"[PDF DEBUG] Total unique events: {len(pdf_events)}")
-                    else:
-                        events_debug_msg += " | Skipped - conditions not met"
-                except Exception as evt_err:
-                    events_debug_msg += f" | ERROR: {evt_err}"
-                    print(f"[PDF DEBUG] Error fetching events: {evt_err}")
+                # ✅ SINGLE SOURCE OF TRUTH: Use events already fetched by UI (stored in session state)
+                # This ensures PDF shows EXACTLY the same events as the UI
+                pdf_events = st.session_state.get('trip_events', [])
                 
-                # Show debug info in expander (temporary)
-                with st.expander("🔍 PDF Events Debug", expanded=False):
-                    st.text(events_debug_msg)
-                    st.write(f"Events found: {len(pdf_events)}")
-                    if pdf_events:
-                        st.write(pdf_events[:3])  # Show first 3 events
+                print(f"[PDF] Using {len(pdf_events)} events from session state (same as UI)")
                 
                 # Add start_date and events to result for PDF
                 result_with_extras = dict(result) if result else {}
                 result_with_extras['start_date'] = pdf_start_date
                 result_with_extras['events'] = pdf_events
                 
-                print(f"[PDF DEBUG] Passing to PDF - start_date: {pdf_start_date}, events: {len(pdf_events)}")
+                print(f"[PDF] Passing to PDF - start_date: {pdf_start_date}, events: {len(pdf_events)}")
                 
                 pdf_buffer = build_pdf(
                     itinerary=itinerary,
@@ -1473,27 +1427,48 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                     height=720
                 )
                 
-                # Use data/photos directory
-                photos_dir = os.path.join(os.path.dirname(__file__), 'data', 'photos')
+                # Try multiple paths to find photos directory
+                possible_paths = [
+                    os.path.join(os.path.dirname(__file__), 'data', 'photos'),
+                    os.path.join(os.getcwd(), 'data', 'photos'),
+                    'data/photos',
+                    './data/photos',
+                ]
                 
-                video_path = generate_poi_slideshow(result, output_file, config, photos_dir)
+                photos_dir = None
+                for path in possible_paths:
+                    if os.path.isdir(path):
+                        files = os.listdir(path)
+                        jpg_count = len([f for f in files if f.endswith(('.jpg', '.jpeg', '.png'))])
+                        print(f"[VIDEO DEBUG] Checking {path}: found {jpg_count} photos")
+                        if jpg_count > 0:
+                            photos_dir = path
+                            break
                 
-                if video_path and os.path.exists(video_path):
-                    # Store in session state
-                    with open(video_path, 'rb') as f:
-                        st.session_state['slideshow_video'] = f.read()
-                    st.session_state['slideshow_ready'] = True
-                    
-                    # Cleanup temp file
-                    try:
-                        os.remove(video_path)
-                    except:
-                        pass
-                    
-                    progress_placeholder.success("✅ Video ready!")
-                    st.rerun()
+                if not photos_dir:
+                    progress_placeholder.error(f"❌ Photos directory not found. Tried: {possible_paths}")
+                    print(f"[VIDEO DEBUG] Current dir: {os.getcwd()}")
+                    print(f"[VIDEO DEBUG] __file__ dir: {os.path.dirname(__file__)}")
                 else:
-                    progress_placeholder.error("❌ Failed to generate video. Check that photos exist in data/photos/")
+                    print(f"[VIDEO DEBUG] Using photos_dir: {photos_dir}")
+                    video_path = generate_poi_slideshow(result, output_file, config, photos_dir)
+                    
+                    if video_path and os.path.exists(video_path):
+                        # Store in session state
+                        with open(video_path, 'rb') as f:
+                            st.session_state['slideshow_video'] = f.read()
+                        st.session_state['slideshow_ready'] = True
+                        
+                        # Cleanup temp file
+                        try:
+                            os.remove(video_path)
+                        except:
+                            pass
+                        
+                        progress_placeholder.success("✅ Video ready!")
+                        st.rerun()
+                    else:
+                        progress_placeholder.error("❌ Failed to generate video. Check Streamlit logs for details.")
                 
         except Exception as e:
             progress_placeholder.error(f"❌ Error: {str(e)}")
