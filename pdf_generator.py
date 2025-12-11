@@ -587,13 +587,19 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
                     pdf.set_text_color(*COLOR_TEXT)
                     pdf.cell(0, 6, f'{meal_type}: {rest_name}', new_x="LMARGIN", new_y="NEXT")
                     
-                    # Google Maps link
-                    lat = restaurant.get('lat')
-                    lon = restaurant.get('lon') or restaurant.get('lng')
-                    if lat and lon:
-                        rest_url = f"https://www.google.com/maps/search/?api=1&query={lat},{lon}"
-                        pdf.set_x(pdf.get_x() + 5)
-                        pdf.add_link('View on Google Maps', rest_url, COLOR_FOOD)
+                    # Google Maps link - prefer place_id, fallback to name search
+                    place_id = restaurant.get('place_id')
+                    if place_id:
+                        # Use place_id for accurate location
+                        rest_url = f"https://www.google.com/maps/search/?api=1&query={quote_plus(rest_name)}&query_place_id={place_id}"
+                    else:
+                        # Fallback: search by name + city (more accurate than coordinates)
+                        city = restaurant.get('city', '')
+                        search_query = f"{rest_name} {city}".strip()
+                        rest_url = f"https://www.google.com/maps/search/?api=1&query={quote_plus(search_query)}"
+                    
+                    pdf.set_x(pdf.get_x() + 5)
+                    pdf.add_link('View on Google Maps', rest_url, COLOR_FOOD)
                     
                     pdf.ln(1)
 
