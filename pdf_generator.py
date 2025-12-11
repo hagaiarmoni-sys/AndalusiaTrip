@@ -307,7 +307,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         pdf.ln(3)
 
         # ---------------------------------------------------------
-        # ATTRACTIONS WITH PHOTOS
+        # ATTRACTIONS WITH PHOTOS (NO individual Google Maps links)
         # ---------------------------------------------------------
         cities_data = day.get('cities', [])
         if not cities_data:
@@ -354,15 +354,41 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
                         pdf.set_text_color(*COLOR_LIGHT)
                         pdf.cell(0, 6, ' | '.join(details), new_x="LMARGIN", new_y="NEXT")
                     
-                    # Google Maps link for attraction
-                    lat = attr.get('lat')
-                    lon = attr.get('lon') or attr.get('lng')
-                    if lat and lon:
-                        attr_url = f"https://www.google.com/maps/search/?api=1&query={lat},{lon}"
-                        pdf.set_x(pdf.get_x() + 5)
-                        pdf.add_link('View on Google Maps', attr_url, COLOR_PRIMARY)
-                    
                     pdf.ln(3)
+
+        # ---------------------------------------------------------
+        # EVENTS (if any for this day)
+        # ---------------------------------------------------------
+        events = day.get('events', [])
+        if events:
+            pdf.ln(3)
+            pdf.section_title('EVENTS & FESTIVALS', (142, 68, 173))  # Purple
+            pdf.ln(1)
+            
+            for event in events[:3]:
+                event_name = safe_text(event.get('name', 'Event'), 50)
+                
+                pdf.set_font('Helvetica', 'B', 10)
+                pdf.set_text_color(*COLOR_TEXT)
+                pdf.cell(0, 6, f'* {event_name}', new_x="LMARGIN", new_y="NEXT")
+                
+                # Event details
+                event_desc = event.get('description', '')
+                if event_desc:
+                    pdf.set_font('Helvetica', '', 9)
+                    pdf.set_text_color(*COLOR_TEXT)
+                    pdf.set_x(pdf.get_x() + 5)
+                    pdf.multi_cell(0, 5, safe_text(event_desc, 150))
+                
+                # Event date/time
+                event_date = event.get('date', '') or event.get('dates', '')
+                if event_date:
+                    pdf.set_font('Helvetica', 'I', 8)
+                    pdf.set_text_color(*COLOR_LIGHT)
+                    pdf.set_x(pdf.get_x() + 5)
+                    pdf.cell(0, 5, f'Date: {event_date}', new_x="LMARGIN", new_y="NEXT")
+                
+                pdf.ln(2)
 
         # ---------------------------------------------------------
         # HOTELS
@@ -376,22 +402,33 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
             # Calculate dates
             checkin_str = ""
             checkout_str = ""
+            nights = total_days_in_city
             if current_date_obj:
                 try:
-                    checkout_date = current_date_obj + timedelta(days=total_days_in_city)
+                    checkout_date = current_date_obj + timedelta(days=nights)
                     checkin_str = current_date_obj.strftime('%Y-%m-%d')
                     checkout_str = checkout_date.strftime('%Y-%m-%d')
                 except:
                     pass
             
+            # Show stay info
+            if checkin_str and checkout_str:
+                pdf.set_font('Helvetica', 'I', 9)
+                pdf.set_text_color(*COLOR_LIGHT)
+                stay_info = f"{nights} night{'s' if nights > 1 else ''}: {current_date_obj.strftime('%d %b')} - {checkout_date.strftime('%d %b %Y')}"
+                pdf.cell(0, 5, stay_info, new_x="LMARGIN", new_y="NEXT")
+                pdf.ln(2)
+            
             for hotel in hotels[:3]:
-                hotel_name = safe_text(hotel.get('name', 'Hotel'), 50)
+                hotel_name = hotel.get('name', 'Hotel')
                 if 'Hotels in' in hotel_name:
                     continue
                 
+                hotel_name_display = safe_text(hotel_name, 50)
+                
                 pdf.set_font('Helvetica', 'B', 10)
                 pdf.set_text_color(*COLOR_TEXT)
-                pdf.cell(0, 6, f'* {hotel_name}', new_x="LMARGIN", new_y="NEXT")
+                pdf.cell(0, 6, f'* {hotel_name_display}', new_x="LMARGIN", new_y="NEXT")
                 
                 # Address
                 address = hotel.get('address', '')
@@ -401,15 +438,17 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
                     pdf.set_x(pdf.get_x() + 5)
                     pdf.cell(0, 5, safe_text(address, 60), new_x="LMARGIN", new_y="NEXT")
                 
-                # Booking link
-                hotel_search = quote_plus(f"{hotel.get('name', '')} {overnight}"[:60])
+                # Booking link with FULL hotel name and city
+                hotel_search = quote_plus(f"{hotel_name} {overnight}"[:80])
                 if checkin_str and checkout_str:
                     booking_url = f"https://www.booking.com/searchresults.html?ss={hotel_search}&checkin={checkin_str}&checkout={checkout_str}"
+                    link_text = f"Book {hotel_name_display} ({nights} nights)"
                 else:
                     booking_url = f"https://www.booking.com/searchresults.html?ss={hotel_search}"
+                    link_text = f"Book {hotel_name_display}"
                 
                 pdf.set_x(pdf.get_x() + 5)
-                pdf.add_link('Book on Booking.com', booking_url, COLOR_HOTEL)
+                pdf.add_link(link_text, booking_url, COLOR_HOTEL)
                 pdf.ln(1)
 
         # ---------------------------------------------------------
