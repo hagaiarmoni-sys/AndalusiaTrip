@@ -341,34 +341,38 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
             pdf.ln(2)
 
         # ---------------------------------------------------------
-        # Daily Google Maps Link - ONLY attractions (no restaurants to avoid zigzag)
+        # Daily Google Maps Link - Generate from attraction coordinates
         # ---------------------------------------------------------
-        day_map_url = day.get('google_maps_url') or day.get('maps_url') or day.get('day_maps_link')
+        # Always generate from coordinates (pre-built URLs may have issues)
+        waypoints = []
+        seen_coords = set()  # Track unique coordinates
         
-        # If no URL in itinerary, generate one from attractions ONLY
-        if not day_map_url:
-            waypoints = []
-            for city_stop in day.get('cities', []):
-                for attr in city_stop.get('attractions', []):
-                    lat = attr.get('lat')
-                    lon = attr.get('lon') or attr.get('lng')
-                    if lat and lon:
-                        waypoints.append(f"{lat},{lon}")
-            
-            # Limit to reasonable number of waypoints (Google Maps has limits)
-            if len(waypoints) > 10:
-                waypoints = waypoints[:10]
-            
-            if waypoints:
-                if len(waypoints) == 1:
-                    day_map_url = f"https://www.google.com/maps/search/?api=1&query={waypoints[0]}"
-                else:
-                    origin = waypoints[0]
-                    dest = waypoints[-1]
-                    day_map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin}&destination={dest}&travelmode=walking"
-                    if len(waypoints) > 2:
-                        middle = "|".join(waypoints[1:-1])
-                        day_map_url += f"&waypoints={quote_plus(middle)}"
+        for city_stop in day.get('cities', []):
+            for attr in city_stop.get('attractions', []):
+                lat = attr.get('lat')
+                lon = attr.get('lon') or attr.get('lng')
+                if lat and lon:
+                    # Round to 5 decimal places for deduplication
+                    coord_key = f"{round(float(lat), 5)},{round(float(lon), 5)}"
+                    if coord_key not in seen_coords:
+                        seen_coords.add(coord_key)
+                        waypoints.append(coord_key)
+        
+        # Limit to reasonable number of waypoints (Google Maps has limits)
+        if len(waypoints) > 10:
+            waypoints = waypoints[:10]
+        
+        day_map_url = None
+        if waypoints:
+            if len(waypoints) == 1:
+                day_map_url = f"https://www.google.com/maps/search/?api=1&query={waypoints[0]}"
+            else:
+                origin = waypoints[0]
+                dest = waypoints[-1]
+                day_map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin}&destination={dest}&travelmode=walking"
+                if len(waypoints) > 2:
+                    middle = "|".join(waypoints[1:-1])
+                    day_map_url += f"&waypoints={quote_plus(middle)}"
         
         if day_map_url:
             pdf.add_link("Open Today's Route in Google Maps", day_map_url, COLOR_PRIMARY)
