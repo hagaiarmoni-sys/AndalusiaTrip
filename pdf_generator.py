@@ -341,11 +341,11 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
             pdf.ln(2)
 
         # ---------------------------------------------------------
-        # Daily Google Maps Link - use from itinerary OR generate
+        # Daily Google Maps Link - ONLY attractions (no restaurants to avoid zigzag)
         # ---------------------------------------------------------
         day_map_url = day.get('google_maps_url') or day.get('maps_url') or day.get('day_maps_link')
         
-        # If no URL in itinerary, generate one from attractions
+        # If no URL in itinerary, generate one from attractions ONLY
         if not day_map_url:
             waypoints = []
             for city_stop in day.get('cities', []):
@@ -355,13 +355,17 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
                     if lat and lon:
                         waypoints.append(f"{lat},{lon}")
             
+            # Limit to reasonable number of waypoints (Google Maps has limits)
+            if len(waypoints) > 10:
+                waypoints = waypoints[:10]
+            
             if waypoints:
                 if len(waypoints) == 1:
                     day_map_url = f"https://www.google.com/maps/search/?api=1&query={waypoints[0]}"
                 else:
                     origin = waypoints[0]
                     dest = waypoints[-1]
-                    day_map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin}&destination={dest}"
+                    day_map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin}&destination={dest}&travelmode=walking"
                     if len(waypoints) > 2:
                         middle = "|".join(waypoints[1:-1])
                         day_map_url += f"&waypoints={quote_plus(middle)}"
@@ -590,20 +594,173 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
                     pdf.ln(1)
 
     # ========================================================================
-    # TRAVEL TIPS PAGE
+    # MUST-TRY ANDALUSIAN DISHES
+    # ========================================================================
+    pdf.add_page()
+    pdf.chapter_title('MUST-TRY ANDALUSIAN DISHES', COLOR_FOOD)
+    pdf.ln(2)
+    
+    pdf.set_font('Helvetica', 'I', 10)
+    pdf.set_text_color(*COLOR_TEXT)
+    pdf.multi_cell(0, 5, "Andalusian cuisine is a delicious blend of Mediterranean and Moorish influences. Don't leave without trying these iconic dishes!")
+    pdf.ln(4)
+    
+    dishes = [
+        ('Gazpacho', 'Cold tomato soup, perfect for hot days - originated right here in Andalusia'),
+        ('Salmorejo', 'Thick, creamy cold soup from Cordoba, topped with egg and jamon'),
+        ('Jamon Iberico', 'Premium cured ham from acorn-fed pigs - the best in Spain!'),
+        ('Pescaito Frito', 'Fried fish platter, a coastal specialty in Malaga and Cadiz'),
+        ('Rabo de Toro', 'Oxtail stew, traditional in Cordoba (especially after bullfights)'),
+        ('Tortilla Espanola', 'Classic Spanish potato omelet - simple but delicious'),
+        ('Espeto de Sardinas', 'Grilled sardines on a stick, Malaga beach specialty'),
+        ('Flamenquin', 'Rolled pork filled with ham and cheese, breaded and fried'),
+        ('Pringa', 'Slow-cooked meat sandwich, popular in Seville'),
+        ('Churros con Chocolate', 'Fried dough with thick hot chocolate for dipping'),
+        ('Sherry Wine', 'From Jerez - try fino, manzanilla, or sweet Pedro Ximenez'),
+        ('Ajo Blanco', 'Cold white soup with almonds and grapes, from Malaga'),
+    ]
+    
+    for name, desc in dishes:
+        pdf.set_font('Helvetica', 'B', 10)
+        pdf.set_text_color(*COLOR_FOOD)
+        pdf.cell(0, 6, f"{name}", new_x="LMARGIN", new_y="NEXT")
+        
+        pdf.set_font('Helvetica', '', 9)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.multi_cell(0, 5, desc)
+        pdf.ln(2)
+    
+    pdf.ln(3)
+    pdf.set_font('Helvetica', 'B', 10)
+    pdf.set_text_color(*COLOR_PRIMARY)
+    pdf.cell(0, 6, 'MEAL TIMING IN SPAIN:', new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font('Helvetica', '', 9)
+    pdf.set_text_color(*COLOR_TEXT)
+    meal_times = [
+        'Breakfast: 8-10am (coffee & pastry)',
+        'Lunch: 2-4pm (main meal of the day!)',
+        'Tapas: 8-10pm (pre-dinner snacks)',
+        'Dinner: 9pm-midnight (yes, really!)',
+    ]
+    for meal in meal_times:
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.cell(0, 5, f"• {meal}", new_x="LMARGIN", new_y="NEXT")
+    
+    pdf.ln(3)
+    pdf.set_font('Helvetica', 'I', 9)
+    pdf.set_text_color(*COLOR_ACCENT)
+    pdf.multi_cell(0, 5, "Pro tip: When in doubt, follow the locals! If a restaurant is full of Spanish families at 10pm, you're in the right place.")
+
+    # ========================================================================
+    # ROAD TRIP ESSENTIALS
+    # ========================================================================
+    pdf.add_page()
+    pdf.chapter_title('ROAD TRIP ESSENTIALS', COLOR_PRIMARY)
+    pdf.ln(3)
+    
+    # Driving in Spain
+    pdf.section_title('Driving in Spain 101', COLOR_PRIMARY)
+    pdf.ln(1)
+    driving_tips = [
+        'Drive on the RIGHT side of the road',
+        'Speed limits: 120 km/h (highways), 90 km/h (rural), 50 km/h (cities)',
+        'Right-of-way: Traffic from right has priority',
+        'Using phones while driving is ILLEGAL (200 euro fine!)',
+        'Blood alcohol limit: 0.5g/l (0.25g/l for new drivers)',
+        'Children under 135cm MUST use car seats',
+        'Required: 2 warning triangles, reflective vest, spare tire',
+        'Headlights required in tunnels and at night',
+    ]
+    for tip in driving_tips:
+        pdf.set_font('Helvetica', '', 9)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.cell(0, 5, f"• {tip}", new_x="LMARGIN", new_y="NEXT")
+    
+    pdf.ln(3)
+    pdf.section_title('Tolls & Fuel', COLOR_PRIMARY)
+    pdf.ln(1)
+    fuel_tips = [
+        'Autopistas (AP-) are TOLL roads, Autovias (A-) are FREE',
+        'Most toll booths accept credit cards (Visa/Mastercard)',
+        'Typical tolls: Malaga-Seville ~15-20 euros',
+        'Gas stations (gasolineras) are frequent on highways',
+        'Fuel types: Gasolina 95 (regular), Gasolina 98 (premium), Diesel',
+        'Apps: Google Maps or Waze for cheapest fuel nearby',
+    ]
+    for tip in fuel_tips:
+        pdf.set_font('Helvetica', '', 9)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.cell(0, 5, f"• {tip}", new_x="LMARGIN", new_y="NEXT")
+    
+    pdf.ln(3)
+    pdf.section_title('Parking Guide', COLOR_PRIMARY)
+    pdf.ln(1)
+    pdf.set_font('Helvetica', 'I', 9)
+    pdf.set_text_color(*COLOR_TEXT)
+    pdf.multi_cell(0, 5, "Parking in historic centers can be tricky! Here's what the colors mean:")
+    pdf.ln(1)
+    parking_tips = [
+        'BLUE zones: Pay & display (limited time, usually 2-4h)',
+        'GREEN zones: Resident parking ONLY - avoid these!',
+        'WHITE lines: Free parking (rare in city centers)',
+        'YELLOW lines: No parking/stopping zones',
+        'Public lots: 15-25 euros/day in city centers',
+        'Hotel parking: 10-20 euros/night (ask when booking)',
+        'Best strategy: Park outside old town, walk or taxi in',
+        'Useful apps: Parclick, ElParking, Parkopedia',
+        'NEVER leave valuables visible in car!',
+    ]
+    for tip in parking_tips:
+        pdf.set_font('Helvetica', '', 9)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.cell(0, 5, f"• {tip}", new_x="LMARGIN", new_y="NEXT")
+    
+    # Car Rental Tips
+    pdf.add_page()
+    pdf.section_title('Car Rental Insider Tips', COLOR_PRIMARY)
+    pdf.ln(1)
+    rental_tips = [
+        'Book online in advance = 30-50% cheaper!',
+        'Most rentals require 21+ (sometimes 25+)',
+        'Credit card required for deposit (debit often not accepted)',
+        'Consider full insurance (CDW + theft protection)',
+        'Bring: Valid license, passport, credit card',
+        'International Driving Permit: Recommended for non-EU licenses',
+        '"Full to full" policy is standard (return with full tank)',
+        'Manual transmission is default - automatic costs MORE',
+        'GPS: 5-10 euros/day, or just use your phone',
+        'Photograph ANY existing damage before leaving lot!',
+    ]
+    for tip in rental_tips:
+        pdf.set_font('Helvetica', '', 9)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.cell(0, 5, f"• {tip}", new_x="LMARGIN", new_y="NEXT")
+
+    # ========================================================================
+    # ESSENTIAL TRAVEL TIPS
     # ========================================================================
     pdf.add_page()
     pdf.chapter_title('ESSENTIAL TRAVEL TIPS', COLOR_PRIMARY)
     pdf.ln(3)
     
     tips = [
-        ('Spanish Schedule', 'Lunch is typically 2-4pm, Dinner starts at 9pm or later. Many restaurants are closed 4-8pm.'),
-        ('Book Ahead', 'Alhambra, Alcazar, and Cathedral tours require advance booking - sometimes 2-3 weeks ahead!'),
-        ('Cash is King', 'Small towns, markets, and traditional tapas bars often prefer or only accept cash.'),
-        ('Free Tapas', 'In Granada, many bars give you a FREE tapa with every drink you order!'),
-        ('Monday Closures', 'Many museums and attractions are closed on Mondays. Plan accordingly.'),
-        ('Summer Heat', 'June-August temperatures can exceed 40C. Plan indoor activities for midday hours.'),
-        ('Siesta Time', 'Small shops typically close 2-5pm, though tourist areas often stay open.'),
+        ('Spanish Schedule', 'Lunch 2-4pm, Dinner 9pm+. Many restaurants closed 4-8pm. Embrace the siesta!'),
+        ('Book Ahead', 'Alhambra, Alcazar, Cathedral tours need 2-3 weeks advance booking!'),
+        ('Best Season', 'Spring (April-May) or Fall (September-October) for perfect weather'),
+        ('Cash is King', 'Small towns, markets, and tapas bars often prefer cash'),
+        ('Learn Spanish', 'Even basic phrases go a long way! Locals really appreciate it'),
+        ('Free Tapas', 'In Granada, many bars give FREE tapas with drinks!'),
+        ('Monday Closures', 'Many museums closed Mondays - plan accordingly'),
+        ('Get Data', 'Local SIM or international plan for navigation & translations'),
+        ('Comfy Shoes', 'Cobblestone streets everywhere - sneakers are your friend'),
+        ('Summer Heat', 'June-August = 40C+. Plan indoor activities for midday'),
+        ('Tap Water', 'Safe to drink, but locals prefer bottled'),
+        ('Siesta Time', 'Small shops close 2-5pm (tourist areas stay open)'),
     ]
     
     for title, desc in tips:
@@ -615,7 +772,188 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         pdf.set_text_color(*COLOR_TEXT)
         pdf.set_x(pdf.get_x() + 5)
         pdf.multi_cell(0, 5, desc)
-        pdf.ln(3)
+        pdf.ln(2)
+
+    # ========================================================================
+    # PACKING CHECKLIST
+    # ========================================================================
+    pdf.add_page()
+    pdf.chapter_title('PACKING CHECKLIST', COLOR_PRIMARY)
+    pdf.ln(2)
+    
+    pdf.set_font('Helvetica', 'I', 10)
+    pdf.set_text_color(*COLOR_TEXT)
+    pdf.multi_cell(0, 5, "Pack smart for your Andalusian adventure! Here's everything you need:")
+    pdf.ln(3)
+    
+    pdf.section_title('Clothing', COLOR_PRIMARY)
+    pdf.ln(1)
+    clothing = [
+        'Comfortable walking shoes (10-20km per day!)',
+        'Sandals or flip-flops for beach/hotel',
+        'Light, breathable clothing (cotton/linen)',
+        'Light jacket for evenings (even in summer)',
+        'Modest clothes for churches (covered shoulders/knees)',
+        'Swimsuit for beaches or hotel pools',
+        'Hat or cap for sun protection',
+    ]
+    for item in clothing:
+        pdf.set_font('Helvetica', '', 9)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.cell(0, 5, f"• {item}", new_x="LMARGIN", new_y="NEXT")
+    
+    pdf.ln(2)
+    pdf.section_title('Essentials', COLOR_PRIMARY)
+    pdf.ln(1)
+    essentials = [
+        'Sunscreen SPF 30+ (Andalusian sun is STRONG!)',
+        'Sunglasses with UV protection',
+        'Reusable water bottle',
+        'Day backpack for sightseeing',
+        'Power adapter (Type C/F for Spain)',
+        'Portable phone charger',
+        'Copy of passport & travel insurance',
+        'Prescription meds + basic first aid',
+    ]
+    for item in essentials:
+        pdf.set_font('Helvetica', '', 9)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.cell(0, 5, f"• {item}", new_x="LMARGIN", new_y="NEXT")
+    
+    pdf.ln(2)
+    pdf.section_title('Nice to Have', COLOR_PRIMARY)
+    pdf.ln(1)
+    nice_to_have = [
+        'Light rain jacket (spring/fall)',
+        'Spanish phrasebook or translation app',
+        'Camera with good storage',
+        'Smart-casual outfit for nice dinners',
+        'Small lock for hotel lockers',
+        'Earplugs (Spanish cities = noisy at night!)',
+        'Hand sanitizer and wet wipes',
+    ]
+    for item in nice_to_have:
+        pdf.set_font('Helvetica', '', 9)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.cell(0, 5, f"• {item}", new_x="LMARGIN", new_y="NEXT")
+
+    # ========================================================================
+    # SURVIVAL SPANISH
+    # ========================================================================
+    pdf.add_page()
+    pdf.chapter_title('SURVIVAL SPANISH', COLOR_PRIMARY)
+    pdf.ln(2)
+    
+    pdf.set_font('Helvetica', 'I', 10)
+    pdf.set_text_color(*COLOR_TEXT)
+    pdf.multi_cell(0, 5, "Basic Spanish will make your trip SO much better! Practice these:")
+    pdf.ln(3)
+    
+    phrases = [
+        ('Hola / Buenos dias', 'Hello / Good morning'),
+        ('Gracias / Muchas gracias', 'Thank you / Thank you very much'),
+        ('Por favor', 'Please'),
+        ('De nada', "You're welcome"),
+        ('Habla ingles?', 'Do you speak English?'),
+        ('No entiendo', "I don't understand"),
+        ('Cuanto cuesta?', 'How much does it cost?'),
+        ('La cuenta, por favor', 'The bill, please'),
+        ('Donde esta...?', 'Where is...?'),
+        ('Una mesa para dos', 'A table for two'),
+        ('Salud!', 'Cheers!'),
+        ('Perdon / Disculpe', 'Excuse me / Sorry'),
+        ('Si / No', 'Yes / No'),
+        ('Adios / Hasta luego', 'Goodbye / See you later'),
+        ('Ayuda!', 'Help!'),
+        ('Necesito un medico', 'I need a doctor'),
+    ]
+    
+    for spanish, english in phrases:
+        pdf.set_font('Helvetica', 'B', 10)
+        pdf.set_text_color(*COLOR_PRIMARY)
+        pdf.cell(80, 6, spanish)
+        pdf.set_font('Helvetica', '', 10)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.cell(0, 6, f"= {english}", new_x="LMARGIN", new_y="NEXT")
+
+    # ========================================================================
+    # EMERGENCY CONTACTS
+    # ========================================================================
+    pdf.add_page()
+    pdf.chapter_title('EMERGENCY CONTACTS', (220, 53, 69))
+    pdf.ln(2)
+    
+    pdf.set_font('Helvetica', 'B', 10)
+    pdf.set_text_color(*COLOR_TEXT)
+    pdf.multi_cell(0, 5, "Save these numbers in your phone BEFORE you travel!")
+    pdf.ln(3)
+    
+    emergencies = [
+        ('ALL EMERGENCIES (EU-wide)', '112', 'Police, medical, fire - works everywhere in Europe'),
+        ('National Police', '091', 'For crimes, theft, lost documents'),
+        ('Medical Emergency', '061', 'Ambulance and medical assistance'),
+        ('Fire Department', '080', 'Fire emergencies'),
+        ('Local Police', '092', 'Non-emergency local police'),
+        ('Tourist Information', '902 200 120', 'Tourism information hotline'),
+    ]
+    
+    for name, number, desc in emergencies:
+        pdf.set_font('Helvetica', 'B', 11)
+        pdf.set_text_color((220, 53, 69))
+        pdf.cell(0, 6, f"{name}: {number}", new_x="LMARGIN", new_y="NEXT")
+        pdf.set_font('Helvetica', '', 9)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.cell(0, 5, desc, new_x="LMARGIN", new_y="NEXT")
+        pdf.ln(2)
+    
+    pdf.ln(3)
+    pdf.section_title('Embassy Contacts (Madrid)', COLOR_PRIMARY)
+    pdf.ln(1)
+    embassies = [
+        ('US Embassy', '+34 91 587 2200'),
+        ('UK Embassy', '+34 91 714 6300'),
+        ('Canadian Embassy', '+34 91 382 8400'),
+        ('Australian Embassy', '+34 91 353 6600'),
+        ('Irish Embassy', '+34 91 436 4093'),
+    ]
+    for name, phone in embassies:
+        pdf.set_font('Helvetica', '', 9)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.set_x(pdf.get_x() + 5)
+        pdf.cell(0, 5, f"{name}: {phone}", new_x="LMARGIN", new_y="NEXT")
+
+    # ========================================================================
+    # FINAL PAGE
+    # ========================================================================
+    pdf.add_page()
+    pdf.ln(30)
+    pdf.set_font('Helvetica', 'B', 24)
+    pdf.set_text_color(*COLOR_PRIMARY)
+    pdf.cell(0, 15, 'HAVE AN AMAZING', new_x="LMARGIN", new_y="NEXT", align='C')
+    pdf.cell(0, 15, 'ADVENTURE!', new_x="LMARGIN", new_y="NEXT", align='C')
+    
+    pdf.ln(10)
+    pdf.set_font('Helvetica', 'I', 12)
+    pdf.set_text_color(*COLOR_TEXT)
+    pdf.cell(0, 8, '"Travel is the only thing you buy that makes you richer."', new_x="LMARGIN", new_y="NEXT", align='C')
+    
+    pdf.ln(15)
+    pdf.set_font('Helvetica', '', 11)
+    pdf.multi_cell(0, 6, "Enjoy every moment in beautiful Andalusia!\nMake memories, take photos, eat tapas, and embrace the adventure.", align='C')
+    
+    pdf.ln(10)
+    pdf.set_font('Helvetica', 'I', 9)
+    pdf.set_text_color(*COLOR_ACCENT)
+    pdf.cell(0, 6, '#AndalusiaRoadTrip #TravelSpain #Wanderlust', new_x="LMARGIN", new_y="NEXT", align='C')
+    
+    pdf.ln(15)
+    pdf.set_font('Helvetica', '', 10)
+    pdf.set_text_color(*COLOR_TEXT)
+    pdf.cell(0, 6, 'Generated with love by Your Personal Travel Planner', new_x="LMARGIN", new_y="NEXT", align='C')
 
     # ========================================================================
     # OUTPUT

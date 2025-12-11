@@ -1341,14 +1341,20 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                 # Get events (same as UI displays)
                 pdf_events = []
                 try:
+                    print(f"[PDF DEBUG] EVENTS_AVAILABLE: {EVENTS_AVAILABLE}")
+                    print(f"[PDF DEBUG] pdf_start_date: {pdf_start_date}, type: {type(pdf_start_date)}")
+                    
                     if EVENTS_AVAILABLE and pdf_start_date:
                         trip_end = pdf_start_date + timedelta(days=total_trip_days - 1)
                         major_cities = ['Seville', 'Granada', 'Cordoba', 'Malaga', 'Cadiz', 'Ronda', 'Jerez']
                         cities_to_check = list(set(ordered_cities + major_cities))
                         
+                        print(f"[PDF DEBUG] Checking cities for events: {cities_to_check}")
+                        
                         all_events = []
                         for city in cities_to_check:
                             city_events = get_events_for_trip(city, pdf_start_date, trip_end)
+                            print(f"[PDF DEBUG] Events for {city}: {len(city_events)}")
                             all_events.extend(city_events)
                         
                         # Remove duplicates
@@ -1358,13 +1364,17 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                             if event_key not in seen:
                                 seen.add(event_key)
                                 pdf_events.append(event)
-                except:
-                    pass
+                        
+                        print(f"[PDF DEBUG] Total unique events: {len(pdf_events)}")
+                except Exception as evt_err:
+                    print(f"[PDF DEBUG] Error fetching events: {evt_err}")
                 
                 # Add start_date and events to result for PDF
                 result_with_extras = dict(result) if result else {}
                 result_with_extras['start_date'] = pdf_start_date
                 result_with_extras['events'] = pdf_events
+                
+                print(f"[PDF DEBUG] Passing to PDF - start_date: {pdf_start_date}, events: {len(pdf_events)}")
                 
                 pdf_buffer = build_pdf(
                     itinerary=itinerary,
