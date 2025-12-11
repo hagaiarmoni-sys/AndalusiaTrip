@@ -1347,7 +1347,8 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                     
                     if EVENTS_AVAILABLE and pdf_start_date:
                         trip_end = pdf_start_date + timedelta(days=total_trip_days - 1)
-                        major_cities = ['Seville', 'Granada', 'Cordoba', 'Malaga', 'Cadiz', 'Ronda', 'Jerez']
+                        # Use city names with proper accents to match events database
+                        major_cities = ['Seville', 'Sevilla', 'Granada', 'Córdoba', 'Cordoba', 'Málaga', 'Malaga', 'Cádiz', 'Cadiz', 'Ronda', 'Jerez', 'Jerez de la Frontera']
                         cities_to_check = list(set(ordered_cities + major_cities))
                         
                         events_debug_msg += f" | Checking {len(cities_to_check)} cities"

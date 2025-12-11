@@ -69,6 +69,35 @@ DATA_DIR = os.path.join(BASE_DIR, 'data')
 PHOTOS_DIR = os.path.join(DATA_DIR, 'photos')
 MAPS_DIR = os.path.join(DATA_DIR, 'maps')
 
+# Additional paths to try (for different deployment scenarios)
+ALTERNATIVE_PHOTOS_DIRS = [
+    os.path.join(BASE_DIR, 'data', 'photos'),
+    os.path.join(os.getcwd(), 'data', 'photos'),
+    'data/photos',
+    './data/photos',
+]
+
+def get_photos_dir(photos_dir: str = None) -> str:
+    """Find the photos directory, trying multiple locations."""
+    if photos_dir and os.path.isdir(photos_dir):
+        return photos_dir
+    
+    # Try all possible locations
+    all_dirs = [photos_dir] if photos_dir else []
+    all_dirs.extend([PHOTOS_DIR] + ALTERNATIVE_PHOTOS_DIRS)
+    
+    for d in all_dirs:
+        if d and os.path.isdir(d):
+            # Check if it actually has photos
+            files = os.listdir(d)
+            jpg_files = [f for f in files if f.endswith(('.jpg', '.jpeg', '.png'))]
+            if jpg_files:
+                print(f"📁 Found photos directory: {d} ({len(jpg_files)} photos)")
+                return d
+    
+    print(f"⚠️ Photos directory not found. Tried: {all_dirs}")
+    return photos_dir or PHOTOS_DIR
+
 
 # ============================================================================
 # CITY COORDINATES (for mini-map)
@@ -138,8 +167,7 @@ ANDALUSIA_BOUNDS = {
 
 def find_photo_path(poi: Dict, photos_dir: str = None) -> Optional[str]:
     """Find the photo file for a POI."""
-    if photos_dir is None:
-        photos_dir = PHOTOS_DIR
+    photos_dir = get_photos_dir(photos_dir)
     
     # Option 1: Use local_photo_path directly
     local_path = poi.get('local_photo_path', '')
@@ -799,8 +827,8 @@ def generate_poi_slideshow_from_pois(
     if config is None:
         config = SlideshowConfig()
     
-    if photos_dir is None:
-        photos_dir = PHOTOS_DIR
+    # Use helper to find valid photos directory
+    photos_dir = get_photos_dir(photos_dir)
     
     try:
         from PIL import Image

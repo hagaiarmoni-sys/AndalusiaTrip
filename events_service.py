@@ -422,6 +422,14 @@ def get_curated_events(city: str, start_date: str, end_date: str) -> List[Dict]:
     
     This is a fallback that always works, no API needed!
     """
+    import unicodedata
+    
+    def normalize_city(name: str) -> str:
+        """Remove accents and lowercase for comparison"""
+        # Normalize unicode and remove accents
+        normalized = unicodedata.normalize('NFD', name)
+        without_accents = ''.join(c for c in normalized if unicodedata.category(c) != 'Mn')
+        return without_accents.lower()
     
     start_dt = datetime.strptime(start_date, '%Y-%m-%d')
     end_dt = datetime.strptime(end_date, '%Y-%m-%d')
@@ -443,10 +451,10 @@ def get_curated_events(city: str, start_date: str, end_date: str) -> List[Dict]:
             
             # Check if festival overlaps with trip
             if (festival_start <= end_dt and festival_end >= start_dt):
-                # Check if city matches (or Jerez partial match)
-                city_lower = city.lower()
-                festival_city_lower = festival['city'].lower()
-                if city_lower in festival_city_lower or festival_city_lower in city_lower or 'jerez' in city_lower and 'jerez' in festival_city_lower:
+                # Check if city matches (normalized for accents)
+                city_norm = normalize_city(city)
+                festival_city_norm = normalize_city(festival['city'])
+                if city_norm in festival_city_norm or festival_city_norm in city_norm or ('jerez' in city_norm and 'jerez' in festival_city_norm):
                     matching_events.append({
                         'name': festival['name'],
                         'date': festival_start.strftime('%Y-%m-%d'),
