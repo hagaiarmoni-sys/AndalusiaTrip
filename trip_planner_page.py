@@ -1353,12 +1353,21 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                         events_debug_msg += f" | Checking {len(cities_to_check)} cities"
                         print(f"[PDF DEBUG] Checking cities for events: {cities_to_check}")
                         
+                        # Convert dates to strings - get_events_for_trip expects "YYYY-MM-DD" format
+                        start_str = pdf_start_date.strftime("%Y-%m-%d") if hasattr(pdf_start_date, 'strftime') else str(pdf_start_date)
+                        end_str = trip_end.strftime("%Y-%m-%d") if hasattr(trip_end, 'strftime') else str(trip_end)
+                        
+                        events_debug_msg += f" | Dates: {start_str} to {end_str}"
+                        
                         all_events = []
                         for city in cities_to_check:
-                            city_events = get_events_for_trip(city, pdf_start_date, trip_end)
-                            events_debug_msg += f" | {city}:{len(city_events)}"
-                            print(f"[PDF DEBUG] Events for {city}: {len(city_events)}")
-                            all_events.extend(city_events)
+                            try:
+                                city_events = get_events_for_trip(city, start_str, end_str)
+                                events_debug_msg += f" | {city}:{len(city_events)}"
+                                print(f"[PDF DEBUG] Events for {city}: {len(city_events)}")
+                                all_events.extend(city_events)
+                            except Exception as city_err:
+                                print(f"[PDF DEBUG] Error for {city}: {city_err}")
                         
                         # Remove duplicates
                         seen = set()

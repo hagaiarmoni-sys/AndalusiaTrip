@@ -645,7 +645,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
     ]
     for meal in meal_times:
         pdf.set_x(pdf.get_x() + 5)
-        pdf.cell(0, 5, f"• {meal}", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 5, f"- {meal}", new_x="LMARGIN", new_y="NEXT")
     
     pdf.ln(3)
     pdf.set_font('Helvetica', 'I', 9)
@@ -676,7 +676,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         pdf.set_font('Helvetica', '', 9)
         pdf.set_text_color(*COLOR_TEXT)
         pdf.set_x(pdf.get_x() + 5)
-        pdf.cell(0, 5, f"• {tip}", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 5, f"- {tip}", new_x="LMARGIN", new_y="NEXT")
     
     pdf.ln(3)
     pdf.section_title('Tolls & Fuel', COLOR_PRIMARY)
@@ -693,7 +693,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         pdf.set_font('Helvetica', '', 9)
         pdf.set_text_color(*COLOR_TEXT)
         pdf.set_x(pdf.get_x() + 5)
-        pdf.cell(0, 5, f"• {tip}", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 5, f"- {tip}", new_x="LMARGIN", new_y="NEXT")
     
     pdf.ln(3)
     pdf.section_title('Parking Guide', COLOR_PRIMARY)
@@ -717,7 +717,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         pdf.set_font('Helvetica', '', 9)
         pdf.set_text_color(*COLOR_TEXT)
         pdf.set_x(pdf.get_x() + 5)
-        pdf.cell(0, 5, f"• {tip}", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 5, f"- {tip}", new_x="LMARGIN", new_y="NEXT")
     
     # Car Rental Tips
     pdf.add_page()
@@ -739,7 +739,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         pdf.set_font('Helvetica', '', 9)
         pdf.set_text_color(*COLOR_TEXT)
         pdf.set_x(pdf.get_x() + 5)
-        pdf.cell(0, 5, f"• {tip}", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 5, f"- {tip}", new_x="LMARGIN", new_y="NEXT")
 
     # ========================================================================
     # ESSENTIAL TRAVEL TIPS
@@ -801,7 +801,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         pdf.set_font('Helvetica', '', 9)
         pdf.set_text_color(*COLOR_TEXT)
         pdf.set_x(pdf.get_x() + 5)
-        pdf.cell(0, 5, f"• {item}", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 5, f"- {item}", new_x="LMARGIN", new_y="NEXT")
     
     pdf.ln(2)
     pdf.section_title('Essentials', COLOR_PRIMARY)
@@ -820,7 +820,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         pdf.set_font('Helvetica', '', 9)
         pdf.set_text_color(*COLOR_TEXT)
         pdf.set_x(pdf.get_x() + 5)
-        pdf.cell(0, 5, f"• {item}", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 5, f"- {item}", new_x="LMARGIN", new_y="NEXT")
     
     pdf.ln(2)
     pdf.section_title('Nice to Have', COLOR_PRIMARY)
@@ -838,7 +838,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         pdf.set_font('Helvetica', '', 9)
         pdf.set_text_color(*COLOR_TEXT)
         pdf.set_x(pdf.get_x() + 5)
-        pdf.cell(0, 5, f"• {item}", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(0, 5, f"- {item}", new_x="LMARGIN", new_y="NEXT")
 
     # ========================================================================
     # SURVIVAL SPANISH
