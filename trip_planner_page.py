@@ -421,7 +421,7 @@ def show_trip_planner_full(attractions, hotels, restaurants=None):
     known_cities = {(item.get("city") or "").strip() for item in attractions}
     known_cities.discard("")  # Remove empty strings
     
-    st.title("✈️ Plan a NEW Trip")
+    st.title("✈️ Plan a New Trip")
     
     # ✅ NEW: Disclaimer/Agreement
     if 'disclaimer_accepted' not in st.session_state:
@@ -1330,7 +1330,7 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
             except Exception as e:
                 st.error(f"❌ Error generating Excel: {str(e)}")
         
-        # PDF export (Pure Python - fpdf2, no LibreOffice needed)
+        # PDF export (with photos, styling, and clickable links)
         with col2:
             try:
                 from pdf_generator import build_pdf
@@ -1357,7 +1357,7 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
             except Exception as e:
                 st.error(f"❌ Error generating PDF: {str(e)}")
                 import traceback
-                print(traceback.format_exc())
+                traceback.print_exc()
     
     # Clear the loading message after files are ready
     loading_placeholder.empty()
