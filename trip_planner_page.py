@@ -1340,20 +1340,23 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                 
                 # Get events (same as UI displays)
                 pdf_events = []
+                events_debug_msg = ""
                 try:
-                    print(f"[PDF DEBUG] EVENTS_AVAILABLE: {EVENTS_AVAILABLE}")
-                    print(f"[PDF DEBUG] pdf_start_date: {pdf_start_date}, type: {type(pdf_start_date)}")
+                    events_debug_msg = f"EVENTS_AVAILABLE: {EVENTS_AVAILABLE}, pdf_start_date: {pdf_start_date}"
+                    print(f"[PDF DEBUG] {events_debug_msg}")
                     
                     if EVENTS_AVAILABLE and pdf_start_date:
                         trip_end = pdf_start_date + timedelta(days=total_trip_days - 1)
                         major_cities = ['Seville', 'Granada', 'Cordoba', 'Malaga', 'Cadiz', 'Ronda', 'Jerez']
                         cities_to_check = list(set(ordered_cities + major_cities))
                         
+                        events_debug_msg += f" | Checking {len(cities_to_check)} cities"
                         print(f"[PDF DEBUG] Checking cities for events: {cities_to_check}")
                         
                         all_events = []
                         for city in cities_to_check:
                             city_events = get_events_for_trip(city, pdf_start_date, trip_end)
+                            events_debug_msg += f" | {city}:{len(city_events)}"
                             print(f"[PDF DEBUG] Events for {city}: {len(city_events)}")
                             all_events.extend(city_events)
                         
@@ -1365,9 +1368,20 @@ def display_itinerary(result, prefs, days, attractions, hotels, restaurants):
                                 seen.add(event_key)
                                 pdf_events.append(event)
                         
+                        events_debug_msg += f" | Total unique: {len(pdf_events)}"
                         print(f"[PDF DEBUG] Total unique events: {len(pdf_events)}")
+                    else:
+                        events_debug_msg += " | Skipped - conditions not met"
                 except Exception as evt_err:
+                    events_debug_msg += f" | ERROR: {evt_err}"
                     print(f"[PDF DEBUG] Error fetching events: {evt_err}")
+                
+                # Show debug info in expander (temporary)
+                with st.expander("🔍 PDF Events Debug", expanded=False):
+                    st.text(events_debug_msg)
+                    st.write(f"Events found: {len(pdf_events)}")
+                    if pdf_events:
+                        st.write(pdf_events[:3])  # Show first 3 events
                 
                 # Add start_date and events to result for PDF
                 result_with_extras = dict(result) if result else {}
