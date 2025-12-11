@@ -341,38 +341,66 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
             pdf.ln(2)
 
         # ---------------------------------------------------------
-        # Daily Google Maps Link - Generate from attraction coordinates
+        # Daily Google Maps Link - Use place_id for accurate locations
         # ---------------------------------------------------------
-        # Always generate from coordinates (pre-built URLs may have issues)
         waypoints = []
-        seen_coords = set()  # Track unique coordinates
+        seen_ids = set()  # Track unique place_ids to avoid duplicates
         
         for city_stop in day.get('cities', []):
             for attr in city_stop.get('attractions', []):
-                lat = attr.get('lat')
-                lon = attr.get('lon') or attr.get('lng')
-                if lat and lon:
-                    # Round to 5 decimal places for deduplication
-                    coord_key = f"{round(float(lat), 5)},{round(float(lon), 5)}"
-                    if coord_key not in seen_coords:
-                        seen_coords.add(coord_key)
-                        waypoints.append(coord_key)
+                place_id = attr.get('place_id')
+                attr_name = attr.get('name', '')
+                
+                if place_id and place_id not in seen_ids:
+                    seen_ids.add(place_id)
+                    # Use place_id format for waypoints
+                    waypoints.append(f"place_id:{place_id}")
+                elif attr_name and attr_name not in seen_ids:
+                    # Fallback: use name + city for search
+                    seen_ids.add(attr_name)
+                    attr_city = city_stop.get('city', city)
+                    waypoints.append(quote_plus(f"{attr_name} {attr_city}"))
         
-        # Limit to reasonable number of waypoints (Google Maps has limits)
+        # Limit to 10 waypoints (Google Maps limit)
         if len(waypoints) > 10:
             waypoints = waypoints[:10]
         
         day_map_url = None
         if waypoints:
             if len(waypoints) == 1:
-                day_map_url = f"https://www.google.com/maps/search/?api=1&query={waypoints[0]}"
+                # Single destination
+                if waypoints[0].startswith('place_id:'):
+                    pid = waypoints[0].replace('place_id:', '')
+                    day_map_url = f"https://www.google.com/maps/search/?api=1&query_place_id={pid}"
+                else:
+                    day_map_url = f"https://www.google.com/maps/search/?api=1&query={waypoints[0]}"
             else:
+                # Multiple waypoints - use directions
                 origin = waypoints[0]
                 dest = waypoints[-1]
-                day_map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin}&destination={dest}&travelmode=walking"
+                
+                # Build origin/destination with place_id support
+                if origin.startswith('place_id:'):
+                    origin_param = f"origin_place_id={origin.replace('place_id:', '')}"
+                else:
+                    origin_param = f"origin={origin}"
+                    
+                if dest.startswith('place_id:'):
+                    dest_param = f"destination_place_id={dest.replace('place_id:', '')}"
+                else:
+                    dest_param = f"destination={dest}"
+                
+                day_map_url = f"https://www.google.com/maps/dir/?api=1&{origin_param}&{dest_param}&travelmode=walking"
+                
+                # Add middle waypoints
                 if len(waypoints) > 2:
-                    middle = "|".join(waypoints[1:-1])
-                    day_map_url += f"&waypoints={quote_plus(middle)}"
+                    middle_waypoints = []
+                    for wp in waypoints[1:-1]:
+                        if wp.startswith('place_id:'):
+                            middle_waypoints.append(wp.replace('place_id:', ''))
+                        else:
+                            middle_waypoints.append(wp)
+                    day_map_url += f"&waypoints={quote_plus('|'.join(middle_waypoints))}"
         
         if day_map_url:
             pdf.add_link("Open Today's Route in Google Maps", day_map_url, COLOR_PRIMARY)
@@ -602,6 +630,56 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
                     pdf.add_link('View on Google Maps', rest_url, COLOR_FOOD)
                     
                     pdf.ln(1)
+
+        # ---------------------------------------------------------
+        # STOPS ALONG THE WAY (scenic detours on travel days)
+        # ---------------------------------------------------------
+        route_stops = day.get('route_stops', [])
+        if route_stops:
+            pdf.ln(3)
+            pdf.section_title('STOPS ALONG THE WAY', COLOR_PRIMARY)
+            pdf.ln(1)
+            
+            pdf.set_font('Helvetica', 'I', 9)
+            pdf.set_text_color(*COLOR_LIGHT)
+            pdf.cell(0, 5, 'Recommended stops when driving to your next destination', new_x="LMARGIN", new_y="NEXT")
+            pdf.ln(2)
+            
+            for stop in route_stops:
+                stop_name = safe_text(stop.get('name', 'Unknown'), 40)
+                stop_type = stop.get('type', 'stop').replace('_', ' ').title()
+                highlight = stop.get('highlight', '')
+                detour_km = stop.get('detour_km', 0)
+                time_min = stop.get('time_min', 30)
+                
+                # Stop name and type
+                pdf.set_font('Helvetica', 'B', 10)
+                pdf.set_text_color(*COLOR_TEXT)
+                pdf.cell(0, 6, f"{stop_name} ({stop_type})", new_x="LMARGIN", new_y="NEXT")
+                
+                # Highlight
+                if highlight:
+                    pdf.set_font('Helvetica', 'I', 9)
+                    pdf.set_text_color(*COLOR_ACCENT)
+                    pdf.set_x(pdf.get_x() + 5)
+                    pdf.cell(0, 5, f"* {safe_text(highlight, 50)}", new_x="LMARGIN", new_y="NEXT")
+                
+                # Time and detour info
+                pdf.set_font('Helvetica', '', 9)
+                pdf.set_text_color(*COLOR_LIGHT)
+                pdf.set_x(pdf.get_x() + 5)
+                pdf.cell(0, 5, f"~{time_min} min visit | +{detour_km}km detour", new_x="LMARGIN", new_y="NEXT")
+                
+                # Google Maps link for the stop
+                stop_place_id = stop.get('place_id')
+                if stop_place_id:
+                    stop_url = f"https://www.google.com/maps/search/?api=1&query={quote_plus(stop_name)}&query_place_id={stop_place_id}"
+                else:
+                    stop_url = f"https://www.google.com/maps/search/?api=1&query={quote_plus(stop_name + ' Spain')}"
+                pdf.set_x(pdf.get_x() + 5)
+                pdf.add_link('View on Google Maps', stop_url, COLOR_PRIMARY)
+                
+                pdf.ln(2)
 
     # ========================================================================
     # MUST-TRY ANDALUSIAN DISHES
