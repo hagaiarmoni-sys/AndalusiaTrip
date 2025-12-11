@@ -170,15 +170,33 @@ class TravelPDF(FPDF):
 def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed_requests, is_car_mode=False, result=None):
     pdf = TravelPDF()
     
-    # Date handling
+    # Date handling - support date, datetime, and string
     start_date = None
     if result and result.get('start_date'):
-        start_date = result['start_date']
-        if isinstance(start_date, str):
+        raw_date = result['start_date']
+        # Debug
+        print(f"[PDF] Raw start_date: {raw_date}, type: {type(raw_date)}")
+        
+        # Convert string to date
+        if isinstance(raw_date, str):
             try:
-                start_date = datetime.strptime(start_date, "%Y-%m-%d")
+                start_date = datetime.strptime(raw_date, "%Y-%m-%d").date()
             except:
-                start_date = None
+                try:
+                    start_date = datetime.strptime(raw_date, "%d/%m/%Y").date()
+                except:
+                    start_date = None
+        # If it's already a date or datetime
+        elif hasattr(raw_date, 'year'):
+            start_date = raw_date
+        
+        print(f"[PDF] Processed start_date: {start_date}, type: {type(start_date)}")
+    
+    # Get all events from result
+    all_events = []
+    if result:
+        all_events = result.get('events', []) or result.get('seasonal_events', []) or []
+        print(f"[PDF] Found {len(all_events)} events in result")
 
     trip_type = prefs.get('trip_type', 'Point-to-point') if prefs else 'Point-to-point'
     is_hub_trip = trip_type == 'Star/Hub'
@@ -240,6 +258,54 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         pdf.set_x((210 - link_width) / 2)
         pdf.write(8, link_text, maps_link)
         pdf.ln(10)
+
+    # ========================================================================
+    # EVENTS SECTION (if any events during the trip)
+    # ========================================================================
+    if all_events:
+        pdf.add_page()
+        pdf.chapter_title('EVENTS DURING YOUR TRIP', (142, 68, 173))  # Purple
+        pdf.ln(3)
+        
+        pdf.set_font('Helvetica', 'I', 10)
+        pdf.set_text_color(*COLOR_TEXT)
+        pdf.cell(0, 6, f'Found {len(all_events)} special events happening during your visit!', new_x="LMARGIN", new_y="NEXT")
+        pdf.ln(5)
+        
+        for event in all_events:
+            # Event name
+            event_name = safe_text(event.get('name', '') or event.get('title', 'Event'), 60)
+            pdf.set_font('Helvetica', 'B', 11)
+            pdf.set_text_color(*COLOR_TEXT)
+            pdf.cell(0, 7, event_name, new_x="LMARGIN", new_y="NEXT")
+            
+            # Event location/city
+            event_city = event.get('city', '') or event.get('location', '')
+            if event_city:
+                pdf.set_font('Helvetica', 'I', 9)
+                pdf.set_text_color(*COLOR_LIGHT)
+                pdf.cell(0, 5, f'Location: {safe_text(event_city, 40)}', new_x="LMARGIN", new_y="NEXT")
+            
+            # Event dates
+            event_dates = event.get('dates', '') or event.get('date', '') or event.get('event_date', '')
+            if event_dates:
+                pdf.set_font('Helvetica', 'I', 9)
+                pdf.set_text_color(*COLOR_LIGHT)
+                pdf.cell(0, 5, f'Dates: {safe_text(str(event_dates), 50)}', new_x="LMARGIN", new_y="NEXT")
+            
+            # Event description
+            event_desc = event.get('description', '')
+            if event_desc:
+                pdf.set_font('Helvetica', '', 9)
+                pdf.set_text_color(*COLOR_TEXT)
+                pdf.multi_cell(0, 5, safe_text(event_desc, 200))
+            
+            # Event URL if available
+            event_url = event.get('url', '') or event.get('link', '') or event.get('website', '')
+            if event_url:
+                pdf.add_link('More Information', event_url, COLOR_PRIMARY)
+            
+            pdf.ln(4)
 
     # ========================================================================
     # DAILY ITINERARY
