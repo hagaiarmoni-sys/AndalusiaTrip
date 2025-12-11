@@ -4,21 +4,15 @@
 # === CORE ===
 streamlit>=1.38.0
 pandas>=2.0
-python-docx>=1.0.0
 requests>=2.31.0
-xlsxwriter>=3.2.0
 
-# === IMAGE HANDLING (Required for photos in Word docs) ===
+# === PDF GENERATION (Pure Python - photos + clickable links) ===
+fpdf2>=2.7.0
 Pillow>=10.0.0
 
-# === PDF GENERATION (Pure Python - reliable hyperlinks) ===
-fpdf2>=2.7.0
+# === EXCEL EXPORT ===
+xlsxwriter>=3.2.0
+openpyxl>=3.1.0
 
 # === DATE HANDLING ===
 python-dateutil>=2.8.0
-
-# === EXCEL READING ===
-openpyxl>=3.1.0
-
-# === PDF LINK FIXING ===
-PyMuPDF>=1.23.0
