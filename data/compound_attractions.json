@@ -1,0 +1,150 @@
+{
+  "Granada": {
+    "Alhambra Complex": {
+      "description": "The Alhambra is a single ticketed complex. All attractions within must be visited on the same day.",
+      "ticket_type": "single_entry_timed",
+      "visit_duration_hours": 4,
+      "core_attraction": "The Alhambra",
+      "included_attractions": [
+        "The Alhambra",
+        "Generalife",
+        "Palace of Charles V",
+        "Alcazaba (Granada)",
+        "Museum of Alhambra"
+      ],
+      "excluded_attractions": [
+        "Hotel Alhambra Palace"
+      ],
+      "must_visit_together": true,
+      "booking_required": true,
+      "booking_advance_days": 14,
+      "neighborhood": "Sabika Hill"
+    }
+  },
+  "Seville": {
+    "Cathedral Complex": {
+      "description": "La Giralda is the bell tower of Seville Cathedral. Single ticket covers both.",
+      "ticket_type": "single_entry",
+      "visit_duration_hours": 2,
+      "core_attraction": "Seville Cathedral",
+      "included_attractions": [
+        "Seville Cathedral",
+        "La Giralda"
+      ],
+      "must_visit_together": true,
+      "booking_required": false,
+      "neighborhood": "Old Town - Cathedral Area"
+    },
+    "Alcázar Area": {
+      "description": "Real Alcázar with extensive gardens. Very close to Cathedral but separate ticket.",
+      "ticket_type": "single_entry_timed",
+      "visit_duration_hours": 2.5,
+      "core_attraction": "Real Alcázar de Sevilla",
+      "included_attractions": [
+        "Real Alcázar de Sevilla"
+      ],
+      "must_visit_together": false,
+      "booking_required": true,
+      "booking_advance_days": 7,
+      "neighborhood": "Old Town - Cathedral Area",
+      "note": "Close to Cathedral (~280m) - typically visited same day but not same ticket"
+    }
+  },
+  "Málaga": {
+    "Gibralfaro Hill Complex": {
+      "description": "Castle, viewpoint, and fortress are all on the same hill. Logical to visit together.",
+      "ticket_type": "separate_but_close",
+      "visit_duration_hours": 2,
+      "core_attraction": "Castillo de Gibralfaro",
+      "included_attractions": [
+        "Castillo de Gibralfaro",
+        "Mirador del Gibralfaro",
+        "Gibralfaro"
+      ],
+      "must_visit_together": true,
+      "booking_required": false,
+      "neighborhood": "Gibralfaro Hill"
+    },
+    "Alcazaba-Gibralfaro Connection": {
+      "description": "Alcazaba at base of hill, Gibralfaro at top. Can be combined via walking path (15 min uphill).",
+      "ticket_type": "separate_tickets",
+      "visit_duration_hours": 3,
+      "core_attraction": "Alcazaba (Málaga)",
+      "included_attractions": [
+        "Alcazaba (Málaga)",
+        "Castillo de Gibralfaro"
+      ],
+      "must_visit_together": false,
+      "booking_required": false,
+      "neighborhood": "Historic Center to Gibralfaro Hill",
+      "note": "Often visited together (combo ticket available), but can be separate days if time is limited"
+    }
+  },
+  "Córdoba": {
+    "Mosque-Cathedral": {
+      "description": "The Mezquita is a single building - both mosque and cathedral in one.",
+      "ticket_type": "single_entry",
+      "visit_duration_hours": 1.5,
+      "core_attraction": "Mezquita Cathedral de Cordoba",
+      "included_attractions": [
+        "Mezquita Cathedral de Cordoba"
+      ],
+      "must_visit_together": true,
+      "booking_required": false,
+      "neighborhood": "Judería (Jewish Quarter)"
+    }
+  },
+  "Ronda": {
+    "Bridge Gorge Area": {
+      "description": "The New Bridge and Old Bridge span the same gorge. Typically seen together on a walking tour.",
+      "ticket_type": "free_public_space",
+      "visit_duration_hours": 1,
+      "core_attraction": "New Bridge (Puente Nuevo)",
+      "included_attractions": [
+        "New Bridge (Puente Nuevo)",
+        "Puente Viejo (Old Bridge)"
+      ],
+      "must_visit_together": false,
+      "booking_required": false,
+      "neighborhood": "El Tajo Gorge",
+      "note": "Both bridges are walking distance (300m) and often visited together, but not mandatory"
+    }
+  },
+  
+  "clustering_rules": {
+    "must_visit_together": {
+      "description": "Attractions with this flag MUST be on the same day",
+      "enforcement": "hard_constraint"
+    },
+    "should_visit_together": {
+      "description": "Attractions that are logically grouped but can be split if necessary",
+      "enforcement": "soft_constraint"
+    },
+    "same_neighborhood": {
+      "description": "Attractions in same neighborhood should be prioritized for same day",
+      "enforcement": "optimization_preference"
+    }
+  },
+  
+  "neighborhoods": {
+    "Granada": {
+      "Alhambra Complex": ["The Alhambra", "Generalife", "Palace of Charles V", "Alcazaba (Granada)", "Museum of Alhambra"],
+      "Albaicín Hill": ["Mirador de San Nicolas", "Mirador de San Cristobal", "San Miguel Alto Viewpoint"],
+      "City Center": ["Granada Cathedral", "Royal Chapel", "Museo de la Capilla Real", "Puerta de Elvira"],
+      "Sacromonte": ["Museo Cuevas del Sacromonte", "Abbey of Sacromonte"]
+    },
+    "Seville": {
+      "Cathedral Area": ["Seville Cathedral", "La Giralda", "Real Alcázar de Sevilla"],
+      "Barrio Santa Cruz": ["Casa de Pilatos", "Las Duenas Palace"],
+      "Parque María Luisa": ["Plaza de Espana", "Museum of Fine Arts"],
+      "Triana": ["Triana Bridge", "Triana Market"],
+      "La Macarena": ["Metropol Parasol"]
+    },
+    "Málaga": {
+      "Historic Center": ["Picasso Museum", "Málaga Cathedral", "Thyssen Museum", "Centre Pompidou Malaga"],
+      "Gibralfaro Hill": ["Castillo de Gibralfaro", "Mirador del Gibralfaro", "Gibralfaro"],
+      "Alcazaba Area": ["Alcazaba (Málaga)", "Roman Theatre"],
+      "Port Area": ["Muelle Uno", "Centre Pompidou Malaga"]
+    }
+  }
+}
