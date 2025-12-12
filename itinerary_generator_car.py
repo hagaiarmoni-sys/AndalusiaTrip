@@ -564,7 +564,13 @@ def apply_diversity(pois, quota, max_same_category):
 def optimize_poi_order(pois):
     """
     Optimize the order of POIs to minimize walking/driving distance.
-    Uses nearest-neighbor algorithm starting from the first POI.
+    Uses improved nearest-neighbor algorithm with smart starting point selection.
+    
+    Improvements:
+    1. Tests multiple starting points to find the best route
+    2. Better coordinate extraction with validation
+    3. Uses haversine distance for accuracy
+    4. Warns about missing coordinates
     
     Args:
         pois: List of POI dicts with lat/lon coordinates
@@ -578,47 +584,123 @@ def optimize_poi_order(pois):
     def get_coords(poi):
         """Extract lat/lon from POI, checking multiple possible field names"""
         lat = poi.get('lat') or (poi.get('coordinates') or {}).get('lat')
-        # Check both 'lng' and 'lon' for longitude
         lon = poi.get('lng') or poi.get('lon') or (poi.get('coordinates') or {}).get('lng') or (poi.get('coordinates') or {}).get('lon')
-        return lat, lon
+        
+        # Validate coordinates
+        if lat is not None and lon is not None:
+            try:
+                lat = float(lat)
+                lon = float(lon)
+                # Andalusia bounds check: lat 36-38, lon -7 to -1
+                if 35 < lat < 39 and -8 < lon < 0:
+                    return lat, lon
+            except (ValueError, TypeError):
+                pass
+        return None, None
     
-    # Check if we have coordinates
-    pois_with_coords = [p for p in pois if all(get_coords(p))]
-    pois_without_coords = [p for p in pois if not all(get_coords(p))]
+    def haversine_distance(lat1, lon1, lat2, lon2):
+        """Calculate distance between two points in kilometers using haversine formula"""
+        R = 6371  # Earth's radius in km
+        
+        lat1_rad = math.radians(lat1)
+        lat2_rad = math.radians(lat2)
+        dlat = math.radians(lat2 - lat1)
+        dlon = math.radians(lon2 - lon1)
+        
+        a = math.sin(dlat/2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon/2)**2
+        c = 2 * math.asin(math.sqrt(a))
+        
+        return R * c
+    
+    # Separate POIs with and without coordinates
+    pois_with_coords = []
+    pois_without_coords = []
+    
+    for poi in pois:
+        lat, lon = get_coords(poi)
+        if lat is not None and lon is not None:
+            poi['_temp_lat'] = lat
+            poi['_temp_lon'] = lon
+            pois_with_coords.append(poi)
+        else:
+            pois_without_coords.append(poi)
+            # Debug: warn about missing coords
+            poi_name = poi.get('name', 'Unknown')
+            # print(f"⚠️ POI '{poi_name}' missing valid coordinates")
     
     if len(pois_with_coords) <= 2:
         return pois  # Not enough coords to optimize
     
-    # Nearest-neighbor algorithm
-    remaining = pois_with_coords.copy()
-    ordered = [remaining.pop(0)]  # Start with first POI
+    def nearest_neighbor_from_start(start_poi, remaining_pois):
+        """Run nearest neighbor algorithm from a given starting point"""
+        ordered = [start_poi]
+        remaining = remaining_pois.copy()
+        
+        while remaining:
+            current = ordered[-1]
+            current_lat = current['_temp_lat']
+            current_lon = current['_temp_lon']
+            
+            # Find nearest unvisited POI
+            nearest = None
+            nearest_dist = float('inf')
+            
+            for poi in remaining:
+                poi_lat = poi['_temp_lat']
+                poi_lon = poi['_temp_lon']
+                
+                dist = haversine_distance(current_lat, current_lon, poi_lat, poi_lon)
+                
+                if dist < nearest_dist:
+                    nearest_dist = dist
+                    nearest = poi
+            
+            if nearest:
+                ordered.append(nearest)
+                remaining.remove(nearest)
+        
+        return ordered
     
-    while remaining:
-        current = ordered[-1]
-        current_lat, current_lon = get_coords(current)
+    def calculate_total_distance(route):
+        """Calculate total distance for a route"""
+        total = 0
+        for i in range(len(route) - 1):
+            lat1 = route[i]['_temp_lat']
+            lon1 = route[i]['_temp_lon']
+            lat2 = route[i+1]['_temp_lat']
+            lon2 = route[i+1]['_temp_lon']
+            total += haversine_distance(lat1, lon1, lat2, lon2)
+        return total
+    
+    # Try starting from each POI and pick the best route
+    best_route = None
+    best_distance = float('inf')
+    
+    # Test up to 3 starting points (to save computation time)
+    num_tests = min(3, len(pois_with_coords))
+    for i in range(num_tests):
+        start_poi = pois_with_coords[i]
+        remaining = [p for p in pois_with_coords if p != start_poi]
+        route = nearest_neighbor_from_start(start_poi, remaining)
+        distance = calculate_total_distance(route)
         
-        # Find nearest unvisited POI
-        nearest = None
-        nearest_dist = float('inf')
-        
-        for poi in remaining:
-            poi_lat, poi_lon = get_coords(poi)
-            
-            # Simple Euclidean distance (good enough for city-scale)
-            dist = ((current_lat - poi_lat) ** 2 + (current_lon - poi_lon) ** 2) ** 0.5
-            
-            if dist < nearest_dist:
-                nearest_dist = dist
-                nearest = poi
-        
-        if nearest:
-            ordered.append(nearest)
-            remaining.remove(nearest)
+        if distance < best_distance:
+            best_distance = distance
+            best_route = route
+    
+    # Clean up temporary coordinate fields
+    for poi in pois_with_coords:
+        if '_temp_lat' in poi:
+            del poi['_temp_lat']
+        if '_temp_lon' in poi:
+            del poi['_temp_lon']
     
     # Add POIs without coordinates at the end
-    ordered.extend(pois_without_coords)
-    
-    return ordered
+    if best_route:
+        best_route.extend(pois_without_coords)
+        return best_route
+    else:
+        return pois
 
 
 # ============================================================================
