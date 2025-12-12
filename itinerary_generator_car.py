@@ -32,6 +32,19 @@ except ImportError as e:
     DAY_ALLOCATION_AVAILABLE = False
     print(f"⚠️ day_allocation module not found: {e}")
 
+# ✅ NEW: Import compound attractions handler
+try:
+    from compound_attractions_handler import (
+        ensure_compound_integrity,
+        find_compound_group,
+        get_compound_groups
+    )
+    COMPOUND_HANDLER_AVAILABLE = True
+    # print("✅ compound_attractions_handler imported successfully")
+except ImportError as e:
+    COMPOUND_HANDLER_AVAILABLE = False
+    print(f"⚠️ compound_attractions_handler not found: {e}")
+
 
 # ============================================================================
 # HIDDEN GEMS / ROUTE STOPS DATA
@@ -504,15 +517,17 @@ def has_blockbuster_attraction(pois):
     return max(3, min(quota, total_pois))
 
 
-def apply_diversity(pois, quota, max_same_category):
+def apply_diversity(pois, quota, max_same_category, city=None):
     """
     ✅ UPDATED: Select POIs with category diversity using weighted scoring
+    ✅ NEW: Ensures compound attractions (e.g., Alhambra complex) stay together
     
     Changes from old version:
     - Uses weighted scoring instead of just rating
     - Prioritizes must-see landmarks and popular attractions
     - Still maintains category diversity
     - Still respects time limits
+    - NOW: Ensures compound attractions are complete (Alhambra, Alcázar, etc.)
     """
     if not pois:
         return []
@@ -554,6 +569,11 @@ def apply_diversity(pois, quota, max_same_category):
                 if total_duration + duration <= max_duration_minutes:
                     selected.append(poi)
                     total_duration += duration
+    
+    # ✅ NEW: Ensure compound attractions are complete
+    if COMPOUND_HANDLER_AVAILABLE and city:
+        # Check if any selected POI is part of a compound attraction
+        selected = ensure_compound_integrity(selected, sorted_pois, city)
     
     # ✅ NEW: Optimize POI order geographically (nearest-neighbor)
     selected = optimize_poi_order(selected)
@@ -1193,7 +1213,7 @@ def generate_star_hub_trip(base_city, days, prefs, attractions, hotels, restaura
         # Check for blockbuster attractions
         has_blockbuster = has_blockbuster_attraction(city_attractions)
         quota = compute_poi_quota(pace, len(city_attractions), has_blockbuster)
-        selected_pois = apply_diversity(city_attractions, quota, max_same_cat)
+        selected_pois = apply_diversity(city_attractions, quota, max_same_cat, city=base_city)
         
         # Remove used attractions for next days
         base_attractions = [a for a in base_attractions if a not in selected_pois]
@@ -1222,7 +1242,7 @@ def generate_star_hub_trip(base_city, days, prefs, attractions, hotels, restaura
         
         # Select POIs for day trip
         quota = compute_poi_quota(pace, len(trip_attractions))
-        selected_pois = apply_diversity(trip_attractions, quota, max_same_cat)
+        selected_pois = apply_diversity(trip_attractions, quota, max_same_cat, city=trip_city)
         
         # Round trip distance (rounded to 1 decimal)
         total_km = round(trip_distance * 2, 1)
@@ -1746,7 +1766,7 @@ def generate_simple_trip(start_end_text, days, prefs, trip_type, attractions, ho
             # Select POIs for this day
             has_blockbuster = has_blockbuster_attraction(available_pois)
             quota = compute_poi_quota(pace, len(available_pois), has_blockbuster)
-            selected = apply_diversity(available_pois, quota, max_same_cat)
+            selected = apply_diversity(available_pois, quota, max_same_cat, city=city_original)
             
             # Mark selected POIs as used (both name and landmark key)
             for poi in selected:
