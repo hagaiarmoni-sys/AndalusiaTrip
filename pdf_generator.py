@@ -333,12 +333,12 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         # Day header
         pdf.chapter_title(f"DAY {day_num}: {city.upper()}{date_str}", COLOR_DAY_HEADER)
         
-        # Day in city info
+        # Day in city info (always show)
+        pdf.set_font('Helvetica', 'I', 9)
+        pdf.set_text_color(*COLOR_LIGHT)
         if total_days_in_city > 1:
-            pdf.set_font('Helvetica', 'I', 9)
-            pdf.set_text_color(*COLOR_LIGHT)
             pdf.cell(0, 5, f'Day {day_in_city} of {total_days_in_city} in {city}', new_x="LMARGIN", new_y="NEXT")
-            pdf.ln(2)
+        pdf.ln(3)  # Consistent spacing after header
 
         # ---------------------------------------------------------
         # Daily Google Maps Link - Use name+city search (same as restaurants)
@@ -382,6 +382,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
         
         if day_map_url:
             pdf.add_link("Open Today's Route in Google Maps", day_map_url, COLOR_PRIMARY)
+            pdf.ln(2)  # Add spacing after route link
         
         # ---------------------------------------------------------
         # YouTube Video Link (first day in city only)
@@ -406,7 +407,7 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
                 fallback_url = f"https://www.youtube.com/results?search_query={query}"
                 pdf.add_link(f"Watch {city} Travel Videos", fallback_url, COLOR_ACCENT)
 
-        pdf.ln(3)
+        pdf.ln(4)  # Increased spacing before highlights section
 
         # ---------------------------------------------------------
         # ATTRACTIONS WITH PHOTOS (NO individual Google Maps links)
