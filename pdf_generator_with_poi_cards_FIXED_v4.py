@@ -8,7 +8,9 @@ from datetime import datetime, timedelta
 import os
 import io
 from urllib.parse import quote_plus
-from poi_cards_pdf import render_poi_cards
+
+# NEW: POI cards renderer (keeps rest of PDF unchanged)
+from poi_cards_pdf_v4 import render_poi_cards
 
 # ============================================================================
 # CONFIGURATION
@@ -423,114 +425,17 @@ def build_pdf(itinerary, hop_kms, maps_link, ordered_cities, days, prefs, parsed
                 pdf.section_title("TODAY'S HIGHLIGHTS", COLOR_ATTR)
                 pdf.ln(1)
                 
-                # NEW: render POIs as compact cards (rounded photos) - implemented in poi_cards_pdf.py
-                
-                try:
-                
-                    render_poi_cards(
-                
-                        pdf=pdf,
-                
-                        pois=attractions[:6],
-                
-                        get_photo_path=get_photo_path,
-                
-                        safe_text=safe_text,
-                
-                        theme={"text": COLOR_TEXT, "light": COLOR_LIGHT, "accent": COLOR_ATTR, "primary": COLOR_PRIMARY},
-                
-                        cards_per_page=3,
-                
-                        max_cards=6,
-                
-                    )
-                
-                except Exception:
-                
-                    # Fallback: previous simple list rendering (keeps PDF generation robust)
-                
-                                    
-                
-                                    for idx, attr in enumerate(attractions[:6], 1):
-                
-                                        attr_name = safe_text(attr.get('name', 'Attraction'), 60)
-                
-                                        
-                
-                                        # Attraction name
-                
-                                        pdf.set_font('Helvetica', 'B', 12)
-                
-                                        pdf.set_text_color(*COLOR_TEXT)
-                
-                                        pdf.cell(0, 8, f'{idx}. {attr_name}', new_x="LMARGIN", new_y="NEXT")
-                
-                                        
-                
-                                        # PHOTO
-                
-                                        photo_path = get_photo_path(attr)
-                
-                                        if photo_path:
-                
-                                            pdf.add_photo(photo_path, max_width=90)
-                
-                                        
-                
-                                        # Description
-                
-                                        description = attr.get('description', '')
-                
-                                        if description:
-                
-                                            pdf.set_font('Helvetica', '', 10)
-                
-                                            pdf.set_text_color(*COLOR_TEXT)
-                
-                                            pdf.multi_cell(0, 5, safe_text(description, 300))
-                
-                                        
-                
-                                        # Details (rating, duration, price)
-                
-                                        details = []
-                
-                                        if attr.get('rating'):
-                
-                                            details.append(f"Rating: {attr['rating']}")
-                
-                                        duration = attr.get('recommended_duration') or attr.get('duration')
-                
-                                        if duration:
-                
-                                            details.append(f"Time: {duration}")
-                
-                                        if attr.get('price'):
-                
-                                            details.append(f"Cost: {attr['price']}")
-                
-                                        
-                
-                                        if details:
-                
-                                            pdf.set_font('Helvetica', 'I', 9)
-                
-                                            pdf.set_text_color(*COLOR_LIGHT)
-                
-                                            pdf.cell(0, 6, ' | '.join(details), new_x="LMARGIN", new_y="NEXT")
-                
-                                        
-                
-                                        pdf.ln(3)
+                # NEW: render POIs as 2x2 cards with rounded photos (implemented in poi_cards_pdf_v4.py)
+                render_poi_cards(
+                    pdf,
+                    attractions[:6],  # keep same count as before
+                    get_photo_path=get_photo_path,
+                    safe_text=safe_text,
+                    max_cards=6,
+                    cards_per_page=4,
+                )
+                pdf.ln(3)
 
-        # ---------------------------------------------------------
-        # EVENTS (check multiple possible locations)
-        # ---------------------------------------------------------
-        events = day.get('events', [])
-        
-        # Also check if events are in city_stop
-        if not events:
-            for city_stop in day.get('cities', []):
                 city_events = city_stop.get('events', [])
                 if city_events:
                     events = city_events
