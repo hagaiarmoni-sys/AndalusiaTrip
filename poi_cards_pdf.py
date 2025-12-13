@@ -1,310 +1,452 @@
 """
-POI card rendering for the Andalusia Travel App PDF.
+poi_cards_pdf.py
 
-Goal:
-- Keep the existing PDF exactly the same, except for HOW POIs ("Today's Highlights") are rendered.
-- Render POIs as compact "cards" with a (rounded-corners) photo and key fields.
+NEW module: render POIs as "cards" in the PDF (photo + details), without changing the rest of the PDF.
 
-Usage (inside pdf_generator.py):
+Designed to be called from pdf_generator.py (or a patched copy) like:
+
     from poi_cards_pdf import render_poi_cards
-    render_poi_cards(pdf, attractions[:6], get_photo_path, safe_text, theme={...}, cards_per_page=3)
+    render_poi_cards(
+        pdf=pdf,
+        pois=attractions[:6],
+        get_photo_path=get_photo_path,
+        safe_text=safe_text,
+        theme={"text": COLOR_TEXT, "light": COLOR_LIGHT, "accent": COLOR_ATTR, "primary": COLOR_PRIMARY},
+        cards_per_page=3,
+        max_cards=6,
+    )
 
-Notes:
-- Rounded corners are achieved by preprocessing each image into a PNG with transparent rounded corners (Pillow).
-- If Pillow isn't available, it falls back to non-rounded images.
+Fields shown (under each rounded-corner photo):
+- Name
+- Short description
+- Avg time spent  (supports: avg_time_spent / average_time_spent / recommended_duration / duration / etc.)
+- Rating
+- # reviewers
+- Tips (1–2 bullet tips)
+
+If the POI does not contain a duration field, we still print:
+    Avg time spent: —
+so you can always see the line (template-style).
 """
 
 from __future__ import annotations
 
-from typing import Any, Callable, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Tuple, Union
 import os
-import tempfile
+import re
 import hashlib
+import tempfile
 
 try:
-    from PIL import Image, ImageDraw  # type: ignore
-except Exception:  # pragma: no cover
+    from PIL import Image, ImageDraw
+except Exception as _e:  # pragma: no cover
     Image = None  # type: ignore
     ImageDraw = None  # type: ignore
 
 
-# Cache processed images so we don't re-generate the same rounded PNG many times
-_ROUNDED_CACHE: Dict[Tuple[str, int, int, int], str] = {}
+# ----------------------------
+# Small helpers
+# ----------------------------
 
-
-def _mm_to_px(mm: float, dpi: int = 160) -> int:
-    # 25.4 mm = 1 inch
-    return max(1, int(mm * dpi / 25.4))
-
-
-def _rounded_image_to_temp(
-    photo_path: str,
-    w_mm: float,
-    h_mm: float,
-    radius_mm: float = 3.5,
-) -> Optional[str]:
-    """Return a temp PNG path with rounded corners (transparent outside radius)."""
-    if not photo_path or not os.path.exists(photo_path):
-        return None
-    if Image is None:
-        # Fallback: no rounding, return original
-        return photo_path
-
-    key = (photo_path, int(w_mm * 10), int(h_mm * 10), int(radius_mm * 10))
-    cached = _ROUNDED_CACHE.get(key)
-    if cached and os.path.exists(cached):
-        return cached
-
-    try:
-        img = Image.open(photo_path).convert("RGBA")
-
-        target_w = _mm_to_px(w_mm)
-        target_h = _mm_to_px(h_mm)
-
-        # Center-crop to the target aspect ratio ("cover" behavior)
-        src_w, src_h = img.size
-        src_ratio = src_w / max(1, src_h)
-        tgt_ratio = target_w / max(1, target_h)
-
-        if src_ratio > tgt_ratio:
-            # Too wide -> crop left/right
-            new_w = int(src_h * tgt_ratio)
-            left = max(0, (src_w - new_w) // 2)
-            img = img.crop((left, 0, left + new_w, src_h))
-        else:
-            # Too tall -> crop top/bottom
-            new_h = int(src_w / tgt_ratio)
-            top = max(0, (src_h - new_h) // 2)
-            img = img.crop((0, top, src_w, top + new_h))
-
-        img = img.resize((target_w, target_h))
-
-        radius_px = _mm_to_px(radius_mm)
-
-        mask = Image.new("L", (target_w, target_h), 0)
-        draw = ImageDraw.Draw(mask)
-        draw.rounded_rectangle((0, 0, target_w, target_h), radius=radius_px, fill=255)
-
-        out = Image.new("RGBA", (target_w, target_h), (255, 255, 255, 0))
-        out.paste(img, (0, 0), mask)
-
-        # Stable temp filename for caching
-        h = hashlib.md5(f"{photo_path}|{key}".encode("utf-8")).hexdigest()[:12]
-        tmp_path = os.path.join(tempfile.gettempdir(), f"poi_round_{h}.png")
-        out.save(tmp_path, format="PNG")
-
-        _ROUNDED_CACHE[key] = tmp_path
-        return tmp_path
-
-    except Exception:
-        # If anything goes wrong, fallback to original image
-        return photo_path
-
-
-def _first_nonempty(*vals: Any) -> str:
+def _first_nonempty(*vals: Any) -> Any:
     for v in vals:
         if v is None:
             continue
-        if isinstance(v, str) and v.strip():
-            return v.strip()
-        if isinstance(v, (int, float)):
-            return str(v)
-        if isinstance(v, list) and v:
-            for x in v:
-                if isinstance(x, str) and x.strip():
-                    return x.strip()
-            return str(v[0])
-    return ""
+        if isinstance(v, str) and not v.strip():
+            continue
+        if isinstance(v, (list, tuple, dict)) and len(v) == 0:
+            continue
+        return v
+    return None
 
 
-def _format_avg_time(raw: Any) -> str:
-    if raw is None:
-        return ""
-    if isinstance(raw, (int, float)):
-        # assume hours
-        if isinstance(raw, float) and raw.is_integer():
-            return f"{int(raw)}h"
-        if isinstance(raw, int):
-            return f"{raw}h"
-        return f"{raw:.1f}h"
-    s = str(raw).strip()
-    s = s.replace("hours", "h").replace("hour", "h")
-    s = s.replace("minutes", "min").replace("minute", "min")
-    return s
+def _compact(s: str, max_chars: int) -> str:
+    s = re.sub(r"\s+", " ", (s or "").strip())
+    if len(s) <= max_chars:
+        return s
+    return s[: max(0, max_chars - 1)].rstrip() + "…"
 
 
-def _compact(text: str, max_chars: int) -> str:
-    text = (text or "").strip()
-    if len(text) <= max_chars:
-        return text
-    return text[: max_chars - 3].rstrip() + "..."
+def _format_rating(r: Any) -> Optional[str]:
+    if r is None:
+        return None
+    try:
+        rf = float(str(r).strip())
+        # show 1 decimal if needed
+        if abs(rf - round(rf)) < 1e-9:
+            return f"{int(round(rf))}"
+        return f"{rf:.1f}"
+    except Exception:
+        s = str(r).strip()
+        return s if s else None
 
+
+def _format_reviews(n: Any) -> Optional[str]:
+    if n is None:
+        return None
+    try:
+        nf = int(float(str(n).replace(",", "").strip()))
+        if nf < 0:
+            return None
+        return f"{nf:,}"
+    except Exception:
+        s = str(n).strip()
+        return s if s else None
+
+
+def _format_avg_time(v: Any) -> Optional[str]:
+    """
+    Returns a compact duration string like:
+      2h, 1.5h, 90min, 1-2h, ~2h, 2 hours
+    """
+    if v is None:
+        return None
+
+    # numeric -> hours
+    if isinstance(v, (int, float)):
+        if v <= 0:
+            return None
+        # treat <= 12 as hours
+        if v <= 12:
+            if abs(v - round(v)) < 1e-9:
+                return f"{int(round(v))}h"
+            return f"{v:.1f}h"
+        # otherwise assume minutes
+        return f"{int(round(v))}min"
+
+    s = str(v).strip()
+    if not s:
+        return None
+
+    # "2" -> 2h
+    if re.fullmatch(r"\d+(\.\d+)?", s):
+        try:
+            f = float(s)
+            if f <= 12:
+                if abs(f - round(f)) < 1e-9:
+                    return f"{int(round(f))}h"
+                return f"{f:.1f}h"
+        except Exception:
+            pass
+
+    # normalize common patterns
+    s2 = s.lower()
+    s2 = s2.replace("hours", "h").replace("hour", "h").replace("hrs", "h").replace("hr", "h")
+    s2 = s2.replace("minutes", "min").replace("minute", "min").replace("mins", "min")
+    s2 = re.sub(r"\s+", " ", s2).strip()
+    # keep reasonably short
+    if len(s2) > 16:
+        s2 = s2[:16].rstrip() + "…"
+    return s2
+
+
+def _mm_to_px(mm: float, dpi: int = 150) -> int:
+    return max(1, int(round(mm * dpi / 25.4)))
+
+
+def _rounded_png_from_image(
+    img_path: str,
+    target_w_mm: float,
+    target_h_mm: float,
+    radius_mm: float = 3.0,
+    dpi: int = 150,
+) -> Optional[str]:
+    """
+    Create (and cache) a rounded-corners PNG version of the image sized to the target.
+    Returns the path to the PNG, or None if Pillow isn't available or image can't be processed.
+    """
+    if Image is None:
+        return None
+    if not img_path or not os.path.exists(img_path):
+        return None
+
+    cache_dir = os.path.join(tempfile.gettempdir(), "otravel_poi_card_cache")
+    os.makedirs(cache_dir, exist_ok=True)
+
+    key = f"{img_path}|{target_w_mm:.2f}|{target_h_mm:.2f}|{radius_mm:.2f}|{dpi}"
+    fn = hashlib.md5(key.encode("utf-8")).hexdigest() + ".png"
+    out_path = os.path.join(cache_dir, fn)
+    if os.path.exists(out_path):
+        return out_path
+
+    try:
+        w_px = _mm_to_px(target_w_mm, dpi)
+        h_px = _mm_to_px(target_h_mm, dpi)
+        r_px = _mm_to_px(radius_mm, dpi)
+
+        im = Image.open(img_path).convert("RGBA")
+        # cover-crop to target aspect ratio
+        src_w, src_h = im.size
+        target_ratio = w_px / float(h_px)
+        src_ratio = src_w / float(src_h)
+
+        if src_ratio > target_ratio:
+            # wider -> crop width
+            new_w = int(round(src_h * target_ratio))
+            left = max(0, (src_w - new_w) // 2)
+            im = im.crop((left, 0, left + new_w, src_h))
+        else:
+            # taller -> crop height
+            new_h = int(round(src_w / target_ratio))
+            top = max(0, (src_h - new_h) // 2)
+            im = im.crop((0, top, src_w, top + new_h))
+
+        im = im.resize((w_px, h_px), Image.LANCZOS)
+
+        # rounded mask
+        mask = Image.new("L", (w_px, h_px), 0)
+        draw = ImageDraw.Draw(mask)
+        draw.rounded_rectangle((0, 0, w_px - 1, h_px - 1), radius=r_px, fill=255)
+
+        rounded = Image.new("RGBA", (w_px, h_px), (255, 255, 255, 0))
+        rounded.paste(im, (0, 0), mask=mask)
+
+        rounded.save(out_path, format="PNG")
+        return out_path
+    except Exception:
+        return None
+
+
+def _as_tip_list(tips: Any, max_items: int = 2) -> List[str]:
+    if tips is None:
+        return []
+    if isinstance(tips, (list, tuple)):
+        out = [str(t).strip() for t in tips if str(t).strip()]
+    else:
+        # split on newline / bullet / semicolon
+        s = str(tips).strip()
+        if not s:
+            return []
+        parts = re.split(r"[\n•;\u2022]+", s)
+        out = [p.strip(" -\t").strip() for p in parts if p.strip(" -\t").strip()]
+    return out[:max_items]
+
+
+# ---------------------------------------------------------------------------
+# Placeholder / template tips (ONLY used when show_placeholders=True)
+# ---------------------------------------------------------------------------
+
+_DEFAULT_PLACEHOLDER_TIPS: List[str] = [
+    "Go early/late for fewer crowds and better photos",
+    "Charge your phone — you’ll take lots of photos",
+]
+
+_PLACEHOLDER_TIP_PATTERNS = [
+    re.compile(r"\bplaceholder\b", re.I),
+    re.compile(r"tip\s*#\s*\d+\s*placeholder", re.I),
+    re.compile(r"go\s*early\s*/?\s*late\s*for\s*fewer\s*crowds\s*and\s*better\s*photos", re.I),
+]
+
+def _looks_like_placeholder_tip(t: str) -> bool:
+    s = (t or "").strip()
+    if not s:
+        return True
+    for pat in _PLACEHOLDER_TIP_PATTERNS:
+        if pat.search(s):
+            return True
+    return False
+
+
+def _extract_avg_time(poi: Dict[str, Any]) -> Optional[str]:
+    raw = _first_nonempty(
+        poi.get("avg_time_spent"),
+        poi.get("average_time_spent"),
+        poi.get("avg_time"),
+        poi.get("average_time"),
+        poi.get("recommended_duration"),
+        poi.get("recommended_visit_duration"),
+        poi.get("visit_duration"),
+        poi.get("duration"),
+        poi.get("time_spent"),
+        poi.get("time_needed"),
+        poi.get("typical_duration"),
+    )
+    return _format_avg_time(raw)
+
+
+# ----------------------------
+# Main renderer
+# ----------------------------
 
 def render_poi_cards(
     pdf: Any,
-    pois: List[Dict[str, Any]],
+    pois: Sequence[Dict[str, Any]],
     get_photo_path: Callable[[Dict[str, Any]], Optional[str]],
-    safe_text: Callable[[Any, int], str],
+    safe_text: Callable[..., str],
     theme: Optional[Dict[str, Tuple[int, int, int]]] = None,
     cards_per_page: int = 3,
     max_cards: int = 6,
+    # If True, fill missing fields with placeholders (useful for design mockups only)
+    show_placeholders: bool = False,
+    # If True (default), automatically remove common placeholder tips from the final PDF
+    drop_placeholder_tips: bool = True,
 ) -> None:
     """
-    Render POIs as booking-style cards.
+    Draw POI cards starting at the current cursor position (pdf.get_y()).
+    Adds pages automatically if needed.
 
-    Fields shown under each photo:
-      - Name
-      - Short description
-      - Average time spent
-      - Rating
-      - # of reviewers
-      - Tip
+    IMPORTANT: This function only draws; it does not add section titles.
     """
+    if not pois:
+        return
+
+    # Theme defaults (match pdf_generator palette if provided)
     theme = theme or {}
     c_text = theme.get("text", (52, 73, 94))
     c_light = theme.get("light", (127, 140, 141))
     c_accent = theme.get("accent", (155, 89, 182))
+    c_primary = theme.get("primary", (41, 128, 185))
 
-    # Geometry (mm)
-    x0 = float(getattr(pdf, "l_margin", 15))
-    w = float(getattr(pdf, "w", 210)) - float(getattr(pdf, "l_margin", 15)) - float(getattr(pdf, "r_margin", 15))
-    pad = 3.0
-    gap = 6.0
+    # Geometry
+    page_w = float(getattr(pdf, "w", 210))
+    page_h = float(getattr(pdf, "h", 297))
+    l_margin = float(getattr(pdf, "l_margin", 15))
+    r_margin = float(getattr(pdf, "r_margin", 15))
+    b_margin = float(getattr(pdf, "b_margin", 15))
 
-    card_h = 62.0
-    img_h = 26.0
-    radius_mm = 3.5
+    x0 = l_margin
+    usable_w = page_w - l_margin - r_margin
+    gap_y = 6.0
 
-    per_page = 0
+    # Card sizing:
+    # Use "cards_per_page" as *vertical* density guidance.
+    # We keep cards full-width and compute a comfortable height.
+    top_pad = 4.0
+    side_pad = 4.0
+    photo_h = 32.0  # mm
+    # text area roughly ~40mm, plus padding
+    base_card_h = photo_h + 40.0
+    # If user requests tighter density, shrink a bit
+    if cards_per_page >= 4:
+        base_card_h = photo_h + 34.0
 
-    for idx, poi in enumerate(pois[:max_cards], 1):
-        # enforce 3 cards per page (best-effort) within the highlight section
-        if per_page >= cards_per_page:
+    card_w = usable_w
+    card_h = base_card_h
+
+    # Soft border
+    def _draw_card_border(x: float, y: float, w: float, h: float) -> None:
+        pdf.set_draw_color(220, 225, 230)
+        pdf.set_line_width(0.4)
+        pdf.rect(x, y, w, h)
+
+    def _multi_cell_at(x: float, y: float, w: float, h: float, txt: str) -> float:
+        pdf.set_xy(x, y)
+        pdf.multi_cell(w, h, txt)
+        return float(pdf.get_y())
+
+    def _ensure_space(need_h: float) -> None:
+        y = float(pdf.get_y())
+        if y + need_h > page_h - b_margin:
             pdf.add_page()
-            per_page = 0
 
-        # If not enough room for the next card, go to next page
-        if float(pdf.get_y()) + card_h > float(getattr(pdf, "h", 297)) - float(getattr(pdf, "b_margin", 15)):
-            pdf.add_page()
-            per_page = 0
+    shown = 0
+    for poi in list(pois)[: max_cards]:
+        _ensure_space(card_h + gap_y)
+        x = x0
+        y = float(pdf.get_y())
 
-        y0 = float(pdf.get_y())
+        # Card border
+        _draw_card_border(x, y, card_w, card_h)
 
-        # Card background
-        try:
-            pdf.set_draw_color(220, 220, 220)
-            pdf.set_fill_color(250, 250, 250)
-            pdf.rect(x0, y0, w, card_h, style="DF")
-        except Exception:
-            pass
-
-        # Image (rounded)
-        img_x = x0 + pad
-        img_y = y0 + pad
-        img_w = w - 2 * pad
-
+        # Photo (rounded corners)
         photo_path = None
         try:
             photo_path = get_photo_path(poi)
         except Exception:
             photo_path = None
 
-        if photo_path:
-            rounded_path = _rounded_image_to_temp(photo_path, img_w, img_h, radius_mm=radius_mm)
-            if rounded_path and os.path.exists(rounded_path):
-                try:
-                    pdf.image(rounded_path, x=img_x, y=img_y, w=img_w, h=img_h)
-                except Exception:
-                    pass
-        else:
-            # Placeholder image area
+        img_x = x + side_pad
+        img_y = y + top_pad
+        img_w = card_w - 2 * side_pad
+        img_h = photo_h
+
+        if photo_path and os.path.exists(photo_path):
+            rounded = _rounded_png_from_image(photo_path, img_w, img_h, radius_mm=3.5)
             try:
-                pdf.set_fill_color(240, 240, 240)
-                pdf.rect(img_x, img_y, img_w, img_h, style="F")
-                pdf.set_font("Helvetica", "I", 10)
-                pdf.set_text_color(150, 150, 150)
-                pdf.set_xy(img_x, img_y + img_h / 2 - 3)
-                pdf.cell(img_w, 6, "Photo", align="C")
+                pdf.image(rounded or photo_path, x=img_x, y=img_y, w=img_w, h=img_h)
             except Exception:
                 pass
+        else:
+            # Placeholder image box
+            pdf.set_draw_color(235, 235, 235)
+            pdf.set_line_width(0.4)
+            pdf.rect(img_x, img_y, img_w, img_h)
 
-        # Text block under photo
-        t_x = x0 + pad
-        t_y = img_y + img_h + 2.0
-        try:
-            pdf.set_xy(t_x, t_y)
-        except Exception:
-            pass
+        # Text block starts under photo
+        tx = x + side_pad
+        ty = img_y + img_h + 3.5
+        tw = card_w - 2 * side_pad
 
         name = safe_text(poi.get("name", "Attraction"), 55)
 
-        desc = _first_nonempty(poi.get("description"), poi.get("details"), poi.get("short_description"))
-        desc = safe_text(_compact(desc, 170), 200)
+        desc_raw = _first_nonempty(poi.get("description"), poi.get("short_description"), poi.get("details"))
+        desc = safe_text(_compact(str(desc_raw) if desc_raw is not None else "", 170), 220)
 
-        avg_time = _format_avg_time(_first_nonempty(poi.get("average_time_spent"), poi.get("avg_time_spent"), poi.get("recommended_duration"), poi.get("duration")))
-        rating = _first_nonempty(poi.get("rating"), poi.get("google_rating"))
-        reviewers = _first_nonempty(
-            poi.get("reviews_count"),
-            poi.get("review_count"),
-            poi.get("user_ratings_total"),
-            poi.get("reviewers"),
-            poi.get("num_reviews"),
-            poi.get("reviews"),
+        avg_time = _extract_avg_time(poi)  # <-- THIS IS THE LINE YOU WERE MISSING
+        rating = _format_rating(_first_nonempty(poi.get("rating"), poi.get("google_rating")))
+        reviewers = _format_reviews(
+            _first_nonempty(
+                poi.get("reviews_count"),
+                poi.get("review_count"),
+                poi.get("user_ratings_total"),
+                poi.get("reviewers"),
+                poi.get("num_reviews"),
+            )
         )
 
-        tip = _first_nonempty(poi.get("tip"), poi.get("tips"), poi.get("local_tip"), poi.get("pro_tip"))
-        if not tip:
-            tip = "Tip: Go early/late for fewer crowds and better photos."
-        tip = safe_text(_compact(tip, 140), 160)
+        tips = _as_tip_list(_first_nonempty(poi.get("tips"), poi.get("tip"), poi.get("local_tip"), poi.get("pro_tip")))
 
-        # Title
-        try:
-            pdf.set_font("Helvetica", "B", 11)
-            pdf.set_text_color(*c_text)
-            pdf.multi_cell(w - 2 * pad, 5, f"{idx}. {name}")
-        except Exception:
-            pass
+        # Final PDFs should NOT contain fake/generic tips.
+        # So by default we remove placeholder-looking tips.
+        if drop_placeholder_tips and not show_placeholders:
+            tips = [t for t in tips if not _looks_like_placeholder_tip(t)]
+
+        # For design mockups only: if there are no tips, show nice placeholders
+        if show_placeholders and not tips:
+            tips = _DEFAULT_PLACEHOLDER_TIPS[:2]
+
+        # Name
+        pdf.set_text_color(*c_text)
+        pdf.set_font("Helvetica", "B", 12)
+        ty = _multi_cell_at(tx, ty, tw, 6, name) + 0.5
 
         # Description
-        try:
+        if desc:
+            pdf.set_text_color(*c_light)
             pdf.set_font("Helvetica", "", 9)
-            pdf.set_text_color(*c_text)
-            pdf.set_x(t_x)
-            pdf.multi_cell(w - 2 * pad, 4, desc)
-        except Exception:
-            pass
+            ty = _multi_cell_at(tx, ty, tw, 4.6, desc) + 0.8
 
-        # Info line
-        info_parts = []
-        if avg_time:
-            info_parts.append(f"Avg time: {avg_time}")
+        # Meta lines (ALWAYS show Avg time spent)
+        pdf.set_text_color(*c_text)
+        pdf.set_font("Helvetica", "", 9)
+        avg_line = f"Avg time spent: {avg_time if avg_time else '—'}"
+        ty = _multi_cell_at(tx, ty, tw, 4.8, safe_text(avg_line, 60)) + 0.2
+
+        meta_parts = []
         if rating:
-            info_parts.append(f"Rating: {rating}")
+            meta_parts.append(f"Rating: {rating}")
         if reviewers:
-            info_parts.append(f"Reviews: {reviewers}")
+            meta_parts.append(f"Reviews: {reviewers}")
+        if meta_parts:
+            pdf.set_text_color(*c_primary)
+            pdf.set_font("Helvetica", "I", 9)
+            ty = _multi_cell_at(tx, ty, tw, 4.8, safe_text(" | ".join(meta_parts), 80)) + 0.6
 
-        if info_parts:
-            try:
-                pdf.set_font("Helvetica", "I", 8)
-                pdf.set_text_color(*c_light)
-                pdf.set_x(t_x)
-                pdf.multi_cell(w - 2 * pad, 4, " | ".join(info_parts))
-            except Exception:
-                pass
-
-        # Tip line
-        try:
-            pdf.set_font("Helvetica", "I", 8)
+        # Tips
+        if tips:
             pdf.set_text_color(*c_accent)
-            pdf.set_x(t_x)
-            pdf.multi_cell(w - 2 * pad, 4, tip)
-        except Exception:
-            pass
+            pdf.set_font("Helvetica", "B", 9)
+            ty = _multi_cell_at(tx, ty, tw, 4.8, "Tips") + 0.2
 
-        # Advance cursor to just after the card
-        try:
-            pdf.set_y(y0 + card_h + gap)
-        except Exception:
-            pass
+            pdf.set_text_color(*c_text)
+            pdf.set_font("Helvetica", "", 9)
+            for t in tips:
+                ty = _multi_cell_at(tx + 2.0, ty, tw - 2.0, 4.6, safe_text(f"• {t}", 90)) + 0.1
 
-        per_page += 1
+        # Move cursor to next card
+        pdf.set_xy(x0, y + card_h + gap_y)
+
+        shown += 1
+
+    # small spacing after cards
+    pdf.ln(1)
