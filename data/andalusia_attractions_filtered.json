@@ -2705,8 +2705,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 37.1833,
+    "lon": -3.5868,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -2738,8 +2738,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 37.1773,
+    "lon": -3.5932,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -2771,8 +2771,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 37.1751,
+    "lon": -3.5882,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -2801,8 +2801,8 @@
     "is_must_see": true,
     "advance_booking": false,
     "source": "TripAdvisor",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3848,
+    "lon": -5.9878,
     "entrance_fee_value": 0,
     "is_must_see_attraction": true,
     "importance_tier": "core"
@@ -2831,8 +2831,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3825,
+    "lon": -5.9963,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -2861,8 +2861,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3916,
+    "lon": -5.9871,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -2891,8 +2891,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3867,
+    "lon": -6.0026,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -2922,8 +2922,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3895,
+    "lon": -5.9901,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -2955,8 +2955,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 36.6863,
+    "lon": -6.137,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -2988,8 +2988,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 36.686,
+    "lon": -6.1366,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3021,8 +3021,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 36.684,
+    "lon": -6.1371,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3054,8 +3054,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 36.6863,
+    "lon": -6.1358,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3087,8 +3087,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 36.6842,
+    "lon": -6.1367,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3120,8 +3120,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 36.6858,
+    "lon": -6.1422,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3153,8 +3153,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 36.6849,
+    "lon": -6.137,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3186,8 +3186,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 36.6846,
+    "lon": -6.1378,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3219,8 +3219,8 @@
     "is_must_see": true,
     "advance_booking": true,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3858,
+    "lon": -5.9931,
     "entrance_fee_value": 0,
     "is_must_see_attraction": true,
     "importance_tier": "core"
@@ -3252,8 +3252,8 @@
     "is_must_see": true,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3861,
+    "lon": -5.9928,
     "entrance_fee_value": 0,
     "is_must_see_attraction": true,
     "importance_tier": "core"
@@ -3285,8 +3285,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3953,
+    "lon": -5.9891,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3318,8 +3318,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3896,
+    "lon": -5.9894,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3351,8 +3351,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3899,
+    "lon": -5.9927,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3384,8 +3384,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3844,
+    "lon": -5.9929,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3417,8 +3417,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.378,
+    "lon": -5.9938,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3450,8 +3450,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3741,
+    "lon": -5.9873,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3483,8 +3483,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3868,
+    "lon": -5.9893,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3516,8 +3516,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3911,
+    "lon": -5.9957,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3549,8 +3549,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3886,
+    "lon": -5.9951,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3558,35 +3558,72 @@
   {
     "name": "Casa de Salinas",
     "city": "Seville",
-    "category": "Historic Building",
-    "subcategory": "Palace",
+    "category": "Palace",
+    "subcategory": "Historic House",
     "coordinates": {
-      "lat": 37.3889,
-      "lon": -5.9892
+      "lat": 37.3866,
+      "lon": -5.9923
     },
     "rating": 4.5,
-    "reviews_count": 138,
-    "description": "Beautiful private palace showing how modern people can still live in historic houses. Renaissance and mudéjar architecture with courtyards and gardens. Working noble residence.",
-    "address": "Calle Mateos Gago, 41004 Sevilla",
-    "entrance_fee": "",
-    "opening_hours": "",
-    "visit_duration_hours": 1,
-    "website": "",
+    "reviews_count": 809,
+    "description": "Magnificent 16th-century palace blending Gothic, Renaissance, and Mudéjar architecture. Built by Baltasar de Jaén in 1577, still privately owned by Salinas family. Features two beautiful courtyards with intricate tilework, painted ceilings, 1st-century AD Roman mosaic of Bacchus from Italica, and Cartuja de Sevilla stained glass. Less crowded alternative to larger Seville palaces. Guided tours available.",
+    "address": "Calle Mateos Gago, 39, 41004 Seville",
+    "entrance_fee": "€8 (guided tour)",
+    "opening_hours": [
+      "Monday: 10:00 AM – 7:00 PM",
+      "Tuesday: 10:00 AM – 7:00 PM",
+      "Wednesday: 10:00 AM – 7:00 PM",
+      "Thursday: 10:00 AM – 7:00 PM",
+      "Friday: 10:00 AM – 7:00 PM",
+      "Saturday: 10:00 AM – 7:00 PM",
+      "Sunday: 10:00 AM – 7:00 PM"
+    ],
+    "visit_duration_hours": 0.5,
+    "website": "http://www.casadesalinas.com/",
     "tags": [
-      "Private palace",
-      "Living history",
-      "Renaissance",
+      "Palace",
       "Mudéjar",
-      "Noble residence"
+      "Renaissance",
+      "Architecture",
+      "Historic House",
+      "Courtyard"
     ],
     "is_must_see": false,
     "advance_booking": true,
-    "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
-    "entrance_fee_value": 0,
+    "source": "Web Research",
+    "lat": 37.3866,
+    "lon": -5.9923,
+    "entrance_fee_value": 8,
     "is_must_see_attraction": false,
-    "importance_tier": "optional"
+    "importance_tier": "secondary",
+    "google_rating": 4.6,
+    "google_types": [
+      "establishment",
+      "point_of_interest",
+      "tourist_attraction"
+    ],
+    "place_id": "ChIJByUG6RtsEg0Rw4SwX0jzzEE",
+    "google_maps_url": "https://maps.google.com/?cid=4741431999882888387",
+    "business_status": "OPERATIONAL",
+    "photo_references": [
+      "AWn5SU7vOTvYCB6zy4C3ChN2QgmpVNCRPSAph4qiWx3n3eed5OHwxHCv0FOKNwLNZGX52dVzq5LhRZbNpSTjynRsCj4_98GQ6q9eFgTYPc2BoZPbca8QhEFRlwdN0OqCjJPU88DVwWC-LXM-_t08icF_w6wVMHtPHnNIoXi_of3lkW_Nf4ngGYDIbmzpM_7N35QFgLM2JHbZgT4TpB68N4d_O0nbX20QkONhIaFFj2coRd_6gHz7WKdTTTAbLrmLhLLVK6yv78KbsQsvqyr9ZMM_I1-ObK2AxYB-d33iuqqmdmgmOQ",
+      "AWn5SU6AzK7dmY_Wf6gff7efE4jPys_tiCBAccR6M-suXIDKWXKO16Gwk9DC6b_RKArUbs_1xpFE-0IhXLeht2ymzfAkaGjBpVKBBGO2N46AsjCK0cKmc2NlrLaScgsvJm-yW0M4ObEusuIzJwGgOLUkdSWTo6kzamLWDh15ZeyApgJYPYCS3LxkPVWWE2xamqYpdsezpBqVv3AJpWsQK5Cqemd6dorTSoTHHT52tAnKorMK0pHMhHDxjYzg6kD1yHBSrlbXSx2XIp_cNuAw_o2S88XDw-bo5gQxfcrcAOOFVMHyvd5HsCMI3HSR7eeEIoST3TjAXTCwzssxvMe90lt2ize8T-boQkVLeQQHMpv3PshbZLYYTxb2QJ_zb_vVOCpATJgftLn7HvIWcYDXPRhErVeDxWvM09qevUXaZ_yO-cI",
+      "AWn5SU7-vATFSnHJH_0LSwuX8pKcbtqVDAUudHWu0ggVCQ60LJenVniUyYKfuZNYlFG2n4Ob5plwaDdUQpDBu4hT8P9Q06UDVLgTSmg4JDrol0IISS-WbtTgnXAzrG2RUDINebBmPl_eiCVZbInzJzryqshCYGUK56V6bcyfYKw-89tVBoBkIpQRanM9B0fyctblYS_xIxEqJXFK89saDbOd9dQWR-C9Eg5cHu1PYVQA2W6rrD3YsY69Q-mygKODsa213vSlpiC50d2vM8Vk920GKVgYYOPfMmNa5bBAfx2snF0DwLXdhGsOGyR2gUdwgm7sK509oTyosb26afLIP4TAj0AMctc8qi2zCVYDrQJLj1N0HnQLt82GbFiR6-B5EU00z4IyqB5w5e4lvb3e70J6JcqAfLtppa7_sPq9Miv-83hx37M",
+      "AWn5SU4hEVe_rABl1bmu8wxjjtXee4cSYwhHXHZRYz2rWC6wASdU6WMPSXkHyDG8tZOihcPF8lxGJq5leHb84fkeERcS7uQ1OMkNWLubbcZjWUgB9ULB-ayBM6Lg9Wd8X8fMTz5JN9yuPoNtvgwEFwRmbjUz37YfJZVXri8JMSL-HvLBhraX1s25FAwkuYv8pWp-U0jqCAbKR3Jq25aJ6zZ_5wCuh0LAVv_nKMCXGqxhpCShHFkI3TkG1v6ZYdL9chKKFAr5u6E2UVQVDGEHRp7_dil7KdHK-3OHhB0TBkLwYdYhkCzIoAkWI45SefAWy8VEoxLxLWKuIi7Ip_Y86qvD1H_S1bELK_py8TObrHMNzMLuxSfIN0016BlinIMwhmqGRPW1GL5CBuZBbIFCg75RIR958e8O1qnhhmMjORexq-eTkg",
+      "AWn5SU4rXTZKd2tDqJTlqA4objejm6cstZ5toRgR80XhTCfGxCYIlTzcz-CxkCaQw8XpDCJyH2MqNk5qlmq5h5ddIXcm6P8UsBVG_zIz_ToKrrhwwK2Wqmr9zKrLSfrpvNwSqorR2J9mTsra0PoljK6WJp4HU9Nxuo-afAsqvunblM7o1rqJIOchxWYecUbqC7ugZUAXUv2uqknYCUps4sw8SpuqxONSULT48d1GVH3Meec4xZFg3E-TqlzEY09_SN5pqq9VLAGDH5uuRX1XbQcVN1oA9AY6VK7hA8Zn5A8blgE8da6-36QdbxRkOeo1VWBWs_-wHnIIddFyGAYqhL1RZk6p7AgTTkylHREvluvrOEE819BRuQacPxTZfYG9luzjhfuWlr6dyT1DZv-E36ScgbEVfhGPinbY6nNchgO-2bTTUQ",
+      "AWn5SU63HKqgitsiQznLAmvpyxyrpwkUWMSdUzPLQAcCCCtCC5aXhd03YRz23ZqxPKyR7cMnkSBUT0PNEec4LK3YDY1ZpieuAYha1yaBBGDTuqgZMlf6bJDNblG80HZpaxIRvexKeIIxJpfdzzgzSXwEJCYnIzZAmavIjrWv55kPrF00tq3DMZGcmXKAkvD-sxCwVuOHcByP65YMpNVaibktf5CYjhI1SRpW9fzuXuO89tIHIyx2ynqaDAdfW_ByrGwipM1UDBm89BJxuzVhFckn82BtGx0UKcqcdJEAZlSOWI_517B8_k9EXoVqfiHi6j4nKX9-hEsmO5OFshOVEu2CBOUz4sxbJ9bCU-s-Mv0t6BbwiVkokuX8PgsDBnEIks8Y98D2L_VH7vAe8KH1izTTVVpasqMCeqqo8zKc68Qg7Juo3A",
+      "AWn5SU4ucMXEbxoptk2PVbwWFOr98-E9GAd7uS8ENX6ERtUdwk3YVfaMJEh6B9gY2SeOZOexvXYMwpfTc4snfWwICuScxv3YlxrrbsXrz5Mf34x8zgzyLTMnkg4-3oNyPNSn050ajk-WRFRm_w5MjwyikSAdR1fehfIDiDnL9_r___FD84YckFgY8JhkH2z-t3i5UG4IYHuu-2ow8ZihiCxat4kGL3pXRMxIN5jH32FWCInXfsg97WunVgHeeVo12JmrXsiYMUUlV2p6VRgmovIhmJv3vjNFjdMs2usDO4fzf6-O4IL-bAZ2_qdzE7804A81O1wXVGIDZQVq-4XzuPbL4hYrLBgAOCZc2KpwErh5QHZirQxLSKBISdM4FNtMXmiznAVxi1VdjgPl51U_BYQ2H5LJb6FLprvt1oG5M_0jZXWY4Q",
+      "AWn5SU56pZUxxYJ0zxzVG8yGXp-a5DU2axgm2_1ClWf-X9zikJL9o3UbBVKhVMZTYjFn7zY7dAYHqZyISwWNYsdl2Kjt6UOszv_tdYlwu7GKzQ71_MGVk54S2PKbSsvk1F7mnF7GNqcJfZSgI9AVrwufJBfFOLxgKPwH7dyPy9p06nyJn7xyG0TUrZmvz5MNtaIOeSxGragMD5cPJD47azd1RzoAfMV8tDoWMoxl7GSm5mzAXErCUqDER2Htn0GOT7DtVhS2x2z5XwGn3yVyN8fRKqiIKFcHB41WjRzb0TSFDxCDJZva0Zfb0sl3RggdsXGhpEAgC7li-0oY5ly9qf--wpvxp_BKY9v_NG0_cUB2ELsOUy8C9HrBaXql_yPA09lqTNMrgFWqG_5AYsOFP5d3qA0Q2yK3m14-JXJRpd-asNk4OrjL",
+      "AWn5SU7WJz5vphn2fDtxrCazcXShjtAzkrOdZCB_zyILD_DjEXNT317gPRqyrTtn60t-EHEkeRdfMH39TP9MTQivwZTd4hq2JIyHMXepseRcfyP8HHJQ8fI01K5sXWzuiYE2LyPzbyvHuxIEgkbLPqXKBoQIuEPFetJHRDcPeUOWBm5vPWIGBXAPj2RDYQ53LefmW--nulhut-S1coKznrLkB7Em_HIqcyshuAesq2XFzKdcqdD8DrBXdr5xKe3ZjPj-LrxJ44hsU6ScIl33woAHJon6hU0qdq91mgDBEXpsb7-XEQY7VANaQeeq0gzXkHN--xoMQo2OESV1XVhDAido7yo4d5dmZenwBYhrRJI70PCKcyjTtCMHHcPXbYXSJHTxFtfISTg-lIXAR8M7NDkPPCa-olx70BT7r0yOffui4Ua8ofwv",
+      "AWn5SU7MxTG0TJ1zvhQxZMa0js8QgttbZP5uwQOUPfvXt9wzD2ePn8a6E8RZbWhZM3F8b1U51HCgfrx0bFJnesMTDogG1WsSxXp5vSpAP18f83EXBFW2lkyn7LY3IrESsUpP5mbCld2uJacaEDxMnR8qKmRIu7a5toxyD8m-ojUlbzhGRz5SHH7nMztp65heoHqiIKN9cFry4KD3gtDpSbxo2H6gzUz2hsEojjTNiAGliq09tXeWcnvLM4dQazvAl6dVOmLvmDPrIqfpev7EzeaCVTKhkNzFCuIWThK1bFNtrKjT_D7dSmZRuZSSoztCg28Pw9wFlKSXMD-3peOvLPqHCjC93gWOkzCWKbHx9t34zS4oCUsA1qcfi6JxZLTo7WSie86BHV4tOB22jz12nx8WkXYywqpHn5e8jpUUSsAvw9U7Cg"
+    ],
+    "photo_count": 10,
+    "open_now": true,
+    "hours_available": true,
+    "price_level": null,
+    "phone": "615 98 51 75",
+    "international_phone": "+34 615 98 51 75",
+    "local_photo_path": "photos\\ChIJByUG6RtsEg0Rw4SwX0jzzEE.jpg"
   },
   {
     "name": "Plaza Del Cabildo",
@@ -3615,8 +3652,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3863,
+    "lon": -5.9969,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3648,8 +3685,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3889,
+    "lon": -5.9904,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "core"
@@ -3681,8 +3718,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3733,
+    "lon": -5.9904,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3714,8 +3751,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3877,
+    "lon": -5.9956,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3747,8 +3784,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3985,
+    "lon": -5.9828,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3780,8 +3817,8 @@
     "is_must_see": false,
     "advance_booking": true,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3894,
+    "lon": -5.9931,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3813,8 +3850,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3859,
+    "lon": -6.0038,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3846,8 +3883,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3894,
+    "lon": -5.9933,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3879,8 +3916,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3959,
+    "lon": -5.9897,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3912,8 +3949,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3874,
+    "lon": -6.0031,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -3945,8 +3982,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3938,
+    "lon": -5.9856,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -3978,8 +4015,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3844,
+    "lon": -5.9851,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -4011,8 +4048,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3974,
+    "lon": -5.9947,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -4044,8 +4081,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3876,
+    "lon": -5.9927,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -4077,8 +4114,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.8831,
+    "lon": -4.7751,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -4110,8 +4147,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.8863,
+    "lon": -4.7778,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -4143,8 +4180,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.8891,
+    "lon": -4.7778,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -4176,8 +4213,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.8834,
+    "lon": -4.7767,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -4209,8 +4246,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.8856,
+    "lon": -4.7776,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -4242,8 +4279,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.8844,
+    "lon": -4.7765,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -4275,8 +4312,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.8871,
+    "lon": -4.778,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -4308,8 +4345,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.8848,
+    "lon": -4.7773,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -4341,8 +4378,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3882,
+    "lon": -6.0021,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -4374,8 +4411,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3898,
+    "lon": -5.9885,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -4407,8 +4444,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3771,
+    "lon": -5.9835,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -4440,8 +4477,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.3899,
+    "lon": -5.9892,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -25416,8 +25453,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 37.176,
+    "lon": -3.5881,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -25449,8 +25486,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 37.181,
+    "lon": -3.5937,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "core"
@@ -25482,8 +25519,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 37.1927,
+    "lon": -3.6063,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -25515,8 +25552,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 37.1662,
+    "lon": -3.6144,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -25548,8 +25585,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "Phase1_Expansion",
-    "lat": null,
-    "lon": null,
+    "lat": 37.1835,
+    "lon": -3.5863,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -25581,8 +25618,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.1742,
+    "lon": -3.5879,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -25614,8 +25651,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.1775,
+    "lon": -3.5902,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -25647,8 +25684,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.1697,
+    "lon": -3.5942,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "optional"
@@ -25680,8 +25717,8 @@
     "is_must_see": false,
     "advance_booking": false,
     "source": "TripAdvisor_Seville",
-    "lat": null,
-    "lon": null,
+    "lat": 37.374,
+    "lon": -5.9872,
     "entrance_fee_value": 0,
     "is_must_see_attraction": false,
     "importance_tier": "low"
@@ -27820,8 +27857,8 @@
     "lat": 36.4858,
     "lon": -4.9515,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.4858,
+      "lon": -4.9515
     },
     "rating": 4.0,
     "reviews_count": 25917,
@@ -27885,8 +27922,8 @@
     "lat": 36.4866,
     "lon": -4.7424,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.4866,
+      "lon": -4.7424
     },
     "rating": 4.3,
     "reviews_count": 4660,
@@ -27941,8 +27978,8 @@
     "lat": 36.5084,
     "lon": -4.8861,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5084,
+      "lon": -4.8861
     },
     "rating": 4.4,
     "reviews_count": 0,
@@ -27996,8 +28033,8 @@
     "lat": 36.5063,
     "lon": -4.8915,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5063,
+      "lon": -4.8915
     },
     "rating": 4.4,
     "reviews_count": 0,
@@ -28051,8 +28088,8 @@
     "lat": 36.5096,
     "lon": -4.882,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5096,
+      "lon": -4.882
     },
     "rating": 4.5,
     "reviews_count": 1190,
@@ -28110,8 +28147,8 @@
     "lat": 36.5088,
     "lon": -4.8836,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5088,
+      "lon": -4.8836
     },
     "rating": 4.4,
     "reviews_count": 8718,
@@ -28176,8 +28213,8 @@
     "lat": 36.4824,
     "lon": -4.7378,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.4824,
+      "lon": -4.7378
     },
     "rating": 4.5,
     "reviews_count": 3934,
@@ -28243,8 +28280,8 @@
     "lat": 36.5067,
     "lon": -4.8912,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5067,
+      "lon": -4.8912
     },
     "rating": 4.0,
     "reviews_count": 315,
@@ -28299,8 +28336,8 @@
     "lat": 36.5084,
     "lon": -4.8858,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5084,
+      "lon": -4.8858
     },
     "rating": 4.3,
     "reviews_count": 819,
@@ -28365,8 +28402,8 @@
     "lat": 36.4981,
     "lon": -4.9365,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.4981,
+      "lon": -4.9365
     },
     "rating": 4.6,
     "reviews_count": 300,
@@ -28432,8 +28469,8 @@
     "lat": 36.489,
     "lon": -4.9885,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.489,
+      "lon": -4.9885
     },
     "rating": 4.4,
     "reviews_count": 735,
@@ -28498,8 +28535,8 @@
     "lat": 36.4892,
     "lon": -4.9916,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.4892,
+      "lon": -4.9916
     },
     "rating": 4.3,
     "reviews_count": 362,
@@ -28565,8 +28602,8 @@
     "lat": 36.5093,
     "lon": -4.8817,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5093,
+      "lon": -4.8817
     },
     "rating": 4.0,
     "reviews_count": 216,
@@ -28631,8 +28668,8 @@
     "lat": 36.509,
     "lon": -4.883,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.509,
+      "lon": -4.883
     },
     "rating": 4.2,
     "reviews_count": 165,
@@ -28696,8 +28733,8 @@
     "lat": 36.5085,
     "lon": -4.8839,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5085,
+      "lon": -4.8839
     },
     "rating": 4.4,
     "reviews_count": 1964,
@@ -28762,8 +28799,8 @@
     "lat": 36.5003,
     "lon": -4.946,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5003,
+      "lon": -4.946
     },
     "rating": 4.2,
     "reviews_count": 758,
@@ -28822,8 +28859,8 @@
     "lat": 36.5095,
     "lon": -4.8833,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5095,
+      "lon": -4.8833
     },
     "rating": 4.2,
     "reviews_count": 285,
@@ -28888,8 +28925,8 @@
     "lat": 36.511,
     "lon": -4.88,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.511,
+      "lon": -4.88
     },
     "rating": 4.3,
     "reviews_count": 53,
@@ -28948,8 +28985,8 @@
     "lat": 36.575,
     "lon": -4.92,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.575,
+      "lon": -4.92
     },
     "rating": 4.7,
     "reviews_count": 63,
@@ -29013,8 +29050,8 @@
     "lat": 36.505,
     "lon": -4.946,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.505,
+      "lon": -4.946
     },
     "rating": 4.0,
     "reviews_count": 1218,
@@ -29077,8 +29114,8 @@
     "lat": 36.487,
     "lon": -4.95,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.487,
+      "lon": -4.95
     },
     "rating": 4.2,
     "reviews_count": 1914,
@@ -29135,8 +29172,8 @@
     "lat": 36.488,
     "lon": -4.952,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.488,
+      "lon": -4.952
     },
     "rating": 4.9,
     "reviews_count": 75,
@@ -29202,8 +29239,8 @@
     "lat": 36.486,
     "lon": -4.951,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.486,
+      "lon": -4.951
     },
     "rating": 4.5,
     "reviews_count": 2262,
@@ -29267,8 +29304,8 @@
     "lat": 36.4975,
     "lon": -4.956,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.4975,
+      "lon": -4.956
     },
     "rating": 4.2,
     "reviews_count": 587,
@@ -29333,8 +29370,8 @@
     "lat": 36.502,
     "lon": -5.005,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.502,
+      "lon": -5.005
     },
     "rating": 4.0,
     "reviews_count": 856,
@@ -29397,8 +29434,8 @@
     "lat": 36.5205,
     "lon": -4.8536,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5205,
+      "lon": -4.8536
     },
     "rating": 4.1,
     "reviews_count": 34088,
@@ -29467,8 +29504,8 @@
     "lat": 36.5088,
     "lon": -4.884,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.5088,
+      "lon": -4.884
     },
     "rating": 4.9,
     "reviews_count": 172,
@@ -29533,8 +29570,8 @@
     "lat": 36.4865,
     "lon": -4.9508,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.4865,
+      "lon": -4.9508
     },
     "rating": 4.8,
     "reviews_count": 96,
@@ -29598,8 +29635,8 @@
     "lat": 36.4858,
     "lon": -4.9512,
     "coordinates": {
-      "lat": 36.5098,
-      "lon": -4.8826
+      "lat": 36.4858,
+      "lon": -4.9512
     },
     "rating": 4.0,
     "reviews_count": 527,
@@ -35695,76 +35732,6 @@
     "local_photo_path": "photos\\ChIJrzPKUlJgDA0RLHskT68B-8U.jpg"
   },
   {
-    "name": "Casa de Salinas",
-    "city": "Seville",
-    "category": "Palace",
-    "subcategory": "Historic House",
-    "coordinates": {
-      "lat": 37.3866,
-      "lon": -5.9923
-    },
-    "rating": 4.5,
-    "reviews_count": 809,
-    "description": "Magnificent 16th-century palace blending Gothic, Renaissance, and Mudéjar architecture. Built by Baltasar de Jaén in 1577, still privately owned by Salinas family. Features two beautiful courtyards with intricate tilework, painted ceilings, 1st-century AD Roman mosaic of Bacchus from Italica, and Cartuja de Sevilla stained glass. Less crowded alternative to larger Seville palaces. Guided tours available.",
-    "address": "Calle Mateos Gago, 39, 41004 Seville",
-    "entrance_fee": "€8 (guided tour)",
-    "opening_hours": [
-      "Monday: 10:00 AM – 7:00 PM",
-      "Tuesday: 10:00 AM – 7:00 PM",
-      "Wednesday: 10:00 AM – 7:00 PM",
-      "Thursday: 10:00 AM – 7:00 PM",
-      "Friday: 10:00 AM – 7:00 PM",
-      "Saturday: 10:00 AM – 7:00 PM",
-      "Sunday: 10:00 AM – 7:00 PM"
-    ],
-    "visit_duration_hours": 0.5,
-    "website": "http://www.casadesalinas.com/",
-    "tags": [
-      "Palace",
-      "Mudéjar",
-      "Renaissance",
-      "Architecture",
-      "Historic House",
-      "Courtyard"
-    ],
-    "is_must_see": false,
-    "advance_booking": true,
-    "source": "Web Research",
-    "lat": 37.3866,
-    "lon": -5.9923,
-    "entrance_fee_value": 8,
-    "is_must_see_attraction": false,
-    "importance_tier": "secondary",
-    "google_rating": 4.6,
-    "google_types": [
-      "establishment",
-      "point_of_interest",
-      "tourist_attraction"
-    ],
-    "place_id": "ChIJByUG6RtsEg0Rw4SwX0jzzEE",
-    "google_maps_url": "https://maps.google.com/?cid=4741431999882888387",
-    "business_status": "OPERATIONAL",
-    "photo_references": [
-      "AWn5SU7vOTvYCB6zy4C3ChN2QgmpVNCRPSAph4qiWx3n3eed5OHwxHCv0FOKNwLNZGX52dVzq5LhRZbNpSTjynRsCj4_98GQ6q9eFgTYPc2BoZPbca8QhEFRlwdN0OqCjJPU88DVwWC-LXM-_t08icF_w6wVMHtPHnNIoXi_of3lkW_Nf4ngGYDIbmzpM_7N35QFgLM2JHbZgT4TpB68N4d_O0nbX20QkONhIaFFj2coRd_6gHz7WKdTTTAbLrmLhLLVK6yv78KbsQsvqyr9ZMM_I1-ObK2AxYB-d33iuqqmdmgmOQ",
-      "AWn5SU6AzK7dmY_Wf6gff7efE4jPys_tiCBAccR6M-suXIDKWXKO16Gwk9DC6b_RKArUbs_1xpFE-0IhXLeht2ymzfAkaGjBpVKBBGO2N46AsjCK0cKmc2NlrLaScgsvJm-yW0M4ObEusuIzJwGgOLUkdSWTo6kzamLWDh15ZeyApgJYPYCS3LxkPVWWE2xamqYpdsezpBqVv3AJpWsQK5Cqemd6dorTSoTHHT52tAnKorMK0pHMhHDxjYzg6kD1yHBSrlbXSx2XIp_cNuAw_o2S88XDw-bo5gQxfcrcAOOFVMHyvd5HsCMI3HSR7eeEIoST3TjAXTCwzssxvMe90lt2ize8T-boQkVLeQQHMpv3PshbZLYYTxb2QJ_zb_vVOCpATJgftLn7HvIWcYDXPRhErVeDxWvM09qevUXaZ_yO-cI",
-      "AWn5SU7-vATFSnHJH_0LSwuX8pKcbtqVDAUudHWu0ggVCQ60LJenVniUyYKfuZNYlFG2n4Ob5plwaDdUQpDBu4hT8P9Q06UDVLgTSmg4JDrol0IISS-WbtTgnXAzrG2RUDINebBmPl_eiCVZbInzJzryqshCYGUK56V6bcyfYKw-89tVBoBkIpQRanM9B0fyctblYS_xIxEqJXFK89saDbOd9dQWR-C9Eg5cHu1PYVQA2W6rrD3YsY69Q-mygKODsa213vSlpiC50d2vM8Vk920GKVgYYOPfMmNa5bBAfx2snF0DwLXdhGsOGyR2gUdwgm7sK509oTyosb26afLIP4TAj0AMctc8qi2zCVYDrQJLj1N0HnQLt82GbFiR6-B5EU00z4IyqB5w5e4lvb3e70J6JcqAfLtppa7_sPq9Miv-83hx37M",
-      "AWn5SU4hEVe_rABl1bmu8wxjjtXee4cSYwhHXHZRYz2rWC6wASdU6WMPSXkHyDG8tZOihcPF8lxGJq5leHb84fkeERcS7uQ1OMkNWLubbcZjWUgB9ULB-ayBM6Lg9Wd8X8fMTz5JN9yuPoNtvgwEFwRmbjUz37YfJZVXri8JMSL-HvLBhraX1s25FAwkuYv8pWp-U0jqCAbKR3Jq25aJ6zZ_5wCuh0LAVv_nKMCXGqxhpCShHFkI3TkG1v6ZYdL9chKKFAr5u6E2UVQVDGEHRp7_dil7KdHK-3OHhB0TBkLwYdYhkCzIoAkWI45SefAWy8VEoxLxLWKuIi7Ip_Y86qvD1H_S1bELK_py8TObrHMNzMLuxSfIN0016BlinIMwhmqGRPW1GL5CBuZBbIFCg75RIR958e8O1qnhhmMjORexq-eTkg",
-      "AWn5SU4rXTZKd2tDqJTlqA4objejm6cstZ5toRgR80XhTCfGxCYIlTzcz-CxkCaQw8XpDCJyH2MqNk5qlmq5h5ddIXcm6P8UsBVG_zIz_ToKrrhwwK2Wqmr9zKrLSfrpvNwSqorR2J9mTsra0PoljK6WJp4HU9Nxuo-afAsqvunblM7o1rqJIOchxWYecUbqC7ugZUAXUv2uqknYCUps4sw8SpuqxONSULT48d1GVH3Meec4xZFg3E-TqlzEY09_SN5pqq9VLAGDH5uuRX1XbQcVN1oA9AY6VK7hA8Zn5A8blgE8da6-36QdbxRkOeo1VWBWs_-wHnIIddFyGAYqhL1RZk6p7AgTTkylHREvluvrOEE819BRuQacPxTZfYG9luzjhfuWlr6dyT1DZv-E36ScgbEVfhGPinbY6nNchgO-2bTTUQ",
-      "AWn5SU63HKqgitsiQznLAmvpyxyrpwkUWMSdUzPLQAcCCCtCC5aXhd03YRz23ZqxPKyR7cMnkSBUT0PNEec4LK3YDY1ZpieuAYha1yaBBGDTuqgZMlf6bJDNblG80HZpaxIRvexKeIIxJpfdzzgzSXwEJCYnIzZAmavIjrWv55kPrF00tq3DMZGcmXKAkvD-sxCwVuOHcByP65YMpNVaibktf5CYjhI1SRpW9fzuXuO89tIHIyx2ynqaDAdfW_ByrGwipM1UDBm89BJxuzVhFckn82BtGx0UKcqcdJEAZlSOWI_517B8_k9EXoVqfiHi6j4nKX9-hEsmO5OFshOVEu2CBOUz4sxbJ9bCU-s-Mv0t6BbwiVkokuX8PgsDBnEIks8Y98D2L_VH7vAe8KH1izTTVVpasqMCeqqo8zKc68Qg7Juo3A",
-      "AWn5SU4ucMXEbxoptk2PVbwWFOr98-E9GAd7uS8ENX6ERtUdwk3YVfaMJEh6B9gY2SeOZOexvXYMwpfTc4snfWwICuScxv3YlxrrbsXrz5Mf34x8zgzyLTMnkg4-3oNyPNSn050ajk-WRFRm_w5MjwyikSAdR1fehfIDiDnL9_r___FD84YckFgY8JhkH2z-t3i5UG4IYHuu-2ow8ZihiCxat4kGL3pXRMxIN5jH32FWCInXfsg97WunVgHeeVo12JmrXsiYMUUlV2p6VRgmovIhmJv3vjNFjdMs2usDO4fzf6-O4IL-bAZ2_qdzE7804A81O1wXVGIDZQVq-4XzuPbL4hYrLBgAOCZc2KpwErh5QHZirQxLSKBISdM4FNtMXmiznAVxi1VdjgPl51U_BYQ2H5LJb6FLprvt1oG5M_0jZXWY4Q",
-      "AWn5SU56pZUxxYJ0zxzVG8yGXp-a5DU2axgm2_1ClWf-X9zikJL9o3UbBVKhVMZTYjFn7zY7dAYHqZyISwWNYsdl2Kjt6UOszv_tdYlwu7GKzQ71_MGVk54S2PKbSsvk1F7mnF7GNqcJfZSgI9AVrwufJBfFOLxgKPwH7dyPy9p06nyJn7xyG0TUrZmvz5MNtaIOeSxGragMD5cPJD47azd1RzoAfMV8tDoWMoxl7GSm5mzAXErCUqDER2Htn0GOT7DtVhS2x2z5XwGn3yVyN8fRKqiIKFcHB41WjRzb0TSFDxCDJZva0Zfb0sl3RggdsXGhpEAgC7li-0oY5ly9qf--wpvxp_BKY9v_NG0_cUB2ELsOUy8C9HrBaXql_yPA09lqTNMrgFWqG_5AYsOFP5d3qA0Q2yK3m14-JXJRpd-asNk4OrjL",
-      "AWn5SU7WJz5vphn2fDtxrCazcXShjtAzkrOdZCB_zyILD_DjEXNT317gPRqyrTtn60t-EHEkeRdfMH39TP9MTQivwZTd4hq2JIyHMXepseRcfyP8HHJQ8fI01K5sXWzuiYE2LyPzbyvHuxIEgkbLPqXKBoQIuEPFetJHRDcPeUOWBm5vPWIGBXAPj2RDYQ53LefmW--nulhut-S1coKznrLkB7Em_HIqcyshuAesq2XFzKdcqdD8DrBXdr5xKe3ZjPj-LrxJ44hsU6ScIl33woAHJon6hU0qdq91mgDBEXpsb7-XEQY7VANaQeeq0gzXkHN--xoMQo2OESV1XVhDAido7yo4d5dmZenwBYhrRJI70PCKcyjTtCMHHcPXbYXSJHTxFtfISTg-lIXAR8M7NDkPPCa-olx70BT7r0yOffui4Ua8ofwv",
-      "AWn5SU7MxTG0TJ1zvhQxZMa0js8QgttbZP5uwQOUPfvXt9wzD2ePn8a6E8RZbWhZM3F8b1U51HCgfrx0bFJnesMTDogG1WsSxXp5vSpAP18f83EXBFW2lkyn7LY3IrESsUpP5mbCld2uJacaEDxMnR8qKmRIu7a5toxyD8m-ojUlbzhGRz5SHH7nMztp65heoHqiIKN9cFry4KD3gtDpSbxo2H6gzUz2hsEojjTNiAGliq09tXeWcnvLM4dQazvAl6dVOmLvmDPrIqfpev7EzeaCVTKhkNzFCuIWThK1bFNtrKjT_D7dSmZRuZSSoztCg28Pw9wFlKSXMD-3peOvLPqHCjC93gWOkzCWKbHx9t34zS4oCUsA1qcfi6JxZLTo7WSie86BHV4tOB22jz12nx8WkXYywqpHn5e8jpUUSsAvw9U7Cg"
-    ],
-    "photo_count": 10,
-    "open_now": true,
-    "hours_available": true,
-    "price_level": null,
-    "phone": "615 98 51 75",
-    "international_phone": "+34 615 98 51 75",
-    "local_photo_path": "photos\\ChIJByUG6RtsEg0Rw4SwX0jzzEE.jpg"
-  },
-  {
     "name": "Basílica de San Juan de Dios",
     "city": "Granada",
     "category": "Church",
@@ -40121,7 +40088,13 @@
       "Architecture"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.3891,
+    "lon": -5.9845,
+    "coordinates": {
+      "lat": 37.3891,
+      "lon": -5.9845
+    }
   },
   {
     "id": 1002,
@@ -40140,7 +40113,13 @@
       "Local"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.3891,
+    "lon": -5.9845,
+    "coordinates": {
+      "lat": 37.3891,
+      "lon": -5.9845
+    }
   },
   {
     "id": 1003,
@@ -40159,7 +40138,13 @@
       "Comfort"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.3891,
+    "lon": -5.9845,
+    "coordinates": {
+      "lat": 37.3891,
+      "lon": -5.9845
+    }
   },
   {
     "id": 1004,
@@ -40178,7 +40163,13 @@
       "Authentic"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.3891,
+    "lon": -5.9845,
+    "coordinates": {
+      "lat": 37.3891,
+      "lon": -5.9845
+    }
   },
   {
     "id": 1005,
@@ -40197,7 +40188,13 @@
       "Iconic"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.8882,
+    "lon": -4.7794,
+    "coordinates": {
+      "lat": 37.8882,
+      "lon": -4.7794
+    }
   },
   {
     "id": 1006,
@@ -40216,7 +40213,13 @@
       "Relaxing"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.8882,
+    "lon": -4.7794,
+    "coordinates": {
+      "lat": 37.8882,
+      "lon": -4.7794
+    }
   },
   {
     "id": 1007,
@@ -40235,7 +40238,13 @@
       "Classic"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.8882,
+    "lon": -4.7794,
+    "coordinates": {
+      "lat": 37.8882,
+      "lon": -4.7794
+    }
   },
   {
     "id": 1008,
@@ -40254,7 +40263,13 @@
       "Local"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.5271,
+    "lon": -6.2886,
+    "coordinates": {
+      "lat": 36.5271,
+      "lon": -6.2886
+    }
   },
   {
     "id": 1009,
@@ -40273,7 +40288,13 @@
       "Sweet"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.5271,
+    "lon": -6.2886,
+    "coordinates": {
+      "lat": 36.5271,
+      "lon": -6.2886
+    }
   },
   {
     "id": 1010,
@@ -40292,7 +40313,13 @@
       "Architecture"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.5271,
+    "lon": -6.2886,
+    "coordinates": {
+      "lat": 36.5271,
+      "lon": -6.2886
+    }
   },
   {
     "id": 1011,
@@ -40311,7 +40338,13 @@
       "Tapas"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.7511,
+    "lon": -5.8067,
+    "coordinates": {
+      "lat": 36.7511,
+      "lon": -5.8067
+    }
   },
   {
     "id": 1012,
@@ -40330,7 +40363,13 @@
       "Local"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.7511,
+    "lon": -5.8067,
+    "coordinates": {
+      "lat": 36.7511,
+      "lon": -5.8067
+    }
   },
   {
     "id": 1013,
@@ -40349,7 +40388,13 @@
       "Hidden gem"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.7511,
+    "lon": -5.8067,
+    "coordinates": {
+      "lat": 36.7511,
+      "lon": -5.8067
+    }
   },
   {
     "id": 1014,
@@ -40368,7 +40413,13 @@
       "Local"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.685,
+    "lon": -6.1261,
+    "coordinates": {
+      "lat": 36.685,
+      "lon": -6.1261
+    }
   },
   {
     "id": 1015,
@@ -40387,7 +40438,13 @@
       "Local"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.685,
+    "lon": -6.1261,
+    "coordinates": {
+      "lat": 36.685,
+      "lon": -6.1261
+    }
   },
   {
     "id": 1016,
@@ -40406,7 +40463,13 @@
       "Iconic"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.685,
+    "lon": -6.1261,
+    "coordinates": {
+      "lat": 36.685,
+      "lon": -6.1261
+    }
   },
   {
     "id": 1017,
@@ -40425,7 +40488,13 @@
       "Photography"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.7422,
+    "lon": -5.1667,
+    "coordinates": {
+      "lat": 36.7422,
+      "lon": -5.1667
+    }
   },
   {
     "id": 1018,
@@ -40444,7 +40513,13 @@
       "Summer"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.75,
+    "lon": -5.15,
+    "coordinates": {
+      "lat": 36.75,
+      "lon": -5.15
+    }
   },
   {
     "id": 1019,
@@ -40463,7 +40538,13 @@
       "Pueblo Blanco"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.8403,
+    "lon": -5.3906,
+    "coordinates": {
+      "lat": 36.8403,
+      "lon": -5.3906
+    }
   },
   {
     "id": 1020,
@@ -40482,7 +40563,13 @@
       "Summer"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.7583,
+    "lon": -5.3667,
+    "coordinates": {
+      "lat": 36.7583,
+      "lon": -5.3667
+    }
   },
   {
     "id": 1021,
@@ -40501,7 +40588,13 @@
       "Iconic"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.9167,
+    "lon": -4.75,
+    "coordinates": {
+      "lat": 36.9167,
+      "lon": -4.75
+    }
   },
   {
     "id": 1022,
@@ -40520,7 +40613,13 @@
       "Local"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.1773,
+    "lon": -3.5986,
+    "coordinates": {
+      "lat": 37.1773,
+      "lon": -3.5986
+    }
   },
   {
     "id": 1023,
@@ -40539,7 +40638,13 @@
       "Central"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.1773,
+    "lon": -3.5986,
+    "coordinates": {
+      "lat": 37.1773,
+      "lon": -3.5986
+    }
   },
   {
     "id": 1024,
@@ -40558,7 +40663,13 @@
       "Casual"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.1773,
+    "lon": -3.5986,
+    "coordinates": {
+      "lat": 37.1773,
+      "lon": -3.5986
+    }
   },
   {
     "id": 1025,
@@ -40577,7 +40688,13 @@
       "Value"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.1773,
+    "lon": -3.5986,
+    "coordinates": {
+      "lat": 37.1773,
+      "lon": -3.5986
+    }
   },
   {
     "id": 1026,
@@ -40596,7 +40713,13 @@
       "Mountains"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 37.0956,
+    "lon": -3.3964,
+    "coordinates": {
+      "lat": 37.0956,
+      "lon": -3.3964
+    }
   },
   {
     "id": 1027,
@@ -40615,7 +40738,13 @@
       "Summer"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.9917,
+    "lon": -3.2667,
+    "coordinates": {
+      "lat": 36.9917,
+      "lon": -3.2667
+    }
   },
   {
     "id": 1028,
@@ -40634,7 +40763,13 @@
       "Base"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.8333,
+    "lon": -3.9667,
+    "coordinates": {
+      "lat": 36.8333,
+      "lon": -3.9667
+    }
   },
   {
     "id": 1029,
@@ -40653,7 +40788,13 @@
       "Mountains"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.76,
+    "lon": -5.42,
+    "coordinates": {
+      "lat": 36.76,
+      "lon": -5.42
+    }
   },
   {
     "id": 1030,
@@ -40672,7 +40813,13 @@
       "Rural"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.3167,
+    "lon": -5.4333,
+    "coordinates": {
+      "lat": 36.3167,
+      "lon": -5.4333
+    }
   },
   {
     "id": 1031,
@@ -40691,6 +40838,12 @@
       "Views"
     ],
     "source": "community_enrichment_2025",
-    "added_date": "2025-12-09"
+    "added_date": "2025-12-09",
+    "lat": 36.92,
+    "lon": -4.75,
+    "coordinates": {
+      "lat": 36.92,
+      "lon": -4.75
+    }
   }
 ]
